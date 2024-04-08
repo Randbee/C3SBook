@@ -7,3 +7,87 @@
 [submodule "notebooks/reanalysis-climatology"]
 	path = notebooks/reanalysis-climatology
 	url = https://github.com/Randbee/reanalysis-climatology.git
+[submodule "notebooks/sf-anomalies"]
+	path = notebooks/sf-anomalies
+	url = https://github.com/Randbee/sf-anomalies.git
+[submodule "notebooks/visualising-fwi-for-esotc"]
+	path = notebooks/visualising-fwi-for-esotc
+	url = https://github.com/Randbee/visualising-fwi-for-esotc.git
+[submodule "notebooks/sf-verification"]
+	path = notebooks/sf-verification
+	url = https://github.com/Randbee/sf-verification.git
+[submodule "notebooks/glofas-bangladesh-floods"]
+	path = notebooks/glofas-bangladesh-floods
+	url = https://github.com/Randbee/glofas-bangladesh-floods.git
+[submodule "notebooks/greenhouse-gases-level2-products"]
+	path = notebooks/greenhouse-gases-level2-products
+	url = https://github.com/Randbee/greenhouse-gases-level2-products.git
+[submodule "notebooks/erb-ceres-climatology"]
+	path = notebooks/erb-ceres-climatology
+	url = https://github.com/Randbee/erb-ceres-climatology.git
+[submodule "notebooks/ci-windchill"]
+	path = notebooks/ci-windchill
+	url = https://github.com/Randbee/ci-windchill.git
+[submodule "notebooks/total-solar-irradiance"]
+	path = notebooks/total-solar-irradiance
+	url = https://github.com/Randbee/total-solar-irradiance.git
+[submodule "notebooks/lake-surface-water-temperature"]
+	path = notebooks/lake-surface-water-temperature
+	url = https://github.com/Randbee/lake-surface-water-temperature.git
+[submodule "notebooks/aerosol-single-sensor-demonstrator"]
+	path = notebooks/aerosol-single-sensor-demonstrator
+	url = https://github.com/Randbee/aerosol-single-sensor-demonstrator.git
+[submodule "notebooks/ice-sheet-surface-elevation"]
+	path = notebooks/ice-sheet-surface-elevation
+	url = https://github.com/Randbee/ice-sheet-surface-elevation.git
+[submodule "notebooks/ice-sheet-velocity"]
+	path = notebooks/ice-sheet-velocity
+	url = https://github.com/Randbee/ice-sheet-velocity.git
+[submodule "notebooks/erb-outgoing-longwave-radiation"]
+	path = notebooks/erb-outgoing-longwave-radiation
+	url = https://github.com/Randbee/erb-outgoing-longwave-radiation.git
+[submodule "notebooks/srb-climatology-and-anomaly"]
+	path = notebooks/srb-climatology-and-anomaly
+	url = https://github.com/Randbee/srb-climatology-and-anomaly.git
+[submodule "notebooks/total-ozone-columns"]
+	path = notebooks/total-ozone-columns
+	url = https://github.com/Randbee/total-ozone-columns.git
+[submodule "notebooks/lake-water-level"]
+	path = notebooks/lake-water-level
+	url = https://github.com/Randbee/lake-water-level.git
+[submodule "notebooks/total-column-water-vapour-combi"]
+	path = notebooks/total-column-water-vapour-combi
+	url = https://github.com/Randbee/total-column-water-vapour-combi.git
+[submodule "notebooks/erb-clara-climatology"]
+	path = notebooks/erb-clara-climatology
+	url = https://github.com/Randbee/erb-clara-climatology.git
+[submodule "notebooks/reanalysis-heatwave"]
+	path = notebooks/reanalysis-heatwave
+	url = https://github.com/Randbee/reanalysis-heatwave.git
+[submodule "notebooks/cloud-cover-climatology"]
+	path = notebooks/cloud-cover-climatology
+	url = https://github.com/Randbee/cloud-cover-climatology.git
+[submodule "notebooks/tropospheric-humidity-from-radio-occultation"]
+	path = notebooks/tropospheric-humidity-from-radio-occultation
+	url = https://github.com/Randbee/tropospheric-humidity-from-radio-occultation.git
+[submodule "notebooks/soil-moisture-anomalies"]
+	path = notebooks/soil-moisture-anomalies
+	url = https://github.com/Randbee/soil-moisture-anomalies.git
+[submodule "notebooks/ice-sheet-mass-balance"]
+	path = notebooks/ice-sheet-mass-balance
+	url = https://github.com/Randbee/ice-sheet-mass-balance.git
+[submodule "notebooks/aerosol-multi-sensor-record"]
+	path = notebooks/aerosol-multi-sensor-record
+	url = https://github.com/Randbee/aerosol-multi-sensor-record.git
+[submodule "notebooks/projections-cmip6"]
+	path = notebooks/projections-cmip6
+	url = https://github.com/Randbee/projections-cmip6.git
+[submodule "notebooks/projections-cordex"]
+	path = notebooks/projections-cordex
+	url = https://github.com/Randbee/projections-cordex.git
+[submodule "notebooks/greenhouse-gases-level3-products"]
+	path = notebooks/greenhouse-gases-level3-products
+	url = https://github.com/Randbee/greenhouse-gases-level3-products.git
+[submodule "notebooks/glacier-mass-change"]
+	path = notebooks/glacier-mass-change
+	url = https://github.com/Randbee/glacier-mass-change.git
