@@ -1,0 +1,9 @@
+[submodule "notebooks/cds-tutorial"]
+	path = notebooks/cds-tutorial
+	url = https://github.com/Randbee/cds-tutorial.git
+[submodule "notebooks/ci-windchil"]
+	path = notebooks/ci-windchil
+	url = https://github.com/Randbee/ci-windchill.git
+[submodule "notebooks/reanalysis-climatology"]
+	path = notebooks/reanalysis-climatology
+	url = https://github.com/Randbee/reanalysis-climatology.git

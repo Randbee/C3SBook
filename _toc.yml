@@ -1,0 +1,114 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption:
+    chapters:
+      - url: https://climate.copernicus.eu/
+        title: C3S
+      - url: https://cds.climate.copernicus.eu/
+        title: CDS Data Store
+      - url: https://climate.copernicus.eu/user-learning-services/
+        title: C3S Training
+  - caption: Introduction
+    chapters:
+      - file: how-to-run-these-tutorials
+        title: How to run these tutorials
+  - caption: Climate Data Store (CDS)
+    chapters:
+      - file: notebooks/cds-tutorial/cds-tutorial
+        title: CDS tutorial
+  - caption: Reanalysis Tutorials
+    chapters:
+      - file: notebooks/reanalysis-climatology/reanalysis-climatology
+        title: Climatology
+      - file: notebooks/reanalysis-heatwave/reanalysis-heatwave
+        title: Heatwave Analysis
+  - caption: Tutorials on Climate Projections
+    chapters:
+      - file: notebooks/projections-cmip6/projections-cmip6
+        title: Climate Projections (CMIP6)
+      - file: notebooks/projections-cordex/projections-cordex
+        title: Climate Projections (CORDEX)
+  - caption: Tutorials on Seasonal Forecasts
+    chapters:
+      - file: notebooks/sf-anomalies/sf-anomalies
+        title: Seasonal Forecast Anomalies
+      - file: notebooks/sf-verification/sf-verification
+        title: Seasonal Forecast Verification
+  - caption: Tutorials on Climate Indices
+    chapters:
+      - file: notebooks/ci-windchill/ci-windchill
+        title: Windchill Index Calculation
+  - caption: Tutorials using Satellite Observations
+    chapters:
+      # ERB
+      - file: notebooks//erb-outgoing-longwave-radiation/erb-outgoing-longwave-radiation
+        title: Outgoing Longwave Radiation
+      - file: notebooks/erb-clara-climatology/erb-clara-climatology
+        title: Analysis of the CLARA Earth radiation budget product
+      - file: notebooks/erb-ceres-climatology/erb-ceres-climatology # COPCO-1716
+        title: Analysis of the CERES Earth radiation budget product
+      - file: notebooks/total-solar-irradiance/total-solar-irradiance
+        title: Total Solar Irradiance
+      # SRB
+      - file: notebooks/srb-climatology-and-anomaly/srb-climatology-and-anomaly
+        title: Surface radiation budget climatologies and anomalies
+      # Atmos humidity + cloud
+      - file: notebooks/total-column-water-vapour-combi/total-column-water-vapour-combi # COPCO-1649
+        title: Total column water vapour
+      - file: notebooks/tropospheric-humidity-from-radio-occultation/tropospheric-humidity-from-radio-occultation # COPCO-1707
+        title: Tropospheric humidity estimates from satellite-based radio occultation measurements
+      - file: notebooks/cloud-cover-climatology/cloud-cover-climatology
+        title: Cloud fractional cover climatology
+      # Atmos Composition
+      - file: notebooks/greenhouse-gases-level2-products/greenhouse-gases-level2-products
+        title: Greenhouse Gas Level 2 Products
+      - file: notebooks/greenhouse-gases-level3-products/greenhouse-gases-level3-products
+        title: Greenhouse Gas Level 3 Products
+      - file: notebooks/aerosol-single-sensor-demonstrator/aerosol-single-sensor-demonstrator
+        title: Aerosol Single Sensor Demonstrator
+      - file: notebooks/aerosol-multi-sensor-record/aerosol-multi-sensor-record
+        title: Aerosol Multi-Sensor Record
+      - file: notebooks/total-ozone-columns/total-ozone-columns
+        title: Total Ozone Columns
+      # Surface water
+      - file: notebooks/soil-moisture-anomalies/soil-moisture-anomalies
+        title: Soil Moisture Anomaly Analysis
+      - file: notebooks/lake-water-level/lake-water-level
+        title: Lake Water Level Timeseries
+      - file: notebooks/lake-surface-water-temperature/lake-surface-water-temperature
+        title: Lake Surface Water Temperature Analysis
+      # Ice sheets
+      - file: notebooks/ice-sheet-surface-elevation/ice-sheet-surface-elevation # COPCO-1695
+      - file: notebooks/ice-sheet-velocity/ice-sheet-velocity # COPCO-1728
+      - file: notebooks/ice-sheet-mass-balance/ice-sheet-mass-balance # COPCO-1729
+      - file: notebooks/glacier-mass-change/glacier-mass-change # COPCO-1697
+        title: Glacier mass change
+  - caption: Turorials using Copernicus Emergency Management Service data
+    chapters:
+      - file: notebooks/visualising-fwi-for-esotc/visualising-fwi-for-esotc
+        title: Visualising fire weather index (FWI)
+      - file: notebooks/glofas-bangladesh-floods/glofas-bangladesh-floods
+        title: Observing major flood events
+  - caption: Tutorials on Bias Correction
+    chapters:
+      - url: https://ibicus.readthedocs.io/en/latest/getting_started/overview.html
+        title: Python library (ibicus) and tutorials on bias correction
+  - caption: Atmosphere Monitoring Tutorials
+    chapters:
+      - url: https://ecmwf-projects.github.io/copernicus-training-cams/
+        title: Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
+
+  - caption: Explore other books📚
+    chapters:
+      - url: https://ecmwf-projects.github.io/copernicus-training-cams
+        title: Copernicus Atmosphere Monitoring Service (CAMS) Data Tutorials
+      - url: https://ecmwfcode4earth.github.io/sketchbook-earth
+        title: Sketchbook Earth - A collection of Jupyter notebooks for Earth Sciences
+  - caption: ECMWF
+    chapters:
+      - file: support
+        title: Help&Support
