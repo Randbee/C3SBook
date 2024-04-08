@@ -1,1 +1,5 @@
 add-submodules-basic.py
+.vscode/
+.ipynb_checkpoints/
+
+_build
