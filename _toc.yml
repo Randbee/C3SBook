@@ -45,7 +45,7 @@ parts:
   - caption: Tutorials using Satellite Observations
     chapters:
       # ERB
-      - file: notebooks//erb-outgoing-longwave-radiation/erb-outgoing-longwave-radiation
+      - file: notebooks/erb-outgoing-longwave-radiation/erb-outgoing-longwave-radiation
         title: Outgoing Longwave Radiation
       - file: notebooks/erb-clara-climatology/erb-clara-climatology
         title: Analysis of the CLARA Earth radiation budget product
@@ -87,21 +87,12 @@ parts:
       - file: notebooks/ice-sheet-mass-balance/ice-sheet-mass-balance # COPCO-1729
       - file: notebooks/glacier-mass-change/glacier-mass-change # COPCO-1697
         title: Glacier mass change
-  - caption: Turorials using Copernicus Emergency Management Service data
+  - caption: Tutorials using Copernicus Emergency Management Service data
     chapters:
       - file: notebooks/visualising-fwi-for-esotc/visualising-fwi-for-esotc
         title: Visualising fire weather index (FWI)
       - file: notebooks/glofas-bangladesh-floods/glofas-bangladesh-floods
         title: Observing major flood events
-  - caption: Tutorials on Bias Correction
-    chapters:
-      - url: https://ibicus.readthedocs.io/en/latest/getting_started/overview.html
-        title: Python library (ibicus) and tutorials on bias correction
-  - caption: Atmosphere Monitoring Tutorials
-    chapters:
-      - url: https://ecmwf-projects.github.io/copernicus-training-cams/
-        title: Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
-
   - caption: Explore other books📚
     chapters:
       - url: https://ecmwf-projects.github.io/copernicus-training-cams
