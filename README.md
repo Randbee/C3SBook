@@ -26,3 +26,14 @@ Once the book has been successfully rebuilt, you can deploy it to the `gh-pages`
 ```bash
 ghp-import -n -p -f _build/html
 ```
+
+# Run our notebooks
+
+In the `notebooks` folder, you'll find all the Jupyter notebooks.
+Additionally, there's a `requirements.txt` file included, containing the necessary Python libraries for running the notebooks. You can install all the required libraries by executing the following command in your terminal:
+
+```bash
+pip install -r requirements.txt
+```
+
+To run the notebooks on your local machine, please refer to [C3S Book:How to run these tutorials ](https://randbee.github.io/C3SBook/how-to-run-these-tutorials.html) section for detailed instructions.
