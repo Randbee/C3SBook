@@ -95,7 +95,7 @@ parts:
         title: Observing major flood events
   - caption: Explore other books📚
     chapters:
-      - url: https://ecmwf-projects.github.io/copernicus-training-cams
+      - url: https://Randbee.github.io/CAMSBook
         title: Copernicus Atmosphere Monitoring Service (CAMS) Data Tutorials
       - url: https://ecmwfcode4earth.github.io/sketchbook-earth
         title: Sketchbook Earth - A collection of Jupyter notebooks for Earth Sciences
