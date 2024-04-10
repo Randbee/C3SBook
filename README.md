@@ -10,15 +10,7 @@ The book of notebooks is organized using submodules, which allows for maintainin
 
 To build and deploy the book of notebooks, follow these steps:
 
-### 1. Create a Development Environment
-
-Before building the book, ensure you have a development environment with all the necessary dependencies installed. You can create a virtual environment with the dependencies using the following command:
-
-```bash
-. ./developer/create-environment-for-build
-```
-
-### 2. Rebuild the Book
+### 1. Rebuild the Book
 
 To rebuild the book, first remove the existing `_build` folder and then run the following command to rebuild the book:
 
@@ -27,7 +19,7 @@ rm -rf _build
 jupyter-book build --all .
 ```
 
-### 3. Book Deployment
+### 2. Book Deployment
 
 Once the book has been successfully rebuilt, you can deploy it to the `gh-pages` branch using `ghp-import`. Run the following command to copy the `_build/html` folder to the `gh-pages` branch and deploy the book:
 
