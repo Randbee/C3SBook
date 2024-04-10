@@ -545,13 +545,13 @@ td, th {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: cdsapi in c:\users\cxcs\anaconda3\lib\site-packages (0.3.1)
-Requirement already satisfied: tqdm in c:\users\cxcs\anaconda3\lib\site-packages (from cdsapi) (4.47.0)
-Requirement already satisfied: requests&gt;=2.5.0 in c:\users\cxcs\anaconda3\lib\site-packages (from cdsapi) (2.24.0)
-Requirement already satisfied: idna&lt;3,&gt;=2.5 in c:\users\cxcs\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (2.10)
-Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in c:\users\cxcs\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (3.0.4)
-Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in c:\users\cxcs\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (1.25.9)
-Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\cxcs\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (2020.6.20)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: cdsapi in /home/randbee-user/anaconda3/lib/python3.11/site-packages (0.6.1)
+Requirement already satisfied: requests&gt;=2.5.0 in /home/randbee-user/anaconda3/lib/python3.11/site-packages (from cdsapi) (2.31.0)
+Requirement already satisfied: tqdm in /home/randbee-user/anaconda3/lib/python3.11/site-packages (from cdsapi) (4.65.0)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /home/randbee-user/anaconda3/lib/python3.11/site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (2.0.4)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/randbee-user/anaconda3/lib/python3.11/site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (3.4)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /home/randbee-user/anaconda3/lib/python3.11/site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (2.0.7)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/randbee-user/anaconda3/lib/python3.11/site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (2024.2.2)
 </pre></div>
 </div>
 </div>
@@ -590,7 +590,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\cxcs\anaconda3\
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
-<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;##################################&#39;</span>
+<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;#########&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -682,16 +682,81 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\cxcs\anaconda3\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-02-03 08:30:09,321 INFO Welcome to the CDS
-2022-02-03 08:30:09,326 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/reanalysis-era5-single-levels
-2022-02-03 08:30:09,507 INFO Request is queued
-2022-02-03 08:30:10,564 INFO Request is running
-2022-02-03 09:10:26,261 INFO Request is completed
-2022-02-03 09:10:26,263 INFO Downloading https://download-0009.copernicus-climate.eu/cache-compute-0009/cache/data0/adaptor.mars.internal-1643879144.3714578-9573-17-990f3656-2699-457b-9cf4-ff7a0baba8af.nc to ./records/NFrance_hourly_Sep.nc (1.6M)
-2022-02-03 09:10:26,719 INFO Download rate 3.4M/s                                                                      
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-04-10 14:33:17,107 INFO Welcome to the CDS
+2024-04-10 14:33:17,108 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/reanalysis-era5-single-levels
+2024-04-10 14:33:17,207 INFO Request is queued
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=1634068,content_type=application/x-netcdf,location=https://download-0009.copernicus-climate.eu/cache-compute-0009/cache/data0/adaptor.mars.internal-1643879144.3714578-9573-17-990f3656-2699-457b-9cf4-ff7a0baba8af.nc)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="s1">&#39;reanalysis-era5-single-levels&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="p">{</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="s1">&#39;product_type&#39;</span><span class="p">:</span> <span class="s1">&#39;reanalysis&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;netcdf&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;2m_temperature&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>         <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>             <span class="s1">&#39;1979&#39;</span><span class="p">,</span> <span class="s1">&#39;1980&#39;</span><span class="p">,</span> <span class="s1">&#39;1981&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>             <span class="s1">&#39;1982&#39;</span><span class="p">,</span> <span class="s1">&#39;1983&#39;</span><span class="p">,</span> <span class="s1">&#39;1984&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>             <span class="s1">&#39;1985&#39;</span><span class="p">,</span> <span class="s1">&#39;1986&#39;</span><span class="p">,</span> <span class="s1">&#39;1987&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>             <span class="s1">&#39;1988&#39;</span><span class="p">,</span> <span class="s1">&#39;1989&#39;</span><span class="p">,</span> <span class="s1">&#39;1990&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>             <span class="s1">&#39;1991&#39;</span><span class="p">,</span> <span class="s1">&#39;1992&#39;</span><span class="p">,</span> <span class="s1">&#39;1993&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>             <span class="s1">&#39;1994&#39;</span><span class="p">,</span> <span class="s1">&#39;1995&#39;</span><span class="p">,</span> <span class="s1">&#39;1996&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>             <span class="s1">&#39;1997&#39;</span><span class="p">,</span> <span class="s1">&#39;1998&#39;</span><span class="p">,</span> <span class="s1">&#39;1999&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>             <span class="s1">&#39;2000&#39;</span><span class="p">,</span> <span class="s1">&#39;2001&#39;</span><span class="p">,</span> <span class="s1">&#39;2002&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>             <span class="s1">&#39;2003&#39;</span><span class="p">,</span> <span class="s1">&#39;2004&#39;</span><span class="p">,</span> <span class="s1">&#39;2005&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>             <span class="s1">&#39;2006&#39;</span><span class="p">,</span> <span class="s1">&#39;2007&#39;</span><span class="p">,</span> <span class="s1">&#39;2008&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span>             <span class="s1">&#39;2009&#39;</span><span class="p">,</span> <span class="s1">&#39;2010&#39;</span><span class="p">,</span> <span class="s1">&#39;2011&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span>             <span class="s1">&#39;2012&#39;</span><span class="p">,</span> <span class="s1">&#39;2013&#39;</span><span class="p">,</span> <span class="s1">&#39;2014&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span>             <span class="s1">&#39;2015&#39;</span><span class="p">,</span> <span class="s1">&#39;2016&#39;</span><span class="p">,</span> <span class="s1">&#39;2017&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span>             <span class="s1">&#39;2018&#39;</span><span class="p">,</span> <span class="s1">&#39;2019&#39;</span><span class="p">,</span> <span class="s1">&#39;2020&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span>         <span class="p">],</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span>         <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="s1">&#39;09&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span>         <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="p">[</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span>             <span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;02&#39;</span><span class="p">,</span> <span class="s1">&#39;03&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span>             <span class="s1">&#39;04&#39;</span><span class="p">,</span> <span class="s1">&#39;05&#39;</span><span class="p">,</span> <span class="s1">&#39;06&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span>             <span class="s1">&#39;07&#39;</span><span class="p">,</span> <span class="s1">&#39;08&#39;</span><span class="p">,</span> <span class="s1">&#39;09&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span>             <span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span><span class="p">,</span> <span class="s1">&#39;12&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span>             <span class="s1">&#39;13&#39;</span><span class="p">,</span> <span class="s1">&#39;14&#39;</span><span class="p">,</span> <span class="s1">&#39;15&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span>             <span class="s1">&#39;16&#39;</span><span class="p">,</span> <span class="s1">&#39;17&#39;</span><span class="p">,</span> <span class="s1">&#39;18&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span>             <span class="s1">&#39;19&#39;</span><span class="p">,</span> <span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span>             <span class="s1">&#39;22&#39;</span><span class="p">,</span> <span class="s1">&#39;23&#39;</span><span class="p">,</span> <span class="s1">&#39;24&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span>             <span class="s1">&#39;25&#39;</span><span class="p">,</span> <span class="s1">&#39;26&#39;</span><span class="p">,</span> <span class="s1">&#39;27&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span>             <span class="s1">&#39;28&#39;</span><span class="p">,</span> <span class="s1">&#39;29&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span>         <span class="p">],</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span>         <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="p">[</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span>             <span class="s1">&#39;00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;01:00&#39;</span><span class="p">,</span> <span class="s1">&#39;02:00&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span>             <span class="s1">&#39;03:00&#39;</span><span class="p">,</span> <span class="s1">&#39;04:00&#39;</span><span class="p">,</span> <span class="s1">&#39;05:00&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span>             <span class="s1">&#39;06:00&#39;</span><span class="p">,</span> <span class="s1">&#39;07:00&#39;</span><span class="p">,</span> <span class="s1">&#39;08:00&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span>             <span class="s1">&#39;09:00&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00&#39;</span><span class="p">,</span> <span class="s1">&#39;11:00&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span>             <span class="s1">&#39;12:00&#39;</span><span class="p">,</span> <span class="s1">&#39;13:00&#39;</span><span class="p">,</span> <span class="s1">&#39;14:00&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span>             <span class="s1">&#39;15:00&#39;</span><span class="p">,</span> <span class="s1">&#39;16:00&#39;</span><span class="p">,</span> <span class="s1">&#39;17:00&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span>             <span class="s1">&#39;18:00&#39;</span><span class="p">,</span> <span class="s1">&#39;19:00&#39;</span><span class="p">,</span> <span class="s1">&#39;20:00&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span>             <span class="s1">&#39;21:00&#39;</span><span class="p">,</span> <span class="s1">&#39;22:00&#39;</span><span class="p">,</span> <span class="s1">&#39;23:00&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span>         <span class="p">],</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span>         <span class="s1">&#39;area&#39;</span><span class="p">:</span> <span class="p">[</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span>             <span class="mi">51</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span>             <span class="mi">4</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span>         <span class="p">],</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span>     <span class="p">},</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span>     <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">NFrance_hourly_Sep.nc&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/cdsapi/api.py:364,</span> in <span class="ni">Client.retrieve</span><span class="nt">(self, name, request, target)</span>
+<span class="g g-Whitespace">    </span><span class="mi">363</span> <span class="k">def</span> <span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">364</span>     <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/resources/</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span> <span class="n">request</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">365</span>     <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span>         <span class="n">result</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/cdsapi/api.py:492,</span> in <span class="ni">Client._api</span><span class="nt">(self, url, request, method)</span>
+<span class="g g-Whitespace">    </span><span class="mi">489</span> <span class="n">rid</span> <span class="o">=</span> <span class="n">reply</span><span class="p">[</span><span class="s2">&quot;request_id&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">491</span> <span class="bp">self</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Request ID is </span><span class="si">%s</span><span class="s2">, sleep </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">rid</span><span class="p">,</span> <span class="n">sleep</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">492</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sleep</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span> <span class="n">sleep</span> <span class="o">*=</span> <span class="mf">1.5</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span> <span class="k">if</span> <span class="n">sleep</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">sleep_max</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -748,6 +813,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\cxcs\anaconda3\
 }
 
 html[theme=dark],
+body[data-theme=dark],
 body.vscode-dark {
   --xr-font-color0: rgba(255, 255, 255, 1);
   --xr-font-color2: rgba(255, 255, 255, 0.54);
@@ -977,6 +1043,11 @@ body.vscode-dark {
   grid-column: 4;
 }
 
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
 .xr-var-name,
 .xr-var-dims,
 .xr-var-dtype,
@@ -998,14 +1069,16 @@ body.vscode-dark {
 }
 
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   display: none;
   background-color: var(--xr-background-color) !important;
   padding-bottom: 5px !important;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
-.xr-var-data-in:checked ~ .xr-var-data {
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
   display: block;
 }
 
@@ -1015,13 +1088,16 @@ body.vscode-dark {
 
 .xr-var-name span,
 .xr-var-data,
+.xr-index-name div,
+.xr-index-data,
 .xr-attrs {
   padding-left: 25px !important;
 }
 
 .xr-attrs,
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   grid-column: 1 / -1;
 }
 
@@ -1059,7 +1135,8 @@ dl.xr-attrs {
 }
 
 .xr-icon-database,
-.xr-icon-file-text2 {
+.xr-icon-file-text2,
+.xr-no-icon {
   display: inline-block;
   vertical-align: middle;
   width: 1em;
@@ -1078,10 +1155,21 @@ Data variables:
     t2m        (time, latitude, longitude) float32 ...
 Attributes:
     Conventions:  CF-1.6
-    history:      2022-02-03 09:10:11 GMT by grib_to_netcdf-2.23.0: /opt/ecmw...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-8eb39140-1c6c-4dc5-9a4e-edfc488792e6' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-8eb39140-1c6c-4dc5-9a4e-edfc488792e6' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>longitude</span>: 5</li><li><span class='xr-has-index'>latitude</span>: 5</li><li><span class='xr-has-index'>time</span>: 30240</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-d574a404-b4d4-4bb9-94ce-e97adb73c72e' class='xr-section-summary-in' type='checkbox'  checked><label for='section-d574a404-b4d4-4bb9-94ce-e97adb73c72e' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>3.0 3.25 3.5 3.75 4.0</div><input id='attrs-7d27a276-3c68-4b93-a401-dd026fa63034' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7d27a276-3c68-4b93-a401-dd026fa63034' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-25adb501-997f-43b5-86a6-c88588bc2c54' class='xr-var-data-in' type='checkbox'><label for='data-25adb501-997f-43b5-86a6-c88588bc2c54' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>long_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><pre>array([3.  , 3.25, 3.5 , 3.75, 4.  ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>51.0 50.75 50.5 50.25 50.0</div><input id='attrs-de58d2e5-4b09-4f76-b5b7-10a4be9a0421' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-de58d2e5-4b09-4f76-b5b7-10a4be9a0421' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1c890427-dd83-4366-b446-5452632f8de1' class='xr-var-data-in' type='checkbox'><label for='data-1c890427-dd83-4366-b446-5452632f8de1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>long_name :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><pre>array([51.  , 50.75, 50.5 , 50.25, 50.  ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1979-09-01 ... 2020-09-30T23:00:00</div><input id='attrs-437c56a5-0f29-4372-87a8-65dccf6c3b35' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-437c56a5-0f29-4372-87a8-65dccf6c3b35' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-654ee106-c7fd-48a7-8694-6700a2474177' class='xr-var-data-in' type='checkbox'><label for='data-654ee106-c7fd-48a7-8694-6700a2474177' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;1979-09-01T00:00:00.000000000&#x27;, &#x27;1979-09-01T01:00:00.000000000&#x27;,
+    history:      2024-03-13 20:31:00 GMT by grib_to_netcdf-2.25.1: /opt/ecmw...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-392ba422-6b00-43ab-a682-2c7c0427ddfd' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-392ba422-6b00-43ab-a682-2c7c0427ddfd' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>longitude</span>: 5</li><li><span class='xr-has-index'>latitude</span>: 5</li><li><span class='xr-has-index'>time</span>: 30240</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-10014eca-f3a1-45ca-a103-8ab391ab2737' class='xr-section-summary-in' type='checkbox'  checked><label for='section-10014eca-f3a1-45ca-a103-8ab391ab2737' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>3.0 3.25 3.5 3.75 4.0</div><input id='attrs-3a55cf1b-a264-4ad8-b4aa-65f58e0d1338' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3a55cf1b-a264-4ad8-b4aa-65f58e0d1338' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0ce7dc6c-7c24-4569-b163-4831b0aa3bb4' class='xr-var-data-in' type='checkbox'><label for='data-0ce7dc6c-7c24-4569-b163-4831b0aa3bb4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>long_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><pre>array([3.  , 3.25, 3.5 , 3.75, 4.  ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>51.0 50.75 50.5 50.25 50.0</div><input id='attrs-24c2c188-8765-4efc-a252-c926f0d7387b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-24c2c188-8765-4efc-a252-c926f0d7387b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c158c33c-0913-4834-832d-56c13dcf6cea' class='xr-var-data-in' type='checkbox'><label for='data-c158c33c-0913-4834-832d-56c13dcf6cea' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>long_name :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><pre>array([51.  , 50.75, 50.5 , 50.25, 50.  ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1979-09-01 ... 2020-09-30T23:00:00</div><input id='attrs-8daad07a-d432-4954-a914-3967c1ad45e5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8daad07a-d432-4954-a914-3967c1ad45e5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e2d916f9-ed33-4710-a722-8bd5b21641db' class='xr-var-data-in' type='checkbox'><label for='data-e2d916f9-ed33-4710-a722-8bd5b21641db' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;1979-09-01T00:00:00.000000000&#x27;, &#x27;1979-09-01T01:00:00.000000000&#x27;,
        &#x27;1979-09-01T02:00:00.000000000&#x27;, ..., &#x27;2020-09-30T21:00:00.000000000&#x27;,
        &#x27;2020-09-30T22:00:00.000000000&#x27;, &#x27;2020-09-30T23:00:00.000000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-1c1e1894-d440-4bc8-889c-b34c6eeed4df' class='xr-section-summary-in' type='checkbox'  checked><label for='section-1c1e1894-d440-4bc8-889c-b34c6eeed4df' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>t2m</span></div><div class='xr-var-dims'>(time, latitude, longitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-3694f7c4-4dd1-46c7-8a8c-7072ab0db1e0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3694f7c4-4dd1-46c7-8a8c-7072ab0db1e0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7b7560d7-5c3a-4271-bcc5-a9fbbafacfed' class='xr-var-data-in' type='checkbox'><label for='data-7b7560d7-5c3a-4271-bcc5-a9fbbafacfed' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>K</dd><dt><span>long_name :</span></dt><dd>2 metre temperature</dd></dl></div><div class='xr-var-data'><pre>[756000 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-6146824e-c42e-4a1d-ad8a-30fd53458a5e' class='xr-section-summary-in' type='checkbox'  checked><label for='section-6146824e-c42e-4a1d-ad8a-30fd53458a5e' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.6</dd><dt><span>history :</span></dt><dd>2022-02-03 09:10:11 GMT by grib_to_netcdf-2.23.0: /opt/ecmwf/mars-client/bin/grib_to_netcdf -S param -o /cache/data0/adaptor.mars.internal-1643879144.3714578-9573-17-990f3656-2699-457b-9cf4-ff7a0baba8af.nc /cache/tmp/990f3656-2699-457b-9cf4-ff7a0baba8af-adaptor.mars.internal-1643877008.2708144-9573-32-tmp.grib</dd></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-67aa77e5-bc5b-4481-8471-b96fe0a2213c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-67aa77e5-bc5b-4481-8471-b96fe0a2213c' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>t2m</span></div><div class='xr-var-dims'>(time, latitude, longitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-c50cc681-cfc1-46c7-8b6d-3ef3b9781cab' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c50cc681-cfc1-46c7-8b6d-3ef3b9781cab' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f67bb875-dbd2-4e1b-8e9e-5b64d469b48f' class='xr-var-data-in' type='checkbox'><label for='data-f67bb875-dbd2-4e1b-8e9e-5b64d469b48f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>K</dd><dt><span>long_name :</span></dt><dd>2 metre temperature</dd></dl></div><div class='xr-var-data'><pre>[756000 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-418bf322-003c-490b-887f-a49423a6b4db' class='xr-section-summary-in' type='checkbox'  ><label for='section-418bf322-003c-490b-887f-a49423a6b4db' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>longitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-a614aef0-aac7-49eb-9e85-1c743970c986' class='xr-index-data-in' type='checkbox'/><label for='index-a614aef0-aac7-49eb-9e85-1c743970c986' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([3.0, 3.25, 3.5, 3.75, 4.0], dtype=&#x27;float32&#x27;, name=&#x27;longitude&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>latitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-2702627c-e84a-40c6-bf26-c07e02828a6f' class='xr-index-data-in' type='checkbox'/><label for='index-2702627c-e84a-40c6-bf26-c07e02828a6f' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([51.0, 50.75, 50.5, 50.25, 50.0], dtype=&#x27;float32&#x27;, name=&#x27;latitude&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-f99da912-724f-4c15-877f-0d2c660915cc' class='xr-index-data-in' type='checkbox'/><label for='index-f99da912-724f-4c15-877f-0d2c660915cc' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;1979-09-01 00:00:00&#x27;, &#x27;1979-09-01 01:00:00&#x27;,
+               &#x27;1979-09-01 02:00:00&#x27;, &#x27;1979-09-01 03:00:00&#x27;,
+               &#x27;1979-09-01 04:00:00&#x27;, &#x27;1979-09-01 05:00:00&#x27;,
+               &#x27;1979-09-01 06:00:00&#x27;, &#x27;1979-09-01 07:00:00&#x27;,
+               &#x27;1979-09-01 08:00:00&#x27;, &#x27;1979-09-01 09:00:00&#x27;,
+               ...
+               &#x27;2020-09-30 14:00:00&#x27;, &#x27;2020-09-30 15:00:00&#x27;,
+               &#x27;2020-09-30 16:00:00&#x27;, &#x27;2020-09-30 17:00:00&#x27;,
+               &#x27;2020-09-30 18:00:00&#x27;, &#x27;2020-09-30 19:00:00&#x27;,
+               &#x27;2020-09-30 20:00:00&#x27;, &#x27;2020-09-30 21:00:00&#x27;,
+               &#x27;2020-09-30 22:00:00&#x27;, &#x27;2020-09-30 23:00:00&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=30240, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-e48cdb60-6b17-4641-b977-da6bca08debf' class='xr-section-summary-in' type='checkbox'  checked><label for='section-e48cdb60-6b17-4641-b977-da6bca08debf' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.6</dd><dt><span>history :</span></dt><dd>2024-03-13 20:31:00 GMT by grib_to_netcdf-2.25.1: /opt/ecmwf/mars-client/bin/grib_to_netcdf.bin -S param -o /cache/data6/adaptor.mars.internal-1710361633.167014-15735-7-8f010147-b2fa-480f-bd8f-85ecd02477bc.nc /cache/tmp/8f010147-b2fa-480f-bd8f-85ecd02477bc-adaptor.mars.internal-1710358220.3763564-15735-6-tmp.grib</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>We see that the dataset has one variable called <strong>“t2m”</strong>, which stands for “2 metre temperature”, and three coordinates of <strong>longitude</strong>, <strong>latitude</strong> and <strong>time</strong>.</p>
 <p>Select the icons to the right of the table above to expand the attributes of the coordinates and data variables. What are the units of the temperature data?</p>
@@ -1158,7 +1246,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5adb026a96af8ee742d55d5f4cb7dc775fd26641e14d812d84668e9a1f63f80c.png" src="../../_images/5adb026a96af8ee742d55d5f4cb7dc775fd26641e14d812d84668e9a1f63f80c.png" />
+<img alt="../../_images/f3c7520f24f69276b2245b9b4bb7ef956452851ce14861c2c325df8a3bb6a4a2.png" src="../../_images/f3c7520f24f69276b2245b9b4bb7ef956452851ce14861c2c325df8a3bb6a4a2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1232,11 +1320,11 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\cxcs\AppData\Local\Temp/ipykernel_5360/21074062.py:5: UserWarning: color is redundantly defined by the &#39;color&#39; keyword argument and the fmt string &quot;bo-&quot; (-&gt; color=&#39;b&#39;). The keyword argument will take precedence.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6831/21074062.py:5: UserWarning: color is redundantly defined by the &#39;color&#39; keyword argument and the fmt string &quot;bo-&quot; (-&gt; color=&#39;b&#39;). The keyword argument will take precedence.
   ax.plot(Lille_2020_max.day, Lille_2020_max, &#39;bo-&#39;, color=&#39;darkred&#39;, label=&#39;Daily max t2m Sep 2020&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/6b14167f1193ad73c1594bbfa3859808ae288057cb28478453f0d6e6f2ef00f6.png" src="../../_images/6b14167f1193ad73c1594bbfa3859808ae288057cb28478453f0d6e6f2ef00f6.png" />
+<img alt="../../_images/57f884e957121d51590a6d5fd66d0618c01bfebc75ce75b358a5cb85c9312b41.png" src="../../_images/57f884e957121d51590a6d5fd66d0618c01bfebc75ce75b358a5cb85c9312b41.png" />
 </div>
 </div>
 <p>Interestingly, we see from this plot that while the temperatures from 14 to 16 Sep 2020 were the highest in the ERA5 dataset, on 25 September 2020, the lowest of the maximum temperatures was recorded for this dataset.</p>
@@ -1244,7 +1332,7 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Lille_max</span> <span class="o">=</span> <span class="n">Lille_max</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
-<span class="n">Lille_15</span> <span class="o">=</span> <span class="n">Lille_max</span><span class="p">[</span><span class="mi">14</span><span class="p">::</span><span class="mi">30</span><span class="p">]</span>
+<span class="n">Lille_15</span> <span class="o">=</span> <span class="n">Lille_max</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">Lille_max</span><span class="p">[</span><span class="s1">&#39;time.day&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">15</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
@@ -1258,50 +1346,25 @@ Attributes:
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 2.,  3., 11.,  6.,  7.,  5.,  1.,  2.,  3.,  1.]),
- array([12.54313564, 13.95039225, 15.35764885, 16.76490545, 18.17216206,
-        19.57941866, 20.98667526, 22.39393187, 23.80118847, 25.20844507,
-        26.61570168]),
+ array([12.54313374, 13.95039034, 15.35764694, 16.76490355, 18.17216015,
+        19.57941675, 20.98667336, 22.39392996, 23.80118656, 25.20844316,
+        26.61569977]),
  &lt;BarContainer object of 10 artists&gt;)
 </pre></div>
 </div>
-<img alt="../../_images/57b823d232114fcb4740c491fd5688ee2263526f06f161c3db442de003e40ca2.png" src="../../_images/57b823d232114fcb4740c491fd5688ee2263526f06f161c3db442de003e40ca2.png" />
+<img alt="../../_images/04b72199cc81ffcd64807f6b9f33b59c549d81a0b3eca4e9ab22d7d894c3d07f.png" src="../../_images/04b72199cc81ffcd64807f6b9f33b59c549d81a0b3eca4e9ab22d7d894c3d07f.png" />
 </div>
 </div>
 <p>Look at the range of maximum temperatures for 15 September in the period from 1979 to 2019. Has the temperature in this period ever exceeded that of 15 September 2020?</p>
 <p>The histogram shows the distribution of maximum temperature of one day in each year of the time series, which corresponds to 41 samples. In order to increase the number of samples, let’s plot the histogram of maximum temperatures on 15 September, plus or minus three days. This would increase our number of samples by a factor of seven.</p>
-<p>To do this, we first need to produce an index that takes the maximum 2m air temperature values from 12 to 18 September (15 September +/- three days) from every year in the time series. The first step is to initiate three numpy arrays:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">years</span></code>: with the number of years [0:40]</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">days_in_sep</span></code>: index values of day range [11:17]</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">index</span></code>: empty numpy array with 287 (41 years * 7) entries</p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">years</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">41</span><span class="p">)</span>
-<span class="n">days_in_sep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">18</span><span class="p">)</span>
-<span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">287</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Lille_7days</span> <span class="o">=</span> <span class="n">Lille_max</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">Lille_max</span><span class="p">[</span><span class="s1">&#39;time.day&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">19</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>In a next step, we then loop through each entry of the <code class="docutils literal notranslate"><span class="pre">years</span></code> array and fill the empty <code class="docutils literal notranslate"><span class="pre">index</span></code> array year by year with the correct indices of the day ranges for each year. The resulting array contains the index values of interest.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
-    <span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="mi">7</span><span class="p">:(</span><span class="n">i</span><span class="o">*</span><span class="mi">7</span><span class="p">)</span><span class="o">+</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="n">days_in_sep</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>We then apply this index to filter the array of max daily temperature from 1979 to 2019. The resulting object is an array of values representing the maximum 2m air temperature in Lille between 12 and 18 September for each year from 1979 to 2019:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Lille_7days</span> <span class="o">=</span> <span class="n">Lille_max</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>The resulting <code class="docutils literal notranslate"><span class="pre">Lille_7days</span></code> dataset contains the maximum temperature data for Lille for the days from the 12th to the 18th of September, inclusive, across all years in the dataset.</p>
 <p>Now we can plot the histogram of maximum daily temperatures in the days 12-18 September from 1979-2019:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1318,7 +1381,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8791f8bc0c3987422b463945d984ed65c691b820567b469cfe1a1ad66704d989.png" src="../../_images/8791f8bc0c3987422b463945d984ed65c691b820567b469cfe1a1ad66704d989.png" />
+<img alt="../../_images/f3c26b6f4bd43c6ae511b201e66787a775ea25a2cbe83ae7041985f1a90e4144.png" src="../../_images/f3c26b6f4bd43c6ae511b201e66787a775ea25a2cbe83ae7041985f1a90e4144.png" />
 </div>
 </div>
 <p>In the histogram above, you see that even if we take an increased sample covering a wider temporal range, the maximum daily temperature still never reached that of 15 September 2020. To increase the sample even further, you could include data from a longer time period. The C3S reanalysis dataset now extends back to 1950 and is accessible here <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels-preliminary-back-extension?tab=overview">ERA5 hourly data on single levels from 1950 to 1978 (preliminary version)</a>.</p>
