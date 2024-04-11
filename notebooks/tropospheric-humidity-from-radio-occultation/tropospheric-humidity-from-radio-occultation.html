@@ -209,6 +209,10 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../sf-anomalies/sf-anomalies.html">Seasonal Forecast Anomalies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sf-verification/sf-verification.html">Seasonal Forecast Verification</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Indices</span></p>
 <ul class="nav bd-sidenav">
@@ -488,12 +492,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-setup">2. Initial setup</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api">Install CDS API</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-your-cds-api-key">Enter your CDS API key</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-inspect-data">3. Search, download, and inspect data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identify-the-data-in-the-climate-data-store">Identify the data in the Climate Data Store</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-data">Download the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identify-the-data-in-the-climate-data-store">Identify the data in the Climate Data Store</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-data">Download the data</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unpack-and-merge-data-files">Unpack and merge data files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store-as-xarray-object-and-inspect-data">Store as Xarray object and inspect data</a></li>
 </ul>
@@ -604,10 +609,6 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-<section id="enter-your-cds-api-key">
-<h3>Enter your CDS API key<a class="headerlink" href="#enter-your-cds-api-key" title="Link to this heading">#</a></h3>
-<p>We will request data from the Climate Data Store (CDS) using functions in the CDS API. For that, you need to specify your CDS API credentials in the form of two strings:<code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code>. The KEY string includes your personal User ID and a CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="http://cds.climate.copernicus.eu">http://cds.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
@@ -631,9 +632,8 @@ Format: Zip file
 </pre></div>
 </div>
 <p>At the end of the download form, select “Show API request”. A block of code will appear, which you can simply copy and paste into a cell of your Jupyter Notebook (see two cells below).</p>
-</section>
 <section id="download-the-data">
-<h3>Download the data<a class="headerlink" href="#download-the-data" title="Link to this heading">#</a></h3>
+<h4>Download the data<a class="headerlink" href="#download-the-data" title="Link to this heading">#</a></h4>
 <p>Specify a local directory for download of data from the CDS, and for storing all output files that will be generated. Note that the directory must exist.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -678,6 +678,7 @@ Format: Zip file
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="unpack-and-merge-data-files">
 <h3>Unpack and merge data files<a class="headerlink" href="#unpack-and-merge-data-files" title="Link to this heading">#</a></h3>
@@ -1475,12 +1476,13 @@ Let us download the file <a class="reference external" href="https://www.cpc.nce
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-setup">2. Initial setup</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api">Install CDS API</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-your-cds-api-key">Enter your CDS API key</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-inspect-data">3. Search, download, and inspect data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identify-the-data-in-the-climate-data-store">Identify the data in the Climate Data Store</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-data">Download the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identify-the-data-in-the-climate-data-store">Identify the data in the Climate Data Store</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-data">Download the data</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unpack-and-merge-data-files">Unpack and merge data files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#store-as-xarray-object-and-inspect-data">Store as Xarray object and inspect data</a></li>
 </ul>

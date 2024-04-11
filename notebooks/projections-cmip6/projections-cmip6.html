@@ -209,6 +209,10 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../sf-anomalies/sf-anomalies.html">Seasonal Forecast Anomalies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sf-verification/sf-verification.html">Seasonal Forecast Verification</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Indices</span></p>
 <ul class="nav bd-sidenav">
@@ -484,9 +488,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api-via-pip">Install CDS API via pip</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-libraries">Load libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api-via-pip">Install CDS API via pip</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-libraries">Load libraries</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#request-data-from-the-cds-programmatically-with-the-cds-api">Request data from the CDS programmatically with the CDS API</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unzip-the-downloaded-data-files">Unzip the downloaded data files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-list-of-the-extracted-files">Create a list of the extracted files</a></li>
@@ -561,9 +567,8 @@ td, th {
     <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/projections-cmip6.ipynb">
         <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
   </tr>
-</table><hr></section>
-<section id="install-cds-api-via-pip">
-<h2>Install CDS API via pip<a class="headerlink" href="#install-cds-api-via-pip" title="Link to this heading">#</a></h2>
+</table><hr><section id="install-cds-api-via-pip">
+<h3>Install CDS API via pip<a class="headerlink" href="#install-cds-api-via-pip" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>cdsapi
@@ -573,7 +578,7 @@ td, th {
 </div>
 </section>
 <section id="load-libraries">
-<h2>Load libraries<a class="headerlink" href="#load-libraries" title="Link to this heading">#</a></h2>
+<h3>Load libraries<a class="headerlink" href="#load-libraries" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># General libs for file paths, data extraction, etc</span>
@@ -603,6 +608,7 @@ td, th {
 </div>
 </div>
 <hr></section>
+</section>
 <section id="request-data-from-the-cds-programmatically-with-the-cds-api">
 <h2>Request data from the CDS programmatically with the CDS API<a class="headerlink" href="#request-data-from-the-cds-programmatically-with-the-cds-api" title="Link to this heading">#</a></h2>
 <p>We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> which build together your CDS API key. The string of characters that make up your KEY include your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="http://cds.climate.copernicus.eu">http://cds.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
@@ -1891,9 +1897,11 @@ Data variables:
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api-via-pip">Install CDS API via pip</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-libraries">Load libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api-via-pip">Install CDS API via pip</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-libraries">Load libraries</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#request-data-from-the-cds-programmatically-with-the-cds-api">Request data from the CDS programmatically with the CDS API</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unzip-the-downloaded-data-files">Unzip the downloaded data files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-list-of-the-extracted-files">Create a list of the extracted files</a></li>

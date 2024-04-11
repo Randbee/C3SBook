@@ -209,6 +209,10 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../sf-anomalies/sf-anomalies.html">Seasonal Forecast Anomalies</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Seasonal Forecast Verification</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Indices</span></p>
 <ul class="nav bd-sidenav">
@@ -483,34 +487,38 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Seasonal Forecast Verification</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-run-this-tutorial">How to run this tutorial</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-packages">Load packages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#request-data-from-the-cds-using-cds-api">1. Request data from the CDS using CDS API</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-retrieve-hindcast-data">1a. Retrieve hindcast data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-retrieve-observations-data-era5">1b. Retrieve observations data (ERA5)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-deterministic-and-probabilistic-products-from-the-hindcast-data">2. Compute deterministic and probabilistic products from the hindcast data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-anomalies">2a. Anomalies</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-probabilities-for-tercile-categories">2b. Probabilities for tercile categories</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#request-data-from-the-cds-using-cds-api">1. Request data from the CDS using CDS API</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-retrieve-hindcast-data">1a. Retrieve hindcast data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-retrieve-observations-data-era5">1b. Retrieve observations data (ERA5)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-deterministic-and-probabilistic-scores">3. Compute deterministic and probabilistic scores</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-read-observations-data-into-a-xr-dataset">3a. Read observations data into a xr.Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-compute-deterministic-scores">3b. Compute deterministic scores</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-compute-probabilistic-scores-for-tercile-categories">3c. Compute probabilistic scores for tercile categories</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-deterministic-and-probabilistic-products-from-the-hindcast-data">2. Compute deterministic and probabilistic products from the hindcast data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-anomalies">2a. Anomalies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-probabilities-for-tercile-categories">2b. Probabilities for tercile categories</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-verification-plots">4. Visualize verification plots</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-variables">Common variables</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-plot-titles-base-information">Create plot titles base information</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-correlation">4a. Correlation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-ranked-probability-score-rps">4b. Ranked Probability Score (RPS)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-area-under-relative-operating-characteristic-roc-curve">4c. Area under Relative Operating Characteristic (ROC) curve</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-deterministic-and-probabilistic-scores">3. Compute deterministic and probabilistic scores</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-read-observations-data-into-a-xr-dataset">3a. Read observations data into a xr.Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-compute-deterministic-scores">3b. Compute deterministic scores</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-compute-probabilistic-scores-for-tercile-categories">3c. Compute probabilistic scores for tercile categories</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-verification-plots">4. Visualize verification plots</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-variables">Common variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-plot-titles-base-information">Create plot titles base information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-correlation">4a. Correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-ranked-probability-score-rps">4b. Ranked Probability Score (RPS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-area-under-relative-operating-characteristic-roc-curve">4c. Area under Relative Operating Characteristic (ROC) curve</a></li>
 </ul>
 </li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -605,8 +613,9 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="request-data-from-the-cds-using-cds-api">
-<h2>1. Request data from the CDS using CDS API<a class="headerlink" href="#request-data-from-the-cds-using-cds-api" title="Link to this heading">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="request-data-from-the-cds-using-cds-api">
+<h1>1. Request data from the CDS using CDS API<a class="headerlink" href="#request-data-from-the-cds-using-cds-api" title="Link to this heading">#</a></h1>
 <p>First we will set up some common variables to be used in this notebook to define the folder containing the data, the variables to be retrieved, the hindcast period and the <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/Summary+of+available+data#Summaryofavailabledata-nominal_start_date">nominal start month</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -652,7 +661,7 @@ document.write(`
 </div>
 </div>
 <section id="a-retrieve-hindcast-data">
-<h3>1a. Retrieve hindcast data<a class="headerlink" href="#a-retrieve-hindcast-data" title="Link to this heading">#</a></h3>
+<h2>1a. Retrieve hindcast data<a class="headerlink" href="#a-retrieve-hindcast-data" title="Link to this heading">#</a></h2>
 <p>The next step is then to request the seasonal forecast monthly statistics data on single levels with the help of the CDS API. Below, we download a GRIB file containing the retrospective forecasts (hindcasts, or reforecasts) for the variables, start month and years defined in the variable <code class="docutils literal notranslate"><span class="pre">config</span></code></p>
 <p>Running the code block below will download the data from the CDS as specified by the following API keywords:</p>
 <blockquote>
@@ -719,7 +728,7 @@ document.write(`
 </div>
 </section>
 <section id="b-retrieve-observations-data-era5">
-<h3>1b. Retrieve observations data (ERA5)<a class="headerlink" href="#b-retrieve-observations-data-era5" title="Link to this heading">#</a></h3>
+<h2>1b. Retrieve observations data (ERA5)<a class="headerlink" href="#b-retrieve-observations-data-era5" title="Link to this heading">#</a></h2>
 <p>Now we will request from the CDS the observation data that will be used as the ground truth against which the hindcast data will be compared. In this notebook we will be using as observational reference the CDS dataset <code class="docutils literal notranslate"><span class="pre">reanalysis-era5-single-levels-monthly-means</span></code> which contains <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels-monthly-means?tab=overview">ERA5</a> monthly averaged data from the CDS. In order to compare it with the hindcast data we have just downloaded above, we will ask the CDS to regrid it to the same grid used by the C3S seasonal forecasts.</p>
 <p>Running the code block below will download the ERA5 data from the CDS as specified by the following API keywords:</p>
 <blockquote>
@@ -776,8 +785,8 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="compute-deterministic-and-probabilistic-products-from-the-hindcast-data">
-<h2>2. Compute deterministic and probabilistic products from the hindcast data<a class="headerlink" href="#compute-deterministic-and-probabilistic-products-from-the-hindcast-data" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="compute-deterministic-and-probabilistic-products-from-the-hindcast-data">
+<h1>2. Compute deterministic and probabilistic products from the hindcast data<a class="headerlink" href="#compute-deterministic-and-probabilistic-products-from-the-hindcast-data" title="Link to this heading">#</a></h1>
 <p>In this section we will be calculating the different derived products we will be scoring later in the notebook. We will use the reference period defined in <code class="docutils literal notranslate"><span class="pre">config[&quot;hcstarty&quot;]</span></code>,<code class="docutils literal notranslate"><span class="pre">config[&quot;hcendy&quot;]</span></code> to calculate:</p>
 <ul class="simple">
 <li><p>anomalies: defined as the difference of a given hindcast to the model climate, computed as the average over all the available members (that is, among all start years and ensemble members)</p></li>
@@ -799,7 +808,7 @@ document.write(`
 </div>
 </div>
 <section id="a-anomalies">
-<h3>2a. Anomalies<a class="headerlink" href="#a-anomalies" title="Link to this heading">#</a></h3>
+<h2>2a. Anomalies<a class="headerlink" href="#a-anomalies" title="Link to this heading">#</a></h2>
 <p>We will start opening the hindcast data GRIB file we downloaded in the previous section to load it into an <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> object.</p>
 <p>Some minor modifications of the <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> object also happen here:</p>
 <ul class="simple">
@@ -864,7 +873,7 @@ Saving anomalies 1m/3m to netCDF files
 </div>
 </section>
 <section id="b-probabilities-for-tercile-categories">
-<h3>2b. Probabilities for tercile categories<a class="headerlink" href="#b-probabilities-for-tercile-categories" title="Link to this heading">#</a></h3>
+<h2>2b. Probabilities for tercile categories<a class="headerlink" href="#b-probabilities-for-tercile-categories" title="Link to this heading">#</a></h2>
 <p>Before we start computing the probabilities it will be useful to create a function devoted to computing the boundaries of a given category (<code class="docutils literal notranslate"><span class="pre">icat</span></code>) coming from a given set of quantiles (<code class="docutils literal notranslate"><span class="pre">quantiles</span></code>) of an <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -942,8 +951,8 @@ Saving 3m tercile probs netCDF files
 </div>
 </section>
 </section>
-<section id="compute-deterministic-and-probabilistic-scores">
-<h2>3. Compute deterministic and probabilistic scores<a class="headerlink" href="#compute-deterministic-and-probabilistic-scores" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="compute-deterministic-and-probabilistic-scores">
+<h1>3. Compute deterministic and probabilistic scores<a class="headerlink" href="#compute-deterministic-and-probabilistic-scores" title="Link to this heading">#</a></h1>
 <p>In this section we will produce a set of metrics and scores consistent with the <a class="reference external" href="https://library.wmo.int/doc_num.php?explnum_id=4886">guidance on forecast verification</a> provided by WMO. Those values can be used to describe statistics of forecast performance over a past period (the reference period defined in the variable <code class="docutils literal notranslate"><span class="pre">config</span></code>), as an indication of expectation of ‘confidence’ in the real-time outputs.</p>
 <p>In this notebook metrics and scores for both deterministic (anomalies) and probabilistic (probabilities of tercile categories) products, as those provided in the C3S seasonal forecast graphical products section, will be computed. Specifically:</p>
 <ul class="simple">
@@ -961,7 +970,7 @@ Saving 3m tercile probs netCDF files
 </ul>
 <p>Values for both 1-month and 3-months aggregations will be produced and stored into netCDF files.</p>
 <section id="a-read-observations-data-into-a-xr-dataset">
-<h3>3a. Read observations data into a xr.Dataset<a class="headerlink" href="#a-read-observations-data-into-a-xr-dataset" title="Link to this heading">#</a></h3>
+<h2>3a. Read observations data into a xr.Dataset<a class="headerlink" href="#a-read-observations-data-into-a-xr-dataset" title="Link to this heading">#</a></h2>
 <p>Before any score can be calculated we will need to read into an <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> object the observational data from the GRIB file we downloaded in the first section of this notebook (whose name was stored in variable <code class="docutils literal notranslate"><span class="pre">obs_fname</span></code>).</p>
 <p>Similarly to what we did with the hindcast data, some minor modifications of the <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> object also happen here:</p>
 <ul class="simple">
@@ -1006,7 +1015,7 @@ Saving 3m tercile probs netCDF files
 </div>
 </section>
 <section id="b-compute-deterministic-scores">
-<h3>3b. Compute deterministic scores<a class="headerlink" href="#b-compute-deterministic-scores" title="Link to this heading">#</a></h3>
+<h2>3b. Compute deterministic scores<a class="headerlink" href="#b-compute-deterministic-scores" title="Link to this heading">#</a></h2>
 <p>The score used here is temporal correlation (Spearman rank correlation) calculated at each grid point and for each leadtime.</p>
 <p>We will start reading the netCDF files containing the anomalies we computed in section 2 of this notebook into a <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> object.</p>
 <p>For an easier use of the <code class="docutils literal notranslate"><span class="pre">xs.spearman_r</span></code> function a loop over the hindcast leadtimes (<code class="docutils literal notranslate"><span class="pre">forecastMonth</span></code>) has been introduced, requiring as a final step a concatenation of the values computed for each leadtime.</p>
@@ -1076,7 +1085,7 @@ Saving to netCDF file correlation for 3m-aggregation
 </div>
 </section>
 <section id="c-compute-probabilistic-scores-for-tercile-categories">
-<h3>3c. Compute probabilistic scores for tercile categories<a class="headerlink" href="#c-compute-probabilistic-scores-for-tercile-categories" title="Link to this heading">#</a></h3>
+<h2>3c. Compute probabilistic scores for tercile categories<a class="headerlink" href="#c-compute-probabilistic-scores-for-tercile-categories" title="Link to this heading">#</a></h2>
 <p>The scores used here for probabilistic forecasts are the area under the Relative Operating Characteristic (ROC) curve, the Ranked Probability Score (RPS) and the Brier Score (BS). Note that both ROC and BS are appropriate for binary events (applied individually to each category), while RPS scores all categories together.</p>
 <p>We will now read the netCDF files containing the probabilities we computed in section 2 of this notebook into a <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> object. Note the variables <code class="docutils literal notranslate"><span class="pre">quantiles</span></code> and <code class="docutils literal notranslate"><span class="pre">numcategories</span></code> defined there and describing the categories for which the probabilities have been computed will be also needed here.</p>
 <p>The step to compute the probabilities for each category in the observation data for each aggregation (1-month or 3-months) is also performed here starting from the <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> objects read in section 3a. (<code class="docutils literal notranslate"><span class="pre">era5_1deg</span></code> and <code class="docutils literal notranslate"><span class="pre">era5_1deg_3m</span></code>).</p>
@@ -1223,14 +1232,14 @@ writing to netcdf rocss
 </div>
 </section>
 </section>
-<section id="visualize-verification-plots">
-<h2>4. Visualize verification plots<a class="headerlink" href="#visualize-verification-plots" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="visualize-verification-plots">
+<h1>4. Visualize verification plots<a class="headerlink" href="#visualize-verification-plots" title="Link to this heading">#</a></h1>
 <p>After we have computed some metrics and scores for our seasonal forecast data, in this section some examples of visualization will be introduced.</p>
 <div class="alert alert-block alert-success">
 <b>NOTE</b>: <br>
     In the "Introduction" section of the <a href="https://confluence.ecmwf.int/display/CKB/C3S+seasonal+forecasts+verification+plots">C3S seasonal forecasts verification plots</a> page on the Copernicus Knowledge Base you can find some information on how these metrics and scores, consistent with the <a href="https://library.wmo.int/doc_num.php?explnum_id=4886">guidance on forecast verification</a> provided by WMO, describe statistics of forecast performance over a past period, as an indication of expectation of 'confidence' in the real-time outputs. 
 </div><section id="common-variables">
-<h3>Common variables<a class="headerlink" href="#common-variables" title="Link to this heading">#</a></h3>
+<h2>Common variables<a class="headerlink" href="#common-variables" title="Link to this heading">#</a></h2>
 <p>We start by setting up some variables to subset the plots we will be producing in this notebook:</p>
 <blockquote>
 <div><p><strong><code class="docutils literal notranslate"><span class="pre">aggr</span></code></strong>: to specify the aggregation period (possible values: “1m” or “3m”) <br>
@@ -1262,7 +1271,7 @@ writing to netcdf rocss
 </div>
 </section>
 <section id="create-plot-titles-base-information">
-<h3>Create plot titles base information<a class="headerlink" href="#create-plot-titles-base-information" title="Link to this heading">#</a></h3>
+<h2>Create plot titles base information<a class="headerlink" href="#create-plot-titles-base-information" title="Link to this heading">#</a></h2>
 <p>In the following variables we include some relevant information to be later used in the plot titles. Specifically:</p>
 <ul class="simple">
 <li><p>Line 1: Name of the institution and forecast system</p></li>
@@ -1293,7 +1302,7 @@ writing to netcdf rocss
 </div>
 </section>
 <section id="a-correlation">
-<h3>4a. Correlation<a class="headerlink" href="#a-correlation" title="Link to this heading">#</a></h3>
+<h2>4a. Correlation<a class="headerlink" href="#a-correlation" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the data files</span>
@@ -1350,7 +1359,7 @@ writing to netcdf rocss
 </div>
 </section>
 <section id="b-ranked-probability-score-rps">
-<h3>4b. Ranked Probability Score (RPS)<a class="headerlink" href="#b-ranked-probability-score-rps" title="Link to this heading">#</a></h3>
+<h2>4b. Ranked Probability Score (RPS)<a class="headerlink" href="#b-ranked-probability-score-rps" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># READ scores xr.Datasets</span>
@@ -1383,7 +1392,7 @@ writing to netcdf rocss
 </div>
 </section>
 <section id="c-area-under-relative-operating-characteristic-roc-curve">
-<h3>4c. Area under Relative Operating Characteristic (ROC) curve<a class="headerlink" href="#c-area-under-relative-operating-characteristic-roc-curve" title="Link to this heading">#</a></h3>
+<h2>4c. Area under Relative Operating Characteristic (ROC) curve<a class="headerlink" href="#c-area-under-relative-operating-characteristic-roc-curve" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># READ scores xr.Datasets</span>
@@ -1417,7 +1426,6 @@ writing to netcdf rocss
 <img alt="../../_images/b39fde7cf3b58319ec678368c49aa49db7e90a26c788f59be1f3bedad1f708ee.png" src="../../_images/b39fde7cf3b58319ec678368c49aa49db7e90a26c788f59be1f3bedad1f708ee.png" />
 </div>
 </div>
-</section>
 </section>
 </section>
 
@@ -1485,34 +1493,38 @@ writing to netcdf rocss
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Seasonal Forecast Verification</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-run-this-tutorial">How to run this tutorial</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-packages">Load packages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#request-data-from-the-cds-using-cds-api">1. Request data from the CDS using CDS API</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-retrieve-hindcast-data">1a. Retrieve hindcast data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-retrieve-observations-data-era5">1b. Retrieve observations data (ERA5)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-deterministic-and-probabilistic-products-from-the-hindcast-data">2. Compute deterministic and probabilistic products from the hindcast data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-anomalies">2a. Anomalies</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-probabilities-for-tercile-categories">2b. Probabilities for tercile categories</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#request-data-from-the-cds-using-cds-api">1. Request data from the CDS using CDS API</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-retrieve-hindcast-data">1a. Retrieve hindcast data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-retrieve-observations-data-era5">1b. Retrieve observations data (ERA5)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-deterministic-and-probabilistic-scores">3. Compute deterministic and probabilistic scores</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-read-observations-data-into-a-xr-dataset">3a. Read observations data into a xr.Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-compute-deterministic-scores">3b. Compute deterministic scores</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-compute-probabilistic-scores-for-tercile-categories">3c. Compute probabilistic scores for tercile categories</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-deterministic-and-probabilistic-products-from-the-hindcast-data">2. Compute deterministic and probabilistic products from the hindcast data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-anomalies">2a. Anomalies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-probabilities-for-tercile-categories">2b. Probabilities for tercile categories</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-verification-plots">4. Visualize verification plots</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-variables">Common variables</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-plot-titles-base-information">Create plot titles base information</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-correlation">4a. Correlation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-ranked-probability-score-rps">4b. Ranked Probability Score (RPS)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-area-under-relative-operating-characteristic-roc-curve">4c. Area under Relative Operating Characteristic (ROC) curve</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-deterministic-and-probabilistic-scores">3. Compute deterministic and probabilistic scores</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-read-observations-data-into-a-xr-dataset">3a. Read observations data into a xr.Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-compute-deterministic-scores">3b. Compute deterministic scores</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-compute-probabilistic-scores-for-tercile-categories">3c. Compute probabilistic scores for tercile categories</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-verification-plots">4. Visualize verification plots</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-variables">Common variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-plot-titles-base-information">Create plot titles base information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-correlation">4a. Correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-ranked-probability-score-rps">4b. Ranked Probability Score (RPS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-area-under-relative-operating-characteristic-roc-curve">4c. Area under Relative Operating Characteristic (ROC) curve</a></li>
 </ul>
 </li>
 </ul>
+
   </nav></div>
 
 </div></div>

@@ -209,6 +209,10 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Seasonal Forecast Anomalies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sf-verification/sf-verification.html">Seasonal Forecast Verification</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Indices</span></p>
 <ul class="nav bd-sidenav">
@@ -503,14 +507,14 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-seasonal-forecast-anomalies-for-a-geographical-subregion">4. Visualize seasonal forecast anomalies for a geographical subregion</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-geographical-subset">Define a geographical subset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-map-visualization">4.1 Spatial map visualization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-total-precipitation-anomalies-for-each-seasonal-forecast-month">4.2 Plot of total precipitation anomalies for each seasonal forecast month</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#average-over-region">Average over region</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-of-data-into-two-dimensional-pivot-table">Conversion of data into two dimensional pivot table</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-steps-for-hindcast-data-to-compare-forecast-and-hindcast-anomalies">Repeat steps for hindcast data (to compare forecast and hindcast anomalies)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-hindcast-anomaly-terciles">Calculation of hindcast anomaly terciles</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-map-visualization">4.1 Spatial map visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-total-precipitation-anomalies-for-each-seasonal-forecast-month">4.2 Plot of total precipitation anomalies for each seasonal forecast month</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#average-over-region">Average over region</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-of-data-into-two-dimensional-pivot-table">Conversion of data into two dimensional pivot table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-steps-for-hindcast-data-to-compare-forecast-and-hindcast-anomalies">Repeat steps for hindcast data (to compare forecast and hindcast anomalies)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-hindcast-anomaly-terciles">Calculation of hindcast anomaly terciles</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-seasonal-forecast-3-month-anomalies">5. Calculate seasonal forecast 3-month anomalies</a><ul class="nav section-nav flex-column">
@@ -4453,8 +4457,9 @@ Coordinates:
 </div>
 </div>
 </section>
+</section>
 <section id="spatial-map-visualization">
-<h3>4.1 Spatial map visualization<a class="headerlink" href="#spatial-map-visualization" title="Link to this heading">#</a></h3>
+<h2>4.1 Spatial map visualization<a class="headerlink" href="#spatial-map-visualization" title="Link to this heading">#</a></h2>
 <p>Now we can create a spatial map visualisation which shows for a given lead time the total precipitation anomaly of the 51 ensemble members.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4517,11 +4522,11 @@ Coordinates:
 </div>
 <br></section>
 <section id="plot-of-total-precipitation-anomalies-for-each-seasonal-forecast-month">
-<h3>4.2 Plot of total precipitation anomalies for each seasonal forecast month<a class="headerlink" href="#plot-of-total-precipitation-anomalies-for-each-seasonal-forecast-month" title="Link to this heading">#</a></h3>
+<h2>4.2 Plot of total precipitation anomalies for each seasonal forecast month<a class="headerlink" href="#plot-of-total-precipitation-anomalies-for-each-seasonal-forecast-month" title="Link to this heading">#</a></h2>
 <p>In this step we will summarise the total precipitation behaviour over the whole region for each lead time month. We will do this by averaging in the spatial (latitude and longitude) dimensions.</p>
 <p>To put the anomalies in context they will be compared to the reference climate computed in this subregion from the hindcast data.</p>
 <section id="average-over-region">
-<h4>Average over region<a class="headerlink" href="#average-over-region" title="Link to this heading">#</a></h4>
+<h3>Average over region<a class="headerlink" href="#average-over-region" title="Link to this heading">#</a></h3>
 <p>The first step is to create the weighted average of the subregion defined above. For this, we first estimate the cell area with the cosine of the latitude. These weights are then applied when the data array is averaged over the two dimensions <code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code>. You can use the xarray function <code class="docutils literal notranslate"><span class="pre">weighted()</span></code> together with the function <code class="docutils literal notranslate"><span class="pre">mean()</span></code> to create a weighted average of the geographical region. The result is a data array with two dimensions: <code class="docutils literal notranslate"><span class="pre">number</span></code> and <code class="docutils literal notranslate"><span class="pre">forecastMonth</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4981,7 +4986,7 @@ Coordinates:
 </div>
 </section>
 <section id="conversion-of-data-into-two-dimensional-pivot-table">
-<h4>Conversion of data into two dimensional pivot table<a class="headerlink" href="#conversion-of-data-into-two-dimensional-pivot-table" title="Link to this heading">#</a></h4>
+<h3>Conversion of data into two dimensional pivot table<a class="headerlink" href="#conversion-of-data-into-two-dimensional-pivot-table" title="Link to this heading">#</a></h3>
 <p>To facilitate further processing we will convert the data array into a pandas.Dataframe object with the function <code class="docutils literal notranslate"><span class="pre">to_dataframe()</span></code>. Pandas dataframes are optimised for the processing and visualisation of two dimensional data. We may want to drop coordinates that are not needed. We can do this with the function <code class="docutils literal notranslate"><span class="pre">drop_vars()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5333,7 +5338,7 @@ Coordinates:
 </div>
 </section>
 <section id="repeat-steps-for-hindcast-data-to-compare-forecast-and-hindcast-anomalies">
-<h4>Repeat steps for hindcast data (to compare forecast and hindcast anomalies)<a class="headerlink" href="#repeat-steps-for-hindcast-data-to-compare-forecast-and-hindcast-anomalies" title="Link to this heading">#</a></h4>
+<h3>Repeat steps for hindcast data (to compare forecast and hindcast anomalies)<a class="headerlink" href="#repeat-steps-for-hindcast-data-to-compare-forecast-and-hindcast-anomalies" title="Link to this heading">#</a></h3>
 <p>We would like now to repeat the steps for the hindcast data in order to show the forecast in the context of the reference climate. I.e. we will compare the seasonal forecast and hindcast anomalies for each lead-time month. In the final plot we will show the anomaly of each forecast ensemble member, while the model climate defined by the hindcasts will be represented in the form of tercile categories. This will put each ensemble member forecast anomaly into context and will give us an indication of its intensity.</p>
 <p>We therefore revisit the hindcast data (<code class="docutils literal notranslate"><span class="pre">tprate_hindcast</span></code>), which we loaded in <a class="reference internal" href="#hindcast_climate_mean"><span class="xref myst">section 2</span></a> above. We will apply the same steps to create a geographical subset and aggregate spatially.</p>
 <div class="cell docutils container">
@@ -5379,7 +5384,7 @@ Coordinates:
 </div>
 </section>
 <section id="calculation-of-hindcast-anomaly-terciles">
-<h4>Calculation of hindcast anomaly terciles<a class="headerlink" href="#calculation-of-hindcast-anomaly-terciles" title="Link to this heading">#</a></h4>
+<h3>Calculation of hindcast anomaly terciles<a class="headerlink" href="#calculation-of-hindcast-anomaly-terciles" title="Link to this heading">#</a></h3>
 <p>Now, for each of the lead-time months, we can compute the minimum and maximum as well as the 1/3 and 2/3 percentiles of the hindcast anomaly ensemble.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5435,7 +5440,6 @@ Coordinates:
 </div>
 </div>
 <br></section>
-</section>
 </section>
 <section id="calculate-seasonal-forecast-3-month-anomalies">
 <h2>5. Calculate seasonal forecast 3-month anomalies<a class="headerlink" href="#calculate-seasonal-forecast-3-month-anomalies" title="Link to this heading">#</a></h2>
@@ -5655,14 +5659,14 @@ Coordinates:
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-seasonal-forecast-anomalies-for-a-geographical-subregion">4. Visualize seasonal forecast anomalies for a geographical subregion</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-geographical-subset">Define a geographical subset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-map-visualization">4.1 Spatial map visualization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-total-precipitation-anomalies-for-each-seasonal-forecast-month">4.2 Plot of total precipitation anomalies for each seasonal forecast month</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#average-over-region">Average over region</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-of-data-into-two-dimensional-pivot-table">Conversion of data into two dimensional pivot table</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-steps-for-hindcast-data-to-compare-forecast-and-hindcast-anomalies">Repeat steps for hindcast data (to compare forecast and hindcast anomalies)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-hindcast-anomaly-terciles">Calculation of hindcast anomaly terciles</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-map-visualization">4.1 Spatial map visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-total-precipitation-anomalies-for-each-seasonal-forecast-month">4.2 Plot of total precipitation anomalies for each seasonal forecast month</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#average-over-region">Average over region</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-of-data-into-two-dimensional-pivot-table">Conversion of data into two dimensional pivot table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-steps-for-hindcast-data-to-compare-forecast-and-hindcast-anomalies">Repeat steps for hindcast data (to compare forecast and hindcast anomalies)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-hindcast-anomaly-terciles">Calculation of hindcast anomaly terciles</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-seasonal-forecast-3-month-anomalies">5. Calculate seasonal forecast 3-month anomalies</a><ul class="nav section-nav flex-column">
