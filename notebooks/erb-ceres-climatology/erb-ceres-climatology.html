@@ -575,30 +575,42 @@ document.write(`
 Cloud and Earth’s Radiant Energy System (CERES) Energy Balanced and Filled (EBAF) Earth’s Radiation Budget (<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">ERB</a>) data record
 for climate studies.</p>
 <div style="text-align: justify"> The Earth's Radiation Budget (ERB) Essential Climate Variable (ECV) and the CERES EBAF product are described in the introduction. Then, a first use case provides an analysis of the time averaged global and seasonal climatological distributions of the Earth's radiation budget as well as the monthly mean climatology. The second use case presents the time series and trend analysis of ERB. Step-by-step instructions are provided on data preparation, the use cases are extensively documented and each line of code is explained. </div>
-<div style="text-align: justify"> The three figures below show some results from the use cases and illustrate the successful run of the code. </div><p><img alt="" src="notebooks/erb-ceres-climatology/img/erb-ceres_banner.png" /></p>
-<p>The notebook comprises the following sections:</p>
+<div style="text-align: justify"> The three figures below show some results from the use cases and illustrate the successful run of the code. </div><p>The notebook comprises the following sections:</p>
 <section id="table-of-content">
 <h2>Table of content<a class="headerlink" href="#table-of-content" title="Link to this heading">#</a></h2>
+<ul>
+<li><ol class="arabic simple">
+<li><p>Introduction</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>Search, download and view data</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>Climatology of the Earth’s Radiation Budget</p></li>
+</ol>
 <ul class="simple">
-<li><p><a class="reference internal" href="#intro"><span class="xref myst">1. Introduction</span></a></p></li>
-<li><p><a class="reference internal" href="#cdsapi"><span class="xref myst">2. Search, download and view data</span></a></p></li>
-<li><p><a class="reference internal" href="#climatology"><span class="xref myst">3. Climatology of the Earth’s Radiation Budget</span></a></p>
-<ul>
-<li><p><a class="reference internal" href="#tsi_climatology"><span class="xref myst">3.1. Climatology of the top-of-atmosphere incoming solar radiation</span></a></p></li>
-<li><p><a class="reference internal" href="#rsf_climatology"><span class="xref myst">3.2. Climatology of the top-of-atmosphere reflected solar flux</span></a></p></li>
-<li><p><a class="reference internal" href="#olr_climatology"><span class="xref myst">3.3. Climatology of the top-of-atmosphere outgoing longwave radiation</span></a></p></li>
-<li><p><a class="reference internal" href="#erb_climatology"><span class="xref myst">3.4. Climatology of the top-of-atmosphere net Earth’s radiation budget</span></a></p></li>
+<li><p>3.1. Climatology of the top-of-atmosphere incoming solar radiation</p></li>
+<li><p>3.2. Climatology of the top-of-atmosphere reflected solar flux</p></li>
+<li><p>3.3. Climatology of the top-of-atmosphere outgoing longwave radiation</p></li>
+<li><p>3.4. Climatology of the top-of-atmosphere net Earth’s radiation budget</p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#timeseries"><span class="xref myst">4. Time series and trend analysis of the Earth’s Radiaton Budget</span></a></p>
-<ul>
-<li><p><a class="reference internal" href="#tsi_timeseries"><span class="xref myst">4.1. Time series and trend analysis of the top-of-atmosphere incoming solar radiation</span></a></p></li>
-<li><p><a class="reference internal" href="#rsf_timeseries"><span class="xref myst">4.2. Time series and trend analysis of the top-of-atmosphere reflected solar flux</span></a></p></li>
-<li><p><a class="reference internal" href="#olr_timeseries"><span class="xref myst">4.3. Time series and trend analysis of the top-of-atmosphere outgoing longwave radiation</span></a></p></li>
-<li><p><a class="reference internal" href="#erb_timeseries"><span class="xref myst">4.4. Time series and trend analysis of the top-of-atmosphere net Earth’s radiation budget</span></a></p></li>
+<li><ol class="arabic simple" start="4">
+<li><p>Time series and trend analysis of the Earth’s Radiaton Budget</p></li>
+</ol>
+<ul class="simple">
+<li><p>4.1. Time series and trend analysis of the top-of-atmosphere incoming solar radiation</p></li>
+<li><p>4.2. Time series and trend analysis of the top-of-atmosphere reflected solar flux</p></li>
+<li><p>4.3. Time series and trend analysis of the top-of-atmosphere outgoing longwave radiation</p></li>
+<li><p>4.4. Time series and trend analysis of the top-of-atmosphere net Earth’s radiation budget</p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#conclusion"><span class="xref myst">5. Conclusion</span></a></p></li>
+<li><ol class="arabic simple" start="5">
+<li><p>Conclusion</p></li>
+</ol>
+</li>
 </ul>
 </section>
 <section id="introduction">
