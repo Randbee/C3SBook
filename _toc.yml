@@ -7,92 +7,120 @@ parts:
   - caption:
     chapters:
       - url: https://climate.copernicus.eu/
-        title: C3S
+        title: Copernicus Climate Change Service (C3S)
       - url: https://cds.climate.copernicus.eu/
-        title: CDS Data Store
+        title: Copernicus Climate Data Store (CDS)
       - url: https://climate.copernicus.eu/user-learning-services/
-        title: C3S Training
+        title: C3S Training Services
   - caption: Introduction
     chapters:
       - file: how-to-run-these-tutorials
         title: How to run these tutorials
-  - caption: Climate Data Store (CDS)
+  - caption: Notebooks
     chapters:
-      - file: notebooks/cds-tutorial/cds-tutorial
+      - file: notebook-groups/cds-tutorial
         title: CDS tutorial
-  - caption: Reanalysis Tutorials
-    chapters:
-      - file: notebooks/reanalysis-climatology/reanalysis-climatology
-        title: Climatology
-      - file: notebooks/reanalysis-heatwave/reanalysis-heatwave
-        title: Heatwave Analysis
-  - caption: Tutorials on Climate Projections
-    chapters:
-      - file: notebooks/projections-cmip6/projections-cmip6
-        title: Climate Projections (CMIP6)
-      - file: notebooks/projections-cordex/projections-cordex
-        title: Climate Projections (CORDEX)
-  - caption: Tutorials on Seasonal Forecasts
-    chapters:
-      - file: notebooks/sf-anomalies/sf-anomalies
-        title: Seasonal Forecast Anomalies
-      - file: notebooks/sf-verification/sf-verification
-        title: Seasonal Forecast Verification
-  - caption: Tutorials on Climate Indices
-    chapters:
-      - file: notebooks/ci-windchill/ci-windchill
-        title: Windchill Index Calculation
-  - caption: Tutorials using Satellite Observations
-    chapters:
-      # ERB
-      - file: notebooks/erb-outgoing-longwave-radiation/erb-outgoing-longwave-radiation
-        title: Outgoing Longwave Radiation
-      - file: notebooks/erb-clara-climatology/erb-clara-climatology
-        title: Analysis of the CLARA Earth radiation budget product
-      - file: notebooks/erb-ceres-climatology/erb-ceres-climatology # COPCO-1716
-        title: Analysis of the CERES Earth radiation budget product
-      - file: notebooks/total-solar-irradiance/total-solar-irradiance
-        title: Total Solar Irradiance
-      # SRB
-      - file: notebooks/srb-climatology-and-anomaly/srb-climatology-and-anomaly
-        title: Surface radiation budget climatologies and anomalies
-      # Atmos humidity + cloud
-      - file: notebooks/total-column-water-vapour-combi/total-column-water-vapour-combi # COPCO-1649
-        title: Total column water vapour
-      - file: notebooks/tropospheric-humidity-from-radio-occultation/tropospheric-humidity-from-radio-occultation # COPCO-1707
-        title: Tropospheric humidity estimates from satellite-based radio occultation measurements
-      - file: notebooks/cloud-cover-climatology/cloud-cover-climatology
-        title: Cloud fractional cover climatology
-      # Atmos Composition
-      - file: notebooks/greenhouse-gases-level2-products/greenhouse-gases-level2-products
-        title: Greenhouse Gas Level 2 Products
-      - file: notebooks/greenhouse-gases-level3-products/greenhouse-gases-level3-products
-        title: Greenhouse Gas Level 3 Products
-      - file: notebooks/aerosol-single-sensor-demonstrator/aerosol-single-sensor-demonstrator
-        title: Aerosol Single Sensor Demonstrator
-      - file: notebooks/aerosol-multi-sensor-record/aerosol-multi-sensor-record
-        title: Aerosol Multi-Sensor Record
-      - file: notebooks/total-ozone-columns/total-ozone-columns
-        title: Total Ozone Columns
-      # Surface water
-      - file: notebooks/soil-moisture-anomalies/soil-moisture-anomalies
-        title: Soil Moisture Anomaly Analysis
-      - file: notebooks/lake-water-level/lake-water-level
-        title: Lake Water Level Timeseries
-      - file: notebooks/lake-surface-water-temperature/lake-surface-water-temperature
-        title: Lake Surface Water Temperature Analysis
-      # Ice sheets
-      - file: notebooks/ice-sheet-surface-elevation/ice-sheet-surface-elevation # COPCO-1695
-      - file: notebooks/ice-sheet-velocity/ice-sheet-velocity # COPCO-1728
-      - file: notebooks/ice-sheet-mass-balance/ice-sheet-mass-balance # COPCO-1729
-      - file: notebooks/glacier-mass-change/glacier-mass-change # COPCO-1697
-        title: Glacier mass change
-  - caption: Tutorials using Copernicus Emergency Management Service data
-    chapters:
-      - file: notebooks/visualising-fwi-for-esotc/visualising-fwi-for-esotc
-        title: Visualising fire weather index (FWI)
-      - file: notebooks/glofas-bangladesh-floods/glofas-bangladesh-floods
-        title: Observing major flood events
+        sections:
+          - file: notebooks/cds-tutorial/cds-tutorial
+            title: CDS tutorial
+      - file: notebook-groups/reanalysis-tutorial
+        title: Reanalysis tutorial
+        sections:
+          - file: notebooks/reanalysis-climatology/reanalysis-climatology
+            title: Climatology
+          - file: notebooks/reanalysis-heatwave/reanalysis-heatwave
+            title: Heatwave Analysis
+      - file: notebook-groups/climate-projections-tutorial
+        title: Climate Projections tutorial
+        sections:
+          - file: notebooks/projections-cmip6/projections-cmip6
+            title: Climate Projections (CMIP6)
+          - file: notebooks/projections-cordex/projections-cordex
+            title: Climate Projections (CORDEX)
+      - file: notebook-groups/seasonal-forecasts-tutorial
+        title: Seasonal Forecasts tutorial
+        sections:
+          - file: notebooks/sf-anomalies/sf-anomalies
+            title: Seasonal Forecast Anomalies
+          - file: notebooks/sf-verification/sf-verification
+            title: Seasonal Forecast Verification
+      - file: notebook-groups/climate-indices-tutorial
+        title: Climate Indices tutorial
+        sections:
+          - file: notebooks/ci-windchill/ci-windchill
+            title: Windchill
+      - file: notebook-groups/satellite-observations-tutorial
+        title: Satellite Observations tutorial
+        sections:
+          # ERB
+          - file: notebook-groups/erb
+            title: Earth Radiation Budget
+            sections:
+              - file: notebooks/erb-outgoing-longwave-radiation/erb-outgoing-longwave-radiation
+                title: Outgoing Longwave Radiation
+              - file: notebooks/erb-clara-climatology/erb-clara-climatology
+                title: Analysis of the CLARA Earth radiation budget product
+              - file: notebooks/erb-ceres-climatology/erb-ceres-climatology
+                title: Analysis of the CERES Earth radiation budget product
+              - file: notebooks/total-solar-irradiance/total-solar-irradiance
+                title: Total Solar Irradiance
+          # SRB
+          - file: notebook-groups/srb
+            title: Surface Radiation Budget
+            sections:
+              - file: notebooks/srb-climatology-and-anomaly/srb-climatology-and-anomaly
+                title: Surface radiation budget climatologies and anomalies
+          # Atmos Humidity and Cloud
+          - file: notebook-groups/atmos-humidity-cloud
+            title: Atmospheric Humidity and Cloud
+            sections:
+              - file: notebooks/total-column-water-vapour-combi/total-column-water-vapour-combi
+                title: Total column water vapour
+              - file: notebooks/tropospheric-humidity-from-radio-occultation/tropospheric-humidity-from-radio-occultation
+                title: Tropospheric humidity estimates from satellite-based radio occultation measurements
+              - file: notebooks/cloud-cover-climatology/cloud-cover-climatology
+                title: Cloud fractional cover climatology
+          # Atmos Composition
+          - file: notebook-groups/atmos-composition
+            title: Atmospheric Composition
+            sections:
+              - file: notebooks/greenhouse-gases-level2-products/greenhouse-gases-level2-products
+                title: Greenhouse Gas Level 2 Products
+              - file: notebooks/greenhouse-gases-level3-products/greenhouse-gases-level3-products
+                title: Greenhouse Gas Level 3 Products
+              - file: notebooks/aerosol-single-sensor-demonstrator/aerosol-single-sensor-demonstrator
+                title: Aerosol Single Sensor Demonstrator
+              - file: notebooks/aerosol-multi-sensor-record/aerosol-multi-sensor-record
+                title: Aerosol Multi-Sensor Record
+              - file: notebooks/total-ozone-columns/total-ozone-columns
+                title: Total Ozone Columns
+          - file: notebook-groups/surface-water
+            title: Surface Water
+            sections:
+              - file: notebooks/soil-moisture-anomalies/soil-moisture-anomalies
+                title: Soil Moisture Anomaly Analysis
+              - file: notebooks/lake-water-level/lake-water-level
+                title: Lake Water Level Timeseries
+              - file: notebooks/lake-surface-water-temperature/lake-surface-water-temperature
+                title: Lake Surface Water Temperature Analysis
+          - file: notebook-groups/ice-sheets
+            title: Ice Sheets
+            sections:
+              - file: notebooks/ice-sheet-surface-elevation/ice-sheet-surface-elevation
+                title: Ice Sheet Surface Elevation
+              - file: notebooks/ice-sheet-velocity/ice-sheet-velocity
+                title: Ice Sheet Velocity
+              - file: notebooks/ice-sheet-mass-balance/ice-sheet-mass-balance
+                title: Ice Sheet Mass Balance
+              - file: notebooks/glacier-mass-change/glacier-mass-change
+                title: Glacier Mass Change
+      - file: notebook-groups/copernicus-emergency-service-tutorial
+        title: Tutorials using Copernicus Emergency Management Service data
+        sections:
+          - file: notebooks/visualising-fwi-for-esotc/visualising-fwi-for-esotc
+            title: Visualising fire weather index (FWI)
+          - file: notebooks/glofas-bangladesh-floods/glofas-bangladesh-floods
+            title: Observing major flood events
   - caption: Explore other books📚
     chapters:
       - url: https://Randbee.github.io/CAMSBook
