@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="../../" data-theme="light">
 
   <head>
     <meta charset="utf-8" />
@@ -13,7 +13,7 @@
   
   
   <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3d912c60" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -67,7 +68,7 @@
   </head>
   
   
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
 
   
   
@@ -143,16 +144,20 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
+   
 
-<a class="navbar-brand logo" href="../../intro.html">
+<a class="navbar-brand logo" href="https://climate.copernicus.eu/">
   
   
   
   
   
+    
+    
+    
+    <img src="../../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Copernicus Climate Change Service (C3S) Training Book - Home"/>
+    <script>document.write(`<img src="../../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Copernicus Climate Change Service (C3S) Training Book - Home"/>`);</script>
   
-    <p class="title logo__title">Copernicus Climate Change Service (C3S) Training Book</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -515,8 +520,6 @@ document.write(`
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-data-programmatically-with-the-cds-api">Access data programmatically with the CDS API</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-cds-api-key">Install the CDS API key</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-set-cds-api-credentials-manually">Alternative: Set CDS API credentials manually</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-cds-api-client">Install the CDS API client</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-cds-api-client-for-data-access">Use the CDS API client for data access</a></li>
 </ul>
 </li>
@@ -671,45 +674,54 @@ Data Description Section<div class="sd-summary-down docutils">
 </ul>
 <p><strong>Note:</strong> You find your CDS API key displayed in the black terminal box under the section <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">the</span> <span class="pre">CDS</span> <span class="pre">API</span> <span class="pre">key</span></code>. If you do not see a URL or key appear in the black terminal box, please refresh your browser tab.</p>
 <p><img alt="logo" src="../../_images/cds_api_key.png" /></p>
-<p>The code below creates the file under your current working directory. Make sure to replace the <code class="docutils literal notranslate"><span class="pre">################</span></code> with your personal <code class="docutils literal notranslate"><span class="pre">CDS</span> <span class="pre">API</span> <span class="pre">key</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%writefile</span> ./.cdsapirc
-
-<span class="n">url</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cds</span><span class="o">.</span><span class="n">climate</span><span class="o">.</span><span class="n">copernicus</span><span class="o">.</span><span class="n">eu</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span>
-<span class="n">key</span><span class="p">:</span> <span class="c1">##############################</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Overwriting ./.cdsapirc
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="alternative-set-cds-api-credentials-manually">
-<h4>Alternative: Set CDS API credentials manually<a class="headerlink" href="#alternative-set-cds-api-credentials-manually" title="Link to this heading">#</a></h4>
-<p>Alternatively, you can also define variables for <code class="docutils literal notranslate"><span class="pre">url</span></code> and <code class="docutils literal notranslate"><span class="pre">key</span></code>. These variables can then be set when you define the <code class="docutils literal notranslate"><span class="pre">cdsapi.Client(url=URL,</span> <span class="pre">key=KEY)</span></code> in your script (see next section for the different components of a data retrieval request).</p>
-<p><strong>Please note:</strong> in the workflow notebooks, we will use this modality and set manually the CDS API key information for the data retrievals.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
-<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;############################&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="install-the-cds-api-client">
-<h4>Install the CDS API client<a class="headerlink" href="#install-the-cds-api-client" title="Link to this heading">#</a></h4>
-<p>The next step is to install the <code class="docutils literal notranslate"><span class="pre">CDS</span> <span class="pre">API</span> <span class="pre">client</span></code>. You can do this with the package management system <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
+<p>The code below connects to the API. If this is your first time connecting, you need to replace the <code class="docutils literal notranslate"><span class="pre">UID</span></code> and <code class="docutils literal notranslate"><span class="pre">API_KEY</span></code> with your own credentials, which you can find in your <a class="reference external" href="https://ads.atmosphere.copernicus.eu/user/login?destination=/">profile</a>. After doing this, the code will generate a file (adsapi_kwargs) with your credentials, so you won’t need to enter them in every notebook.</p>
+<p>First you need to install the <code class="docutils literal notranslate"><span class="pre">CDS</span> <span class="pre">API</span> <span class="pre">client</span></code>. You can do this with the package management system <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>cdsapi
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">yaml</span> 
+<span class="kn">import</span> <span class="nn">cdsapi</span>
+
+
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">&quot;./cdsapi_kwargs.txt&quot;</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;cdsapi_kwargs.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">credentials</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">cdsapi_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">credentials</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">credentials</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Replace the placeholders with your own credentials</span>
+    
+    <span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
+    <span class="n">UID</span> <span class="o">=</span> <span class="s2">&quot;# REPLACE WITH YOUR UID #&quot;</span>
+    <span class="n">API_KEY</span> <span class="o">=</span> <span class="s2">&quot;# REPLACE WITH YOUR API KEY #&quot;</span>
+    <span class="n">KEY</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">UID</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">API_KEY</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">cdsapi_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">URL</span><span class="p">,</span>
+        <span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">KEY</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Create the adsapi_kwargs file with the hardcoded credentials</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;cdsapi_kwargs.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">cdsapi_kwargs</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+
+<span class="c1">#Connect to the API with the credentials</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="o">**</span><span class="n">cdsapi_kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The ADS (Atmosphere Data Store) and the CDS (Climate Data Store) utilize the same Python package, but require different credentials. Currently, we are using the credentials for the ADS API. For accessing the CDS API, separate credentials are necessary. Consequently, we will maintain two distinct credentials files: <code class="docutils literal notranslate"><span class="pre">adsapi_kwargs</span></code> and <code class="docutils literal notranslate"><span class="pre">cdsapi_kwargs</span></code>.</p>
 </div>
 </section>
 <section id="use-the-cds-api-client-for-data-access">
@@ -753,9 +765,7 @@ Data Description Section<div class="sd-summary-down docutils">
 <p><strong>Note:</strong> the request above makes use of the keyword <code class="docutils literal notranslate"><span class="pre">area</span></code>, which enable you to retrieve only a geographical subset. The bounding box information are set as follows: <code class="docutils literal notranslate"><span class="pre">[N,</span> <span class="pre">W,</span> <span class="pre">S,</span> <span class="pre">E]</span></code>. When this keyword is set, the data is automatically projected to a grid from [-180, 180].</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cdsapi</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
-<span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
     <span class="s1">&#39;reanalysis-era5-land&#39;</span><span class="p">,</span>
     <span class="p">{</span>
         <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="p">[</span>
@@ -884,8 +894,6 @@ Data Description Section<div class="sd-summary-down docutils">
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-data-programmatically-with-the-cds-api">Access data programmatically with the CDS API</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-cds-api-key">Install the CDS API key</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-set-cds-api-credentials-manually">Alternative: Set CDS API credentials manually</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-cds-api-client">Install the CDS API client</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-cds-api-client-for-data-access">Use the CDS API client for data access</a></li>
 </ul>
 </li>

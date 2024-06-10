@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="../../" data-theme="light">
 
   <head>
     <meta charset="utf-8" />
@@ -13,7 +13,7 @@
   
   
   <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=3d912c60" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -67,7 +68,7 @@
   </head>
   
   
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
 
   
   
@@ -143,16 +144,20 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
+   
 
-<a class="navbar-brand logo" href="../../intro.html">
+<a class="navbar-brand logo" href="https://climate.copernicus.eu/">
   
   
   
   
   
+    
+    
+    
+    <img src="../../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Copernicus Climate Change Service (C3S) Training Book - Home"/>
+    <script>document.write(`<img src="../../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Copernicus Climate Change Service (C3S) Training Book - Home"/>`);</script>
   
-    <p class="title logo__title">Copernicus Climate Change Service (C3S) Training Book</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -623,7 +628,7 @@ We will be working with data in NetCDF format. To best handle NetCDF data we wil
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CDS API library</span>
 <span class="kn">import</span> <span class="nn">cdsapi</span>
-
+<span class="kn">import</span> <span class="nn">yaml</span>
 <span class="c1"># Libraries for working with multidimensional arrays</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -654,11 +659,34 @@ We will be working with data in NetCDF format. To best handle NetCDF data we wil
 <h4>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Link to this heading">#</a></h4>
 <p>We will request data from the CDS programmatically with the help of the <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/Climate+Data+Store+%28CDS%29+infrastructure+and+API">CDS API</a>.<br />
 First, we need to manually set the CDS API credentials. To do so, we need to define two variables: URL and KEY.
-To obtain these, first login to the CDS, then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
+To obtain these, first login to the CDS, then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:”. Replace the credentials if you don’t have the <code class="docutils literal notranslate"><span class="pre">cdsapi_kwargs</span></code> file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
-<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;#########&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">&quot;./cdsapi_kwargs.txt&quot;</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;cdsapi_kwargs.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">credentials</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">cdsapi_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">credentials</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">credentials</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Replace the placeholders with your own credentials</span>
+    
+    <span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
+    <span class="n">UID</span> <span class="o">=</span> <span class="s2">&quot;# REPLACE WITH YOUR UID #&quot;</span>
+    <span class="n">API_KEY</span> <span class="o">=</span> <span class="s2">&quot;# REPLACE WITH YOUR API KEY #&quot;</span>
+    <span class="n">KEY</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">UID</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">API_KEY</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">cdsapi_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">URL</span><span class="p">,</span>
+        <span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">KEY</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Create the adsapi_kwargs file with the hardcoded credentials</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;cdsapi_kwargs.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">cdsapi_kwargs</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+
+<span class="c1">#Connect to the API with the credentials</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="o">**</span><span class="n">cdsapi_kwargs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -695,30 +723,91 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 <p>At the end of the download form, select <strong><code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code></strong>. This will reveal a block of code, which you can simply copy and paste into a cell of your Jupyter Notebook (see cell below) …</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
-<span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
     <span class="s1">&#39;satellite-earth-radiation-budget&#39;</span><span class="p">,</span>
     <span class="p">{</span>
         <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;origin&#39;</span><span class="p">:</span> <span class="s1">&#39;noaa_ncei_hirs&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;origin&#39;</span><span class="p">:</span> <span class="s1">&#39;noaa_ncei&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;product_family&#39;</span><span class="p">:</span> <span class="s1">&#39;hirs&#39;</span><span class="p">,</span>
         <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;outgoing_longwave_radiation&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;time_aggregation&#39;</span><span class="p">:</span> <span class="s1">&#39;daily_mean&#39;</span><span class="p">,</span>
         <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%04d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1979</span><span class="p">,</span> <span class="mi">2023</span><span class="p">)],</span>
         <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mnth</span><span class="p">)</span> <span class="k">for</span> <span class="n">mnth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)],</span>
+        <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mnth</span><span class="p">)</span> <span class="k">for</span> <span class="n">mnth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">)],</span>
+        <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;1_2_reprocessed&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;climate_data_record_type&#39;</span><span class="p">:</span> <span class="s1">&#39;thematic_climate_data_record&#39;</span><span class="p">,</span>
     <span class="p">},</span>
-    <span class="n">download_zip_file</span>
-<span class="p">)</span>
+    <span class="s1">&#39;download.zip&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-03-07 14:26:20,416 INFO Welcome to the CDS
-2023-03-07 14:26:20,417 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-earth-radiation-budget
-2023-03-07 14:26:20,544 INFO Request is completed
-2023-03-07 14:26:20,545 INFO Downloading https://download-0010-clone.copernicus-climate.eu/cache-compute-0010/cache/data6/dataset-satellite-earth-radiation-budget-82e47200-a028-4824-bab6-64bd6b2167b7.zip to ./olr-monthly_v02r07.zip (17.7M)
-2023-03-07 14:26:21,468 INFO Download rate 19.1M/s  
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-05-16 12:01:22,967 INFO Welcome to the CDS
+2024-05-16 12:01:22,967 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-earth-radiation-budget
+2024-05-16 12:01:23,073 INFO Request is queued
+2024-05-16 12:01:24,172 INFO Request is running
+2024-05-16 13:28:04,830 INFO Request is failed
+2024-05-16 13:28:04,832 ERROR Message: the data provider returned an unexpected response
+2024-05-16 13:28:04,834 ERROR Reason:  data provider temporary failure response: Bad Gateway
+2024-05-16 13:28:04,836 ERROR   Traceback (most recent call last):
+2024-05-16 13:28:04,838 ERROR     File &quot;/opt/cds/adaptor/cdshandlers/adaptorlib/adaptorrequesthandler.py&quot;, line 68, in handle_request
+2024-05-16 13:28:04,840 ERROR       return super().handle_request(cdsinf, data_request, self.config)
+2024-05-16 13:28:04,842 ERROR     File &quot;/opt/cds/cdsinf/python/lib/cdsinf/runner/requesthandler.py&quot;, line 170, in handle_request
+2024-05-16 13:28:04,845 ERROR       return handler(cdsinf, request, config)
+2024-05-16 13:28:04,847 ERROR     File &quot;/opt/cds/adaptor/cdshandlers/archivecombiner/handler.py&quot;, line 63, in handle_retrieve
+2024-05-16 13:28:04,849 ERROR       config)
+2024-05-16 13:28:04,851 ERROR     File &quot;/opt/cds/adaptor/cdshandlers/adaptorlib/url_fetch.py&quot;, line 103, in combine
+2024-05-16 13:28:04,853 ERROR       di)
+2024-05-16 13:28:04,855 ERROR     File &quot;/opt/cds/adaptor/cdshandlers/adaptorlib/url_fetch.py&quot;, line 189, in process_one_input_archive
+2024-05-16 13:28:04,857 ERROR       di, extractor_class)
+2024-05-16 13:28:04,858 ERROR     File &quot;/opt/cds/adaptor/cdshandlers/adaptorlib/url_fetch.py&quot;, line 170, in dataitem_to_extractor
+2024-05-16 13:28:04,860 ERROR       allocation = di.as_file(use_server_filename=self.use_server_filenames)
+2024-05-16 13:28:04,861 ERROR     File &quot;/opt/cds/cdsinf/python/lib/cdsinf/brokerclient.py&quot;, line 209, in as_file
+2024-05-16 13:28:04,862 ERROR       response_info = self._write_to(tmp_name, allocation.handle_out_of_space)
+2024-05-16 13:28:04,863 ERROR     File &quot;/opt/cds/cdsinf/python/lib/cdsclient/brokerclient.py&quot;, line 346, in _write_to
+2024-05-16 13:28:04,864 ERROR       return self._build_requester(filename, handle_out_of_space).make_request(None)
+2024-05-16 13:28:04,865 ERROR     File &quot;/opt/cds/cdsinf/python/lib/cdsclient/requesterchain.py&quot;, line 311, in make_request
+2024-05-16 13:28:04,866 ERROR       result = self.next_in_chain.make_request(request)
+2024-05-16 13:28:04,867 ERROR     File &quot;/opt/cds/cdsinf/python/lib/cdsclient/brokerclient.py&quot;, line 677, in make_request
+2024-05-16 13:28:04,868 ERROR       &quot;http://copernicus-climate.eu/exc/data-5xx&quot;)
+2024-05-16 13:28:04,868 ERROR   cdsclient.exceptions.DataProviderFailed: data provider temporary failure response: Bad Gateway
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=18523432,content_type=application/zip,location=https://download-0010-clone.copernicus-climate.eu/cache-compute-0010/cache/data6/dataset-satellite-earth-radiation-budget-82e47200-a028-4824-bab6-64bd6b2167b7.zip)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">Exception</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="s1">&#39;satellite-earth-radiation-budget&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="p">{</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>         <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="s1">&#39;origin&#39;</span><span class="p">:</span> <span class="s1">&#39;noaa_ncei&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="s1">&#39;product_family&#39;</span><span class="p">:</span> <span class="s1">&#39;hirs&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;outgoing_longwave_radiation&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>         <span class="s1">&#39;time_aggregation&#39;</span><span class="p">:</span> <span class="s1">&#39;daily_mean&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>         <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%04d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1979</span><span class="p">,</span> <span class="mi">2023</span><span class="p">)],</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>         <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mnth</span><span class="p">)</span> <span class="k">for</span> <span class="n">mnth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)],</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>         <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mnth</span><span class="p">)</span> <span class="k">for</span> <span class="n">mnth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">)],</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>         <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;1_2_reprocessed&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>         <span class="s1">&#39;climate_data_record_type&#39;</span><span class="p">:</span> <span class="s1">&#39;thematic_climate_data_record&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="p">},</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="s1">&#39;download.zip&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/cdsapi/api.py:364,</span> in <span class="ni">Client.retrieve</span><span class="nt">(self, name, request, target)</span>
+<span class="g g-Whitespace">    </span><span class="mi">363</span> <span class="k">def</span> <span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">364</span>     <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/resources/</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span> <span class="n">request</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">365</span>     <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span>         <span class="n">result</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/cdsapi/api.py:519,</span> in <span class="ni">Client._api</span><span class="nt">(self, url, request, method)</span>
+<span class="g g-Whitespace">    </span><span class="mi">517</span>             <span class="k">break</span>
+<span class="g g-Whitespace">    </span><span class="mi">518</span>         <span class="bp">self</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;  </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">519</span>     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">520</span>         <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">. </span><span class="si">%s</span><span class="s2">.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">521</span>         <span class="o">%</span> <span class="p">(</span><span class="n">reply</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">),</span> <span class="n">reply</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;reason&quot;</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">522</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">524</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unknown API state [</span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">reply</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">],))</span>
+
+<span class="ne">Exception</span>: the data provider returned an unexpected response. data provider temporary failure response: Bad Gateway.
 </pre></div>
 </div>
 </div>
