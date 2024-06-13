@@ -1,1 +1,0 @@
-# copernicus-emergency-service-tutorial
