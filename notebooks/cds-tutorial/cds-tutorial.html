@@ -504,25 +504,21 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#target-audience">Target audience 🎯</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-assumed-knowledge">Prerequisites and assumed knowledge 🔍</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-retrieval">Data retrieval</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-data-interactively-via-the-cds-web-interface">Access data interactively via the CDS web interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-retrieval">1. Data retrieval</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-access-data-interactively-via-the-cds-web-interface">1.A. Access data interactively via the CDS web interface</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-and-select-a-dataset">Filter and select a dataset</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#submit-the-download-data-form">Submit the <em>Download data</em> form</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-data-programmatically-with-the-cds-api">Access data programmatically with the CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-access-data-programmatically-with-the-cds-api">1.B. Access data programmatically with the CDS API</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-cds-api-key">Install the CDS API key</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-set-cds-api-credentials-manually">Alternative: Set CDS API credentials manually</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-cds-api-client">Install the CDS API client</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-cds-api-client-for-data-access">Use the CDS API client for data access</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-resources">Further resources</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-data-request">Example data request</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-era5-land-hourly-data-from-1950-to-present"><a id="era5-land_hourly"></a>Example: <strong>ERA5-Land hourly data from 1950 to present</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-further-resources">1.C. Further resources</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-messages-to-take-home">Key Messages to Take Home 📌</a></li>
@@ -540,27 +536,24 @@ document.write(`
   <p><img alt="logo" src="../../_images/LogoLine_horizon_C3S2.png" /></p>
 <br><section class="tex2jax_ignore mathjax_ignore" id="climate-data-store-tutorial">
 <h1>Climate Data Store Tutorial<a class="headerlink" href="#climate-data-store-tutorial" title="Link to this heading">#</a></h1>
-<p>This notebook provides you an introduction to the <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Copernicus Climate Data Store (CDS)</a>, an overview of the type of data that can be accessed and gives practical examples how to access and retrieve data from the CDS.</p>
+<p>The <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Copernicus Climate Data Store (CDS)</a> is the data access portal of the <a class="reference external" href="https://climate.copernicus.eu/">Copernicus Climate Change Service (C3S)</a> and offers access to <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">applications</span></code> about the Earth’s past, present and future climate. In this notebook, you will find an overview of the type of data that can be found in it and practical examples on how to access and retrieve this data.</p>
+<p><img alt="logo" src="../../_images/cds_landing_page.png" /></p>
 <hr><section id="learning-objectives">
 <h2>Learning objectives 🧠<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
-<p>The notebook provides a comprehensive tutorial on accessing and retrieving data from the Copernicus Atmosphere Data Store (ADS). Key learning objectives include:</p>
 <ol class="arabic simple">
-<li><p>Understanding the purpose and functionality of the ADS.</p></li>
-<li><p>Learning to access data interactively via the web interface and programmatically using the CDS API.</p></li>
-<li><p>Familiarizing with the process of browsing datasets, selecting data, and submitting download forms via the ADS web interface.</p></li>
-<li><p>Acquiring knowledge on installing the CDS API, obtaining API keys, and making data retrieval requests programmatically.</p></li>
-<li><p>Exploring additional resources like documentation and error messages.</p></li>
-<li><p>Applying learned concepts through an example CAMS data request, including specifying parameters and retrieving data in desired formats.</p></li>
+<li><p>Understanding the purpose and functionality of the CDS.</p></li>
+<li><p>Learning to access data interactively via the web interface: familiarizing with the process of browsing datasets, selecting data, and submitting download forms via the CDS web interface.</p></li>
+<li><p>Learning to access data programmatically using the CDS API: acquiring knowledge on installing the CDS API, obtaining API keys, and making data retrieval requests.</p></li>
 </ol>
 <hr></section>
 <section id="target-audience">
 <h2>Target audience 🎯<a class="headerlink" href="#target-audience" title="Link to this heading">#</a></h2>
-<p>The target audience for this notebook is individuals interested in accessing climate data from the Copernicus Climate Data Store (CDS). It is suitable for those who want to learn how to retrieve climate data both interactively through the CDS web interface and programmatically using the CDS API. Basic programming skills, particularly in Python, are assumed, as the tutorial involves using Python libraries like cdsapi for accessing data programmatically. Additionally, familiarity with APIs and how to use them to interact with web services will be helpful, particularly for accessing data programmatically through the CDS API.</p>
+<p><strong>Anyone</strong> interested in accessing climate data from the Copernicus Climate Data Store (CDS) either interactively through the CDS web interface or programmatically using the CDS API.</p>
 <hr></section>
 <section id="prerequisites-and-assumed-knowledge">
 <h2>Prerequisites and assumed knowledge 🔍<a class="headerlink" href="#prerequisites-and-assumed-knowledge" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p><strong>Basic Programming Skills</strong>: Familiarity with programming concepts, particularly in Python, is assumed, as the tutorial involves using Python libraries like cdsapi for accessing data programmatically.</p></li>
+<li><p><strong>Basic Programming Skills</strong>: Familiarity with programming concepts, particularly in Python, as the tutorial involves using Python libraries like cdsapi for accessing data programmatically.</p></li>
 <li><p><strong>Familiarity with API Usage</strong>: Understanding of Application Programming Interfaces (APIs) and how to use them to interact with web services will be helpful, particularly for accessing data programmatically through the CDS API.</p></li>
 </ol>
 <hr><div class="tip admonition">
@@ -594,39 +587,34 @@ document.write(`
 </details><hr></section>
 <section id="outline">
 <h2>Outline<a class="headerlink" href="#outline" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>1 - About</p></li>
-<li><p>2 - C3S data retrieval</p>
-<ul>
-<li><p>2.1 - Access data interactively via the CDS web interface</p></li>
-<li><p>2.2 - Access data programmatically with the CDS API</p></li>
-<li><p>2.3 - Further resources</p></li>
-</ul>
+<ol class="arabic simple">
+<li><p>Data retrieval</p>
+<ol class="arabic simple">
+<li><p>Access data interactively via the CDS web interface</p></li>
+<li><p>Access data programmatically with the CDS API</p></li>
+<li><p>Further resources</p></li>
+</ol>
 </li>
-<li><p>3 - Example data request</p></li>
-</ul>
-</section>
-<section id="about">
-<h2>About<a class="headerlink" href="#about" title="Link to this heading">#</a></h2>
-<p>The <a class="reference external" href="https://cds.climate.copernicus.eu/">Copernicus Climate Data Store (CDS)</a> is the data access portal of the <a class="reference external" href="https://climate.copernicus.eu/">Copernicus Climate Change Service (C3S)</a> and offers access to <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">applications</span></code> about the Earth’s past, present and future climate.</p>
-<p><img alt="logo" src="../../_images/cds_landing_page.png" /></p>
+</ol>
 <hr></section>
 <section id="data-retrieval">
-<h2>Data retrieval<a class="headerlink" href="#data-retrieval" title="Link to this heading">#</a></h2>
-<p>There are two ways to access data from the Copernicus Climate Data Store (CDS):</p>
+<h2>1. Data retrieval<a class="headerlink" href="#data-retrieval" title="Link to this heading">#</a></h2>
+<p>All Copernicus Climate Data Store (CDS) data is public and you can have free access to it. Before being able to dowload data, you must <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Self-register</a> at the CDS registration page (if you do not have an account yet), log into the <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">CDS portal</a> and accept the <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/terms/licence-to-use-copernicus-products">Terms and Conditions</a>.<br>
+<br>
+After being logged in and having accepted the terms, there are two ways to access data from the CDS:</p>
 <ul class="simple">
 <li><p>interactively via the CDS web interface, or</p></li>
 <li><p>programmatically with the CDS API</p></li>
 </ul>
-<section id="access-data-interactively-via-the-cds-web-interface">
-<h3>Access data interactively via the CDS web interface<a class="headerlink" href="#access-data-interactively-via-the-cds-web-interface" title="Link to this heading">#</a></h3>
+<hr><section id="a-access-data-interactively-via-the-cds-web-interface">
+<h3>1.A. Access data interactively via the CDS web interface<a class="headerlink" href="#a-access-data-interactively-via-the-cds-web-interface" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">CDS</span> <span class="pre">web</span> <span class="pre">interface</span></code> allows you to interactively <code class="docutils literal notranslate"><span class="pre">browse</span></code>, <code class="docutils literal notranslate"><span class="pre">select</span></code> and <code class="docutils literal notranslate"><span class="pre">download</span></code> datasets offered by the CDS. First, under <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/search?type=dataset">Datasets</a>, you can browse and select the dataset you are interested in. In a second step, you can then specify details of the data download form you wish to submit.</p>
 <section id="filter-and-select-a-dataset">
 <h4>Filter and select a dataset<a class="headerlink" href="#filter-and-select-a-dataset" title="Link to this heading">#</a></h4>
-<p>As a first step, you can <code class="docutils literal notranslate"><span class="pre">browse</span></code> and <code class="docutils literal notranslate"><span class="pre">filter</span></code> the dataset you are interested in. The <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/search?type=dataset">Datasets</a> interface allows you either to select data based on different categories, e.g. <code class="docutils literal notranslate"><span class="pre">Product</span> <span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">domain</span></code>, <code class="docutils literal notranslate"><span class="pre">Spatial</span> <span class="pre">/</span> <span class="pre">Temporal</span> <span class="pre">coverage</span></code>, but also offers a free text search. The list of datasets in the main window allows you to select the dataset you are interested in.</p>
-<br><p><img alt="logo" src="../../_images/cds_web_interface_1.png" /></p>
-<br><p>Once you selected a dataset, you then get redirected to a data description section, which provides you an overview of the chosen dataset as well as the option to specify the dataset you would like to download and to also to submit the <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">data&quot;</span> <span class="pre">form</span></code>.</p>
-<br></section>
+<p>As a first step, you can <code class="docutils literal notranslate"><span class="pre">browse</span></code> and <code class="docutils literal notranslate"><span class="pre">filter</span></code> the dataset you are interested in. The <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/search?type=dataset">Datasets</a> interface allows you either to select data based on different categories, e.g. <code class="docutils literal notranslate"><span class="pre">Product</span> <span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">domain</span></code>, <code class="docutils literal notranslate"><span class="pre">Spatial</span> <span class="pre">/</span> <span class="pre">Temporal</span> <span class="pre">coverage</span></code>, or through a free text search. The list of datasets in the main window allows you to select the dataset you are interested in.</p>
+<p><img alt="logo" src="../../_images/cds_web_interface_1.png" /></p>
+<br><p>Once you select a dataset you will get redirected to a data description section, which provides you an overview of the chosen dataset as well as the option to specify the dataset you would like to download and to submit the <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">data&quot;</span> <span class="pre">form</span></code>.</p>
+</section>
 <section id="submit-the-download-data-form">
 <h4>Submit the <em>Download data</em> form<a class="headerlink" href="#submit-the-download-data-form" title="Link to this heading">#</a></h4>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
@@ -640,24 +628,23 @@ document.write(`
 <li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">Geographical</span> <span class="pre">area</span></code></p></li>
 <li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">Format</span></code></p></li>
 </ul>
-<p class="sd-card-text">At the end of the <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">data&quot;</span> <span class="pre">form</span></code>, you get two options to select: <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code> and <code class="docutils literal notranslate"><span class="pre">Submit</span> <span class="pre">Form</span></code>. If you want to download the data interactively, the data requests will be executed as soon as you click on the <code class="docutils literal notranslate"><span class="pre">Submit</span> <span class="pre">Form</span></code> button.
-<strong>Note:</strong> You need to be logged into the ADS portal and you have to accept the Terms and Conditions of the dataset before being able to download data.</p>
-<p class="sd-card-text">You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code>, if you want to request data programmatically. See Section 2.2 for further information.</p>
+<p class="sd-card-text">At the end of the <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">data&quot;</span> <span class="pre">form</span></code>, you get two options to select: <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code> and <code class="docutils literal notranslate"><span class="pre">Submit</span> <span class="pre">Form</span></code>. If you want to download the data interactively, the data requests will be executed as soon as you click on the <code class="docutils literal notranslate"><span class="pre">Submit</span> <span class="pre">Form</span></code> button.<br>
+<br>
+You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code>, if you want to request data programmatically. See Section 1.B for further information.</p>
 </div>
 </details><div class="alert alert-block alert-success">
 <b>NOTE</b>: <br>
     Under the tab <code>Your requests</code> in the main menu, you can monitor the status of your data requests.</div>
 <br><p><img alt="logo" src="../../_images/cds_data_description_download_form.png" /></p>
-<br></section>
+<hr></section>
 </section>
-<section id="access-data-programmatically-with-the-cds-api">
-<h3>Access data programmatically with the CDS API<a class="headerlink" href="#access-data-programmatically-with-the-cds-api" title="Link to this heading">#</a></h3>
+<section id="b-access-data-programmatically-with-the-cds-api">
+<h3>1.B. Access data programmatically with the CDS API<a class="headerlink" href="#b-access-data-programmatically-with-the-cds-api" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">Climate</span> <span class="pre">Data</span> <span class="pre">Store</span> <span class="pre">Application</span> <span class="pre">Program</span> <span class="pre">Interface</span> <span class="pre">(CDS</span> <span class="pre">API)</span></code> is a Python library which allows you to access data from the CDS programmatically. The library is available for both Python versions, Python 2.7.x and Python 3, but we recommend to use the library under Python 3. In order to use the CDS API, follow the steps below:</p>
 <section id="install-the-cds-api-key">
 <h4>Install the CDS API key<a class="headerlink" href="#install-the-cds-api-key" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Self-register</a> at the CDS registration page (if you do not have an account yet)</p></li>
-<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/user/login">Login</a> to the CDS portal and go to the <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">api-how-to page</a></p></li>
+<li><p>After <a class="reference external" href="https://cds.climate.copernicus.eu/user/login">Loging in</a> to the CDS portal, go to the <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">api-how-to page</a></p></li>
 <li><p>Copy the CDS API key displayed in the black terminal window in a file under <code class="docutils literal notranslate"><span class="pre">$HOME/.cdsapirc</span></code></p></li>
 </ul>
 <p><strong>Note:</strong> You find your CDS API key displayed in the black terminal box under the section <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">the</span> <span class="pre">CDS</span> <span class="pre">API</span> <span class="pre">key</span></code>. If you do not see a URL or key appear in the black terminal box, please refresh your browser tab.</p>
@@ -665,15 +652,15 @@ document.write(`
 <p>The code below creates the file under your current working directory. Make sure to replace the <code class="docutils literal notranslate"><span class="pre">################</span></code> with your personal <code class="docutils literal notranslate"><span class="pre">CDS</span> <span class="pre">API</span> <span class="pre">key</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%writefile</span> ./.cdsapirc
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%writefile</span> ./. cdsapirc
 
 <span class="n">url</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cds</span><span class="o">.</span><span class="n">climate</span><span class="o">.</span><span class="n">copernicus</span><span class="o">.</span><span class="n">eu</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span>
-<span class="n">key</span><span class="p">:</span> <span class="c1">##############################</span>
+<span class="n">key</span><span class="p">:</span> <span class="c1">###################</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Overwriting ./.cdsapirc
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UsageError: unrecognized arguments: cdsapirc
 </pre></div>
 </div>
 </div>
@@ -681,7 +668,7 @@ document.write(`
 </section>
 <section id="alternative-set-cds-api-credentials-manually">
 <h4>Alternative: Set CDS API credentials manually<a class="headerlink" href="#alternative-set-cds-api-credentials-manually" title="Link to this heading">#</a></h4>
-<p>Alternatively, you can also define variables for <code class="docutils literal notranslate"><span class="pre">url</span></code> and <code class="docutils literal notranslate"><span class="pre">key</span></code>. These variables can then be set when you define the <code class="docutils literal notranslate"><span class="pre">cdsapi.Client(url=URL,</span> <span class="pre">key=KEY)</span></code> in your script (see next section for the different components of a data retrieval request).</p>
+<p>Alternatively, you can also define variables for <code class="docutils literal notranslate"><span class="pre">url</span></code> and <code class="docutils literal notranslate"><span class="pre">key</span></code>. These variables can then be set when you define the <code class="docutils literal notranslate"><span class="pre">cdsapi.Client(url=URL,</span> <span class="pre">key=KEY)</span></code> in your script (just follow the notebook, you’ll get there).</p>
 <p><strong>Please note:</strong> in the workflow notebooks, we will use this modality and set manually the CDS API key information for the data retrievals.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -706,27 +693,18 @@ document.write(`
 <section id="use-the-cds-api-client-for-data-access">
 <h4>Use the CDS API client for data access<a class="headerlink" href="#use-the-cds-api-client-for-data-access" title="Link to this heading">#</a></h4>
 <p>Once the <code class="docutils literal notranslate"><span class="pre">CDS</span> <span class="pre">API</span></code> is installed, it can be used to request data from the Climate Data Store.</p>
-<p>Below, you see the principle of a <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">retrieval</span></code> request. You always have to make sure to first import the <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> and define a <code class="docutils literal notranslate"><span class="pre">cdsapi.Client()</span></code> before you are able to execute an <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">request</span></code>. You can use the <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/search?type=dataset">web interface</a> to browse through the datasets. At the end of the <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">data&quot;</span> <span class="pre">form</span></code>, there is the option to choose <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code>. If you click this button, the <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">request</span></code> appears (see example below), which you can copy paste into your coding workflow.</p>
+<p>At the end of the <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">data&quot;</span> <span class="pre">form</span></code> addressed in the section 1.A, you get two options to select: Show API request and Submit Form. If you want to access data programatically, you must choose <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code>. By doing so, the API request appears, which you can then <strong>copy</strong>. Below, you can see the <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">retrieval</span></code>request generated by the search made in section 1.A.</p>
 <br>
 <p><img alt="logo" src="../../_images/cdsapi_request.png" /></p>
-<br>
-<div class="alert alert-block alert-success">
-<b>NOTE</b>: <br>
-    For data originating from ECMWF's Meteorological and Archival System (MARS), data is stored on a grid with longitudes from 0 to 360 degrees. It can be reprojected to a regular geographic latitude-longitude grid, by setting the keyword argument <code>area</code> and <code>grid</code>. Per default, data is retrieved in <code>GRIB</code>. If you wish to retrieve the data in <code>netCDF</code>, you have to specify it by using the keyword argument <code>format</code>.</div>
-<br>
-</section>
-</section>
-<section id="further-resources">
-<h3>Further resources<a class="headerlink" href="#further-resources" title="Link to this heading">#</a></h3>
+<p>To make your search, you must paste the <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">request</span></code> into your code and make these two changes:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://confluence.ecmwf.int/x/QhhsCg">Climate Data Store (ADS) documentation</a></p></li>
-<li><p><a class="reference external" href="https://confluence.ecmwf.int/x/RKOpD">Common Error Messages for CDS Requests</a></p></li>
-<li><p><a class="reference external" href="https://confluence.ecmwf.int/x/kjo1Cw">Climate Data Store (CDS) API Keywords</a></p></li>
+<li><p>Add the url and key variables that you defined earlier to the cdsapi.Client(), so that it is read cdsapi.Client(url=URL, key=KEY); and</p></li>
+<li><p>Define the name of the file you will download, by substituting ‘<a class="reference external" href="http://download.nc">download.nc</a>’ (in the last line of the <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">request</span></code>) with the name of your choice.<br />
+<br>
+You can also change your search now by adding/removing variables or changing other aspects of the data, as in the following example.</p></li>
 </ul>
-<hr></section>
 </section>
-<section id="example-data-request">
-<h2>Example data request<a class="headerlink" href="#example-data-request" title="Link to this heading">#</a></h2>
+</section>
 <section id="example-era5-land-hourly-data-from-1950-to-present">
 <h3><a id='era5-land_hourly'></a>Example: <strong>ERA5-Land hourly data from 1950 to present</strong><a class="headerlink" href="#example-era5-land-hourly-data-from-1950-to-present" title="Link to this heading">#</a></h3>
 <p>CDS API name: <code class="docutils literal notranslate"><span class="pre">reanalysis-era5-land</span></code></p>
@@ -741,11 +719,12 @@ document.write(`
 <li><p>Format: <code class="docutils literal notranslate"><span class="pre">netcdf</span></code></p></li>
 </ul>
 </div></blockquote>
-<p><strong>Note:</strong> the request above makes use of the keyword <code class="docutils literal notranslate"><span class="pre">area</span></code>, which enable you to retrieve only a geographical subset. The bounding box information are set as follows: <code class="docutils literal notranslate"><span class="pre">[N,</span> <span class="pre">W,</span> <span class="pre">S,</span> <span class="pre">E]</span></code>. When this keyword is set, the data is automatically projected to a grid from [-180, 180].</p>
-<div class="cell docutils container">
+<br>
+<div class="alert alert-block alert-success">
+<b>NOTE</b>: <br> This request makes use of the keyword `area`, which enable you to retrieve only a geographical subset. The bounding box information are set as follows: `[N, W, S, E]`. When this keyword is set, the data is automatically projected to a grid from [-180, 180].  <div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cdsapi</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span> <span class="n">ker</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
 <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
     <span class="s1">&#39;reanalysis-era5-land&#39;</span><span class="p">,</span>
     <span class="p">{</span>
@@ -777,22 +756,32 @@ document.write(`
             <span class="mi">30</span><span class="p">,</span>
         <span class="p">],</span>
     <span class="p">},</span>
-    <span class="s1">&#39;./data/era5-land_eur_1981_2020.nc&#39;</span><span class="p">)</span>
+    <span class="s1">&#39;era5-land_eur_1981_2020.nc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
+<br>
+<div class="alert alert-block alert-success">
+<b>NOTE</b>: <br>
+    For data originating from ECMWF's Meteorological and Archival System (MARS), data is stored on a grid with longitudes from 0 to 360 degrees. It can be reprojected to a regular geographic latitude-longitude grid, by setting the keyword argument <code>area</code> and <code>grid</code>. Per default, data is retrieved in <code>GRIB</code>. If you wish to retrieve the data in <code>netCDF</code>, you have to specify it by using the keyword argument <code>format</code>.</div>
+<hr></section>
+<section id="c-further-resources">
+<h3>1.C. Further resources<a class="headerlink" href="#c-further-resources" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://confluence.ecmwf.int/x/QhhsCg">Climate Data Store (ADS) documentation</a></p></li>
+<li><p><a class="reference external" href="https://confluence.ecmwf.int/x/RKOpD">Common Error Messages for CDS Requests</a></p></li>
+<li><p><a class="reference external" href="https://confluence.ecmwf.int/x/kjo1Cw">Climate Data Store (CDS) API Keywords</a></p></li>
+</ul>
+<hr></section>
 </section>
 <section id="key-messages-to-take-home">
 <h2>Key Messages to Take Home 📌<a class="headerlink" href="#key-messages-to-take-home" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Purposeful Learning</strong>: This tutorial serves as a gateway to unlocking the wealth of climate data available through the Copernicus Climate Data Store (CDS). By understanding how to access data interactively and programmatically, users gain the power to explore and analyze climate trends with precision.</p></li>
-<li><p><strong>Empowering Skill Development</strong>: Equipping users with essential programming skills and knowledge of APIs, this tutorial empowers researchers, data scientists, and climate enthusiasts to delve into the realm of climate data analysis. With Python proficiency and familiarity with web services, users can navigate datasets and harness valuable insights.</p></li>
-<li><p><strong>Accessible Execution</strong>: Accessing the tutorial is convenient through platforms like WEKEO and cloud-based services such as Kaggle, Binder, and Colab. These user-friendly environments eliminate barriers to entry, allowing users to engage with the material seamlessly.</p></li>
-<li><p><strong>Effective Data Retrieval</strong>: Learning how to retrieve data interactively via the CDS web interface and programmatically using the CDS API opens doors to a world of possibilities. By mastering data browsing, selection, and submission processes, users can streamline their data retrieval workflows for efficient analysis.</p></li>
-<li><p><strong>Continued Support</strong>: Additional resources provided, including documentation, error message guidance, and a comprehensive list of CDS API keywords, ensure that users have the support they need throughout their data retrieval journey. With these resources at their disposal, users can overcome challenges and achieve success in their climate data endeavors.</p></li>
-<li><p><strong>Practical Example</strong>: The detailed example showcasing an ERA5-Land hourly data request reinforces key concepts learned throughout the tutorial. By applying these principles in a real-world scenario, users gain practical experience and confidence in their data retrieval skills.</p></li>
+<li><p>The climate data available through the <a class="reference external" href="https://cds.climate.copernicus.eu/">Copernicus Climate Data Store (CDS)</a> can be accessed interactively via the CDS web interface and programmatically with the CDS API.</p></li>
+<li><p>Before being able do download data, you must <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Self-register</a> at the CDS registration page (if you do not have an account yet), log into the <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">CDS portal</a> and accept the <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/terms/licence-to-use-copernicus-products">Terms and Conditions</a>.</p></li>
+<li><p>The <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/search?type=dataset">Datasets</a> interface allows you to interactively <code class="docutils literal notranslate"><span class="pre">browse</span></code> and <code class="docutils literal notranslate"><span class="pre">select</span></code> datasets offered by the CDS.</p></li>
+<li><p>Credentials for the CDS API can be found in the <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">api-how-to page</a> under the section <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">the</span> <span class="pre">CDS</span> <span class="pre">API</span> <span class="pre">key</span></code>.</p></li>
 </ul>
 <hr><p></p>
 <span style='float:right'><p style=\"text-align:right;\">This project is licensed under <a href="./LICENSE">APACHE License 2.0</a>. | <a href=\"https://github.com/ecmwf-projects/copernicus-training">View on GitHub</a></span></section>
@@ -866,25 +855,21 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#target-audience">Target audience 🎯</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-assumed-knowledge">Prerequisites and assumed knowledge 🔍</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-retrieval">Data retrieval</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-data-interactively-via-the-cds-web-interface">Access data interactively via the CDS web interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-retrieval">1. Data retrieval</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-access-data-interactively-via-the-cds-web-interface">1.A. Access data interactively via the CDS web interface</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-and-select-a-dataset">Filter and select a dataset</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#submit-the-download-data-form">Submit the <em>Download data</em> form</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-data-programmatically-with-the-cds-api">Access data programmatically with the CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-access-data-programmatically-with-the-cds-api">1.B. Access data programmatically with the CDS API</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-cds-api-key">Install the CDS API key</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-set-cds-api-credentials-manually">Alternative: Set CDS API credentials manually</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-cds-api-client">Install the CDS API client</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-cds-api-client-for-data-access">Use the CDS API client for data access</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-resources">Further resources</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-data-request">Example data request</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-era5-land-hourly-data-from-1950-to-present"><a id="era5-land_hourly"></a>Example: <strong>ERA5-Land hourly data from 1950 to present</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-further-resources">1.C. Further resources</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-messages-to-take-home">Key Messages to Take Home 📌</a></li>
