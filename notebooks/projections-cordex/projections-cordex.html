@@ -500,17 +500,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api-via-pip">Install CDS API via pip</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-libraries">Load libraries</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#request-data-from-the-cds-programmatically-with-the-cds-api">Request data from the CDS programmatically with the CDS API</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unzip-the-downloaded-data-files">Unzip the downloaded data files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-cordex-historical-climatology-for-reference-period-1971-2000">Compute CORDEX historical climatology for reference period 1971-2000</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-cordex-future-climatology-for-target-period-2071-2100-based-on-scenario-rcp4-5">Compute CORDEX future climatology for target period 2071-2100 based on scenario RCP4.5</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-and-visualize-the-climate-change-signal-between-the-target-2071-2100-and-reference-1971-2000-period">Compute and visualize the climate change signal between the target (2071-2100) and reference (1971-2000) period</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives 🧠</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#target-audience">Target audience 🎯</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-assumed-knowledge">Prerequisites and assumed knowledge 🔍</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-the-necessary-libraries">1. Import the necessary libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-data-with-the-cds-api">2. Access data with the CDS API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unzip-the-downloaded-data-files">3. Unzip the downloaded data files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-cordex-historical-climatology-for-reference-period-1971-2000">4. Compute CORDEX historical climatology for reference period 1971-2000</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-cordex-future-climatology-for-target-period-2071-2100-based-on-scenario-rcp4-5">5. Compute CORDEX future climatology for target period 2071-2100 based on scenario RCP4.5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-and-visualize-the-climate-change-signal">6. Compute and visualize the climate change signal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-messages-to-take-home">Key Messages to Take Home 📌</a></li>
 </ul>
             </nav>
         </div>
@@ -525,63 +525,81 @@ document.write(`
   <p><img alt="logo" src="../../_images/LogoLine_horizon_C3S17.png" /></p>
 <br><section class="tex2jax_ignore mathjax_ignore" id="analysis-of-projected-versus-historical-climatology-with-cordex-data">
 <h1>Analysis of Projected versus Historical Climatology with CORDEX Data<a class="headerlink" href="#analysis-of-projected-versus-historical-climatology-with-cordex-data" title="Link to this heading">#</a></h1>
-<section id="about">
-<h2>About<a class="headerlink" href="#about" title="Link to this heading">#</a></h2>
-<p>This notebook is a practical introduction to <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cordex-domains-single-levels?tab=overview">CORDEX regional climate model data on single levels</a>. CORDEX data are available for 14 regional domains and variable spatial resolutions, from 0.11 x 0.11 degrees up to 0.44 x 0.44 degrees. This workflow will demonstrate how to compute the difference in the air temperature climatology for 2071-2100 (according to a projected scenario) relative to the reference period 1971-2000 in Africa, with a spatial resolution of 0.44 x 0.44 degrees.</p>
-<p>We will use the historical experiment to compute the past climatology and repeat the steps to compute the projected climatology according to the scenario RCP4.5. Finally, we will take the difference between the two in order to assess the extent of change. This is called the “delta method” which takes the climate change signal as the difference between the future and past considering that the model biases are the same and can therefore be removed with the subtraction.</p>
+<p>This notebook is a practical introduction to <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cordex-domains-single-levels?tab=overview">CORDEX regional climate model data on single levels</a>. CORDEX (Coordinated Regional Climate Downscaling Experiment) data are available for 14 regional domains and variable spatial resolutions, from 0.11 x 0.11 degrees up to 0.44 x 0.44 degrees. This workflow will demonstrate how to compute the difference in the air temperature climatology for 2071-2100 (according to a projected scenario) relative to the reference period 1971-2000 in Africa, with a spatial resolution of 0.44 x 0.44 degrees.</p>
+<p>We will use the historical experiment to <strong>compute the past climatology</strong> and repeat the steps to <strong>compute the projected climatology</strong> according to the scenario RCP4.5. Finally, we will take the difference between the two in order to <strong>assess the extent of change</strong>. This is called the “delta method” which takes the climate change signal as the difference between the future and past considering that the model biases are the same and can therefore be removed with the subtraction.</p>
 <p>This particular example uses data from the Canadian Regional Climate Model <code class="docutils literal notranslate"><span class="pre">CCCma_CanRCM4</span></code>, with lateral boundary conditions from the Global Climate Model (GCM) <code class="docutils literal notranslate"><span class="pre">CanESM2</span></code>, also Canadian. This coupled model is referred to as <code class="docutils literal notranslate"><span class="pre">CanRCM4</span> <span class="pre">-</span> <span class="pre">CanESM2</span></code>. See <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/CORDEX%3A+Regional+climate+projections#CORDEX:Regionalclimateprojections-DrivingGlobalClimateModelsandRegionalClimateModels">here</a> a full list of models included in the CDS-CORDEX subset.</p>
-<p><strong>Note:</strong> The workflow uses a specific model, scenario and geographical area, but you can use any model, scenario or domain, and indeed any period or variable. To have a more accurate idea of projected climate change, it is typical to calculate an ensemble of multiple models. Only for the sake of simplicity do we focus on one model.</p>
-<br>
-<p>In general, CORDEX experiments can be divided into three main categories:</p>
+<div class="alert alert-block alert-success">
+    <b>NOTE</b>: </br>
+    The workflow uses a specific model, scenario and geographical area, but you can use any model, scenario or domain, and indeed any period or variable. To have a more accurate idea of projected climate change, it is typical to calculate an ensemble of multiple models. Only for the sake of simplicity do we focus on one model.</div><p>In general, CORDEX experiments can be divided into three main categories:</p>
 <ul class="simple">
 <li><p><strong>Evaluation</strong>: model simulations for the past with imposed “perfect” lateral boundary conditions following ERA-Interim reanalysis (1979-2015).</p></li>
 <li><p><strong>Historical</strong>: Historical experiments cover the period where modern climate observations exist. These experiements show how the RCMs perform for the past climate when forced by the Global Circulation Model (GCM) and can be used as a reference period for comparison with scenario runs for the future.</p></li>
 <li><p><strong>Scenario experiments RCP2.6, RCP4.5, RCP8.5</strong>: ensemble of CORDEX climate projection experiments driven by boundary conditions from GCMs using RCP (Representative Concentration Pathways) forcing scenarios. The scenarios used here are RCP 2.6, 4.5 and 8.5, which provide different pathways of the future climate forcing.</p></li>
 </ul>
 <p>Learn <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/CORDEX%3A+Regional+climate+projections#CORDEX:Regionalclimateprojections-Experiments">here</a> more about CORDEX experiments in the Copernicus Climate Data Store (CDS).</p>
-<p>The notebook has the following outline:</p>
+<hr><section id="learning-objectives">
+<h2>Learning objectives 🧠<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Request data from the CDS programmatically with the CDS API</p></li>
+<li><p>Learn to compute a past climatology based on a historical experiment.</p></li>
+<li><p>Learn to compute a projected climatology based on a scenario.</p></li>
+<li><p>Understand what is the “delta method” and learning to analyse the difference between past and projected climatologies.</p></li>
+</ol>
+<hr></section>
+<section id="target-audience">
+<h2>Target audience 🎯<a class="headerlink" href="#target-audience" title="Link to this heading">#</a></h2>
+<p><strong>Anyone</strong> interested in learning how to compute past and projected climatologies and to analyse differences between them.</p>
+<hr></section>
+<section id="prerequisites-and-assumed-knowledge">
+<h2>Prerequisites and assumed knowledge 🔍<a class="headerlink" href="#prerequisites-and-assumed-knowledge" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Programming Skills</strong>: Familiarity with programming concepts, particularly in Python, as the tutorial involves using loops, defining functions and using multiple different libraries for data manipulation and visualization.</p></li>
+<li><p><strong>Familiarity with API Usage</strong>: Understanding of how to use Application Programming Interfaces (APIs) will be useful for accessing data through the CDS API.</p></li>
+<li><p><strong>Familiarity with multidimensional data structure</strong>: Comprehending what are data dimensions and how they are organized in an array.</p></li>
+</ol>
+<hr><div class="tip admonition">
+<p class="admonition-title">Difficulty</p>
+<p>2/5</p>
+</div>
+<hr><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Run the tutorial</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<h3 class="rubric" id="wekeo">WEKEO</h3>
+<p class="sd-card-text"><a class="reference external" href="https://www.wekeo.eu/">WEkEO</a> serves as the official platform of the European Centre for Medium-Range Weather Forecasts (ECMWF), offering access to an extensive array of climate data and tools for analysis and visualization. It provides a robust environment for conducting in-depth analysis and exploration of climate-related datasets. To learn more about WEkEO and its offerings, visit their <a class="reference external" href="https://www.wekeo.eu/">website</a>.</p>
+<p class="sd-card-text"><a class="reference external" href="https://www.wekeo.eu/">Run this notebook on WEKEO</a></p>
+<h3 class="rubric" id="possible-cloud-services">Possible Cloud Services</h3>
+<p class="sd-card-text">While Kaggle, Binder, and Colab are popular options for running notebooks in the cloud, it’s essential to note that these are just a few among many available choices. Each platform has its unique features and capabilities, catering to diverse user needs and preferences.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><strong>Kaggle</strong></p></th>
+<th class="head text-center"><p class="sd-card-text"><strong>Binder</strong></p></th>
+<th class="head text-center"><p class="sd-card-text"><strong>Colab</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text"><a class="reference external" href="https://kaggle.com/kernels/welcome?src=https://github.com/Randbee/projections-cordex/blob/master/projections-cordex.ipynb"><img alt="Kaggle" src="https://kaggle.com/static/images/open-in-kaggle.svg" /></a></p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference external" href="https://mybinder.org/v2/gh/Randbee/projections-cordex/master/projections-cordex.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a></p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference external" href="https://colab.research.google.com/github/Randbee/projections-cordex/blob/master/projections-cordex.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</details><hr></section>
+<section id="outline">
+<h2>Outline<a class="headerlink" href="#outline" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Import the necessary libraries</p></li>
+<li><p>Access data with the CDS API</p></li>
 <li><p>Unzip the downloaded data files</p></li>
 <li><p>Compute CORDEX historical climatology for reference period 1971-2000</p></li>
 <li><p>Compute CORDEX projected climatology for target period 2071-2100 based on scenario RCP4.5</p></li>
 <li><p>Compute and visualize the climate change signal</p></li>
 </ol>
-</section>
-<section id="data">
-<h2>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
-<p>This notebook introduces you to <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cordex-domains-single-levels?tab=overview">CORDEX regional climate model data on single levels</a>. The data used in the notebook has the following specifications:</p>
-<blockquote>
-<div><p><strong>Data</strong>: <code class="docutils literal notranslate"><span class="pre">CORDEX</span> <span class="pre">regional</span> <span class="pre">climate</span> <span class="pre">model</span> <span class="pre">data</span> <span class="pre">on</span> <span class="pre">single</span> <span class="pre">levels</span> <span class="pre">-</span> <span class="pre">Experiment:</span> <span class="pre">Historical</span></code> <br>
-<strong>Temporal coverage</strong>: <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">Jan</span> <span class="pre">1971</span> <span class="pre">to</span> <span class="pre">31</span> <span class="pre">Dec</span> <span class="pre">2000</span></code> <br>
-<strong>Spatial coverage</strong>: <code class="docutils literal notranslate"><span class="pre">Domain:</span> <span class="pre">Africa</span></code> <br>
-<strong>Format</strong>: <code class="docutils literal notranslate"><span class="pre">NetCDF</span> <span class="pre">in</span> <span class="pre">zip</span> <span class="pre">archives</span></code></p>
-</div></blockquote>
-<blockquote>
-<div><p><strong>Data</strong>: <code class="docutils literal notranslate"><span class="pre">CORDEX</span> <span class="pre">regional</span> <span class="pre">climate</span> <span class="pre">model</span> <span class="pre">data</span> <span class="pre">on</span> <span class="pre">single</span> <span class="pre">levels</span> <span class="pre">-</span> <span class="pre">Experiment:</span> <span class="pre">RCP4.5</span></code> <br>
-<strong>Temporal coverage</strong>: <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">Jan</span> <span class="pre">2071</span> <span class="pre">to</span> <span class="pre">31</span> <span class="pre">Dec</span> <span class="pre">2100</span></code> <br>
-<strong>Spatial coverage</strong>: <code class="docutils literal notranslate"><span class="pre">Domain:</span> <span class="pre">Africa</span></code> <br>
-<strong>Format</strong>: <code class="docutils literal notranslate"><span class="pre">NetCDF</span> <span class="pre">in</span> <span class="pre">zip</span> <span class="pre">archives</span></code>
-<br></p>
-</div></blockquote>
-<style>
-td, th {
-   border: 1px solid white;
-   border-collapse: collapse;
-}
-</style>
-<table align="left">
-  <tr>
-    <th>Run the tutorial via free cloud platforms: </th>
-    <th><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?labpath=projections-cordex.ipynb">
-        <img src = "https://mybinder.org/badge.svg" alt = "Binder"></th>
-    <th><a href="https://kaggle.com/kernels/welcome?src=https://github.com/ecmwf-projects/copernicus-training-c3s/blob/main/projections-cordex.ipynb">
-        <img src = "https://kaggle.com/static/images/open-in-kaggle.svg" alt = "Kaggle"></th>
-    <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/projections-cordex.ipynb">
-        <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
-  </tr>
-</table><hr><section id="install-cds-api-via-pip">
-<h3>Install CDS API via pip<a class="headerlink" href="#install-cds-api-via-pip" title="Link to this heading">#</a></h3>
+<hr></section>
+<section id="import-the-necessary-libraries">
+<h2>1. Import the necessary libraries<a class="headerlink" href="#import-the-necessary-libraries" title="Link to this heading">#</a></h2>
+<p>For downloading the data from the CDS we will need <a class="reference external" href="https://pypi.org/project/cdsapi/">cdsapi</a>. We will be working with data in NetCDF format. To best handle this data we will use libraries for working with multidimensional arrays, in particular <a class="reference external" href="https://docs.xarray.dev/en/stable/">xarray</a>, and <a class="reference external" href="https://pandas.pydata.org/">pandas</a> to work with dataframes. We will also need libraries for plotting and viewing data, in this case we will use <a class="reference external" href="https://matplotlib.org/">matplotlib</a> and <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">cartopy</a>.
+If you don’t have any of the following libraries, you must install it. You can do it like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>cdsapi
@@ -600,10 +618,11 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /home/randbee-user/anaco
 </div>
 </div>
 </div>
-</section>
-<section id="load-libraries">
-<h3>Load libraries<a class="headerlink" href="#load-libraries" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
+<div class="alert alert-block alert-success">
+<b>NOTE</b>: <br>
+    Note the exclamation mark in the line of code above. This means the code will run as a shell (as opposed to a notebook) command.</div><div class="alert alert-block alert-success">
+<b>NOTE</b>: <br>
+    If you are having trouble to work with the xarray library, check the C3S tutorial on climatologies for detailed help.</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CDS API</span>
 <span class="kn">import</span> <span class="nn">cdsapi</span>
@@ -633,10 +652,11 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /home/randbee-user/anaco
 </div>
 </div>
 <hr></section>
-</section>
-<section id="request-data-from-the-cds-programmatically-with-the-cds-api">
-<h2>Request data from the CDS programmatically with the CDS API<a class="headerlink" href="#request-data-from-the-cds-programmatically-with-the-cds-api" title="Link to this heading">#</a></h2>
-<p>The first step is to request data from the Climate Data Store programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> which build together your CDS API key. Below, you have to replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> with your personal CDS key. Please find <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">here</a> your personal CDS key.</p>
+<section id="access-data-with-the-cds-api">
+<h2>2. Access data with the CDS API<a class="headerlink" href="#access-data-with-the-cds-api" title="Link to this heading">#</a></h2>
+<p>To access data from the CDS, you will need first to <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">register</a> at the ADS registration page (if you haven’t already done so), <a class="reference external" href="https://cds.climate.copernicus.eu/user/login">log in</a>, and accept the Terms and Conditions at the end of the <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">data</span></code> tab.<br></p>
+<p>To obtain data programmatically from the CDS, you will need an API Key that can be found in the <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">api-how-to page</a>. Here your key will appear automatically in the black window, assuming you have already registered and logged into the ADS. Your API key is the entire string of characters that appears after <code class="docutils literal notranslate"><span class="pre">key:</span></code></p>
+<p>Now copy your API key into the code cell below, replacing <code class="docutils literal notranslate"><span class="pre">#######</span></code> with your key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
@@ -645,6 +665,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /home/randbee-user/anaco
 </div>
 </div>
 </div>
+<p>Here we specify a data directory in which we will download our data and all output files that we will generate:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATADIR</span> <span class="o">=</span> <span class="s1">&#39;./&#39;</span>
@@ -652,14 +673,19 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /home/randbee-user/anaco
 </div>
 </div>
 </div>
-<p>The next step is then to request the data with the help of the CDS API. Below are two blocks of code for the following data requests:</p>
+<p>The next step is then to request the data with the help of the CDS API. We will download daily aggregated 2m air temperature with the following specifications:</p>
 <ul class="simple">
-<li><p><strong>Historical experiment</strong>: Daily aggregated historical 2m air temperature (from the CanRCM4 - CanESM2 model) from 1971 to 2000 for Africa.</p></li>
-<li><p><strong>RCP4.5 experiment</strong>: Daily aggregated RCP4.5 projections of 2m air temperature (from the CanRCM4 - CanESM2 model) from 2071 to 2100 for Africa</p></li>
+<li><p><strong>Data</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">CORDEX</span> <span class="pre">regional</span> <span class="pre">climate</span> <span class="pre">model</span> <span class="pre">data</span> <span class="pre">on</span> <span class="pre">single</span> <span class="pre">levels</span> <span class="pre">-</span> <span class="pre">Experiment:</span> <span class="pre">Historical</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CORDEX</span> <span class="pre">regional</span> <span class="pre">climate</span> <span class="pre">model</span> <span class="pre">data</span> <span class="pre">on</span> <span class="pre">single</span> <span class="pre">levels</span> <span class="pre">-</span> <span class="pre">Experiment:</span> <span class="pre">RCP4.5</span></code></p></li>
 </ul>
-<blockquote>
-<div><p><strong>Note:</strong> Before you run the cells below, the terms and conditions on the use of the data need to have been accepted in the CDS. You can view and accept these conditions by logging into the <a class="reference external" href="http://cds.climate.copernicus.eu">CDS</a>, searching for the dataset, then scrolling to the end of the <em>Download data</em> section.</p>
-</div></blockquote>
+</li>
+<li><p><strong>Temporal coverage</strong>: <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">Jan</span> <span class="pre">1971</span> <span class="pre">to</span> <span class="pre">31</span> <span class="pre">Dec</span> <span class="pre">2000</span></code></p></li>
+<li><p><strong>Spatial coverage</strong>: <code class="docutils literal notranslate"><span class="pre">Domain:</span> <span class="pre">Africa</span></code></p></li>
+<li><p><strong>Format</strong>: <code class="docutils literal notranslate"><span class="pre">NetCDF</span> <span class="pre">in</span> <span class="pre">zip</span> <span class="pre">archives</span></code></p></li>
+</ul>
+<p>Below are two blocks of code for the both data requests:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
@@ -684,13 +710,16 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /home/randbee-user/anaco
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-04-10 13:40:06,401 INFO Welcome to the CDS
-2024-04-10 13:40:06,402 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/projections-cordex-domains-single-levels
-2024-04-10 13:40:06,799 INFO Request is queued
-2024-04-10 13:40:07,931 INFO Request is running
-2024-04-10 13:50:26,550 INFO Request is completed
-2024-04-10 13:50:26,551 INFO Downloading https://download-0007-clone.copernicus-climate.eu/cache-compute-0007/cache/data6/dataset-projections-cordex-domains-single-levels-54aecd42-9e6d-499e-ba16-55fee0aa53a0.zip to ./1971-2000_cordex_historical_africa.zip (908.2M)
- 66%|██████████████████████████▍             | 600M/908M [05:15&lt;02:26, 2.20MB/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-06-28 11:12:43,242 INFO Welcome to the CDS
+2024-06-28 11:12:43,243 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/projections-cordex-domains-single-levels
+2024-06-28 11:12:43,643 INFO Request is queued
+2024-06-28 11:12:44,698 INFO Request is running
+2024-06-28 11:17:01,980 INFO Request is completed
+2024-06-28 11:17:01,981 INFO Downloading https://download-0000-clone.copernicus-climate.eu/cache-compute-0000/cache/data7/dataset-projections-cordex-domains-single-levels-1ee483bd-cf9e-4b2b-8447-e3a45f07ff30.zip to ./1971-2000_cordex_historical_africa.zip (908.2M)
+2024-06-28 11:19:36,844 INFO Download rate 5.9M/s                                                                      
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=952308195,content_type=application/zip,location=https://download-0000-clone.copernicus-climate.eu/cache-compute-0000/cache/data7/dataset-projections-cordex-domains-single-levels-1ee483bd-cf9e-4b2b-8447-e3a45f07ff30.zip)
 </pre></div>
 </div>
 </div>
@@ -716,11 +745,25 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /home/randbee-user/anaco
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-06-28 11:26:58,395 INFO Welcome to the CDS
+2024-06-28 11:26:58,397 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/projections-cordex-domains-single-levels
+2024-06-28 11:26:58,931 INFO Request is queued
+2024-06-28 11:26:59,987 INFO Request is running
+2024-06-28 11:31:17,249 INFO Request is completed
+2024-06-28 11:31:17,251 INFO Downloading https://download-0006-clone.copernicus-climate.eu/cache-compute-0006/cache/data4/dataset-projections-cordex-domains-single-levels-9b1336e5-deb3-4a5b-a1d0-3ab158fcd1b2.zip to ./2071-2100_cordex_rcp_4_5_africa.zip (908.1M)
+2024-06-28 11:34:58,565 INFO Download rate 4.1M/s                                                                      
+</pre></div>
 </div>
-</section>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=952229444,content_type=application/zip,location=https://download-0006-clone.copernicus-climate.eu/cache-compute-0006/cache/data4/dataset-projections-cordex-domains-single-levels-9b1336e5-deb3-4a5b-a1d0-3ab158fcd1b2.zip)
+</pre></div>
+</div>
+</div>
+</div>
+<hr></section>
 <section id="unzip-the-downloaded-data-files">
-<h2>Unzip the downloaded data files<a class="headerlink" href="#unzip-the-downloaded-data-files" title="Link to this heading">#</a></h2>
-<p>From the Copernicus Climate Data Store, CORDEX data are available in <code class="docutils literal notranslate"><span class="pre">NetCDF</span></code> format in compressed archives, either <code class="docutils literal notranslate"><span class="pre">zip</span></code> or <code class="docutils literal notranslate"><span class="pre">tar.gz</span></code>. For this reason, before we can load any data, we have to unzip or untar the files. Having downloaded the two experiments <code class="docutils literal notranslate"><span class="pre">historical</span></code> and <code class="docutils literal notranslate"><span class="pre">RCP4.5</span></code> as seperate zip files, we can use the functions from the <code class="docutils literal notranslate"><span class="pre">zipfile</span></code> Python package to extract the content of a zip file. First, we construct a <code class="docutils literal notranslate"><span class="pre">ZipFile()</span></code> object and second, we apply the function <code class="docutils literal notranslate"><span class="pre">extractall()</span></code> to extract the content of the zip file.</p>
+<h2>3. Unzip the downloaded data files<a class="headerlink" href="#unzip-the-downloaded-data-files" title="Link to this heading">#</a></h2>
+<p>From the CDS, CORDEX data are available in <code class="docutils literal notranslate"><span class="pre">NetCDF</span></code> format in compressed archives, either <code class="docutils literal notranslate"><span class="pre">zip</span></code> or <code class="docutils literal notranslate"><span class="pre">tar.gz</span></code>. For this reason, before we can load any data, we have to unzip or untar the files. Having downloaded the two experiments <code class="docutils literal notranslate"><span class="pre">historical</span></code> and <code class="docutils literal notranslate"><span class="pre">RCP4.5</span></code> as seperate zip files, we can use the functions from the <code class="docutils literal notranslate"><span class="pre">zipfile</span></code> Python package to extract the content of a zip file. First, we construct a <code class="docutils literal notranslate"><span class="pre">ZipFile()</span></code> object and second, we apply the function <code class="docutils literal notranslate"><span class="pre">extractall()</span></code> to extract the content of the zip file.</p>
 <p>Below, the same process is repeated for the two zip files downloaded. We see that the actual data files are disseminated in <code class="docutils literal notranslate"><span class="pre">NetCDF</span></code>. CORDEX files are generally organised in five year periods. For this reason, for each zip file, six <code class="docutils literal notranslate"><span class="pre">NetCDF</span></code> files in five year periods are extracted.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -738,9 +781,9 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /home/randbee-user/anaco
 </div>
 </div>
 </div>
-</section>
+<hr></section>
 <section id="compute-cordex-historical-climatology-for-reference-period-1971-2000">
-<h2>Compute CORDEX historical climatology for reference period 1971-2000<a class="headerlink" href="#compute-cordex-historical-climatology-for-reference-period-1971-2000" title="Link to this heading">#</a></h2>
+<h2>4. Compute CORDEX historical climatology for reference period 1971-2000<a class="headerlink" href="#compute-cordex-historical-climatology-for-reference-period-1971-2000" title="Link to this heading">#</a></h2>
 <p>The first step is to load the data of the <code class="docutils literal notranslate"><span class="pre">historical</span></code> experiment.</p>
 <p>We can use the Python library <a class="reference external" href="http://xarray.pydata.org/en/stable/">xarray</a> and its function <code class="docutils literal notranslate"><span class="pre">open_mfdataset</span></code> to read and concatenate multiple NetCDF files at once.</p>
 <p>The result is a <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> object with four dimensions: <code class="docutils literal notranslate"><span class="pre">bnds</span></code>, <code class="docutils literal notranslate"><span class="pre">rlat</span></code>, <code class="docutils literal notranslate"><span class="pre">rlon</span></code>, <code class="docutils literal notranslate"><span class="pre">time</span></code>, of which the dimension <code class="docutils literal notranslate"><span class="pre">bnds</span></code> is not callable.</p>
@@ -1115,20 +1158,20 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
-Dimensions:       (time: 10950, rlon: 194, rlat: 201, bnds: 2)
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 2GB
+Dimensions:       (time: 10950, rlat: 201, rlon: 194, bnds: 2)
 Coordinates:
-  * time          (time) object 1971-01-01 12:00:00 ... 2000-12-31 12:00:00
-  * rlon          (rlon) float64 -24.64 -24.2 -23.76 -23.32 ... 59.4 59.84 60.28
-  * rlat          (rlat) float64 -45.76 -45.32 -44.88 ... 41.36 41.8 42.24
-    lon           (rlat, rlon) float64 dask.array&lt;chunksize=(201, 194), meta=np.ndarray&gt;
-    lat           (rlat, rlon) float64 dask.array&lt;chunksize=(201, 194), meta=np.ndarray&gt;
-    height        float64 2.0
+  * time          (time) object 88kB 1971-01-01 12:00:00 ... 2000-12-31 12:00:00
+  * rlon          (rlon) float64 2kB -24.64 -24.2 -23.76 ... 59.4 59.84 60.28
+  * rlat          (rlat) float64 2kB -45.76 -45.32 -44.88 ... 41.36 41.8 42.24
+    lon           (rlat, rlon) float64 312kB dask.array&lt;chunksize=(201, 194), meta=np.ndarray&gt;
+    lat           (rlat, rlon) float64 312kB dask.array&lt;chunksize=(201, 194), meta=np.ndarray&gt;
+    height        float64 8B 2.0
 Dimensions without coordinates: bnds
 Data variables:
-    rotated_pole  (time) |S1 b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; ... b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27;
-    tas           (time, rlat, rlon) float32 dask.array&lt;chunksize=(1825, 201, 194), meta=np.ndarray&gt;
-    time_bnds     (time, bnds) object dask.array&lt;chunksize=(1825, 2), meta=np.ndarray&gt;
+    rotated_pole  (time) |S1 11kB b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; ... b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27;
+    tas           (time, rlat, rlon) float32 2GB dask.array&lt;chunksize=(1, 201, 194), meta=np.ndarray&gt;
+    time_bnds     (time, bnds) object 175kB dask.array&lt;chunksize=(1, 2), meta=np.ndarray&gt;
 Attributes: (12/26)
     title:                          CanRCM4 model output prepared for CORDEX ...
     institution:                    CCCma (Canadian Centre for Climate Modell...
@@ -1142,13 +1185,13 @@ Attributes: (12/26)
     creation_date:                  2012-06-29-T23:47:03Z
     c3s_comment:                    This data has been published at ESGF with...
     tracking_id:                    hdl:21.14103/3d35a8d3-105d-451c-88fa-4d46...
-    c3s_disclaimer:                 This data has been curated and prepared i...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-fab0da5b-ca68-4ac5-86a8-bbcd491f3398' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-fab0da5b-ca68-4ac5-86a8-bbcd491f3398' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 10950</li><li><span class='xr-has-index'>rlon</span>: 194</li><li><span class='xr-has-index'>rlat</span>: 201</li><li><span>bnds</span>: 2</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-945843f8-6dbe-4e96-b55f-224f8c6e1288' class='xr-section-summary-in' type='checkbox'  checked><label for='section-945843f8-6dbe-4e96-b55f-224f8c6e1288' class='xr-section-summary' >Coordinates: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>1971-01-01 12:00:00 ... 2000-12-...</div><input id='attrs-79bdbb7d-e2c2-47ae-a999-55b8d1fbdd98' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-79bdbb7d-e2c2-47ae-a999-55b8d1fbdd98' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a3c02446-6eda-4288-bffc-b79c857e1eaf' class='xr-var-data-in' type='checkbox'><label for='data-a3c02446-6eda-4288-bffc-b79c857e1eaf' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>axis :</span></dt><dd>T</dd><dt><span>bounds :</span></dt><dd>time_bnds</dd></dl></div><div class='xr-var-data'><pre>array([cftime.DatetimeNoLeap(1971, 1, 1, 12, 0, 0, 0, has_year_zero=True),
+    c3s_disclaimer:                 This data has been curated and prepared i...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-ed414829-bebe-45f8-822f-59459187f8a2' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-ed414829-bebe-45f8-822f-59459187f8a2' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 10950</li><li><span class='xr-has-index'>rlat</span>: 201</li><li><span class='xr-has-index'>rlon</span>: 194</li><li><span>bnds</span>: 2</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-0c05e03b-23ef-4d70-8ef2-6c12ebe6bd1d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-0c05e03b-23ef-4d70-8ef2-6c12ebe6bd1d' class='xr-section-summary' >Coordinates: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>1971-01-01 12:00:00 ... 2000-12-...</div><input id='attrs-d2002bf1-e382-40a0-9509-523c986818c2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d2002bf1-e382-40a0-9509-523c986818c2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-03be7216-3bf4-48f9-9382-5afa00a0e790' class='xr-var-data-in' type='checkbox'><label for='data-03be7216-3bf4-48f9-9382-5afa00a0e790' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>axis :</span></dt><dd>T</dd><dt><span>bounds :</span></dt><dd>time_bnds</dd></dl></div><div class='xr-var-data'><pre>array([cftime.DatetimeNoLeap(1971, 1, 1, 12, 0, 0, 0, has_year_zero=True),
        cftime.DatetimeNoLeap(1971, 1, 2, 12, 0, 0, 0, has_year_zero=True),
        cftime.DatetimeNoLeap(1971, 1, 3, 12, 0, 0, 0, has_year_zero=True), ...,
        cftime.DatetimeNoLeap(2000, 12, 29, 12, 0, 0, 0, has_year_zero=True),
        cftime.DatetimeNoLeap(2000, 12, 30, 12, 0, 0, 0, has_year_zero=True),
        cftime.DatetimeNoLeap(2000, 12, 31, 12, 0, 0, 0, has_year_zero=True)],
-      dtype=object)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rlon</span></div><div class='xr-var-dims'>(rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-24.64 -24.2 -23.76 ... 59.84 60.28</div><input id='attrs-8919ff27-8ab1-4eb8-a220-8fccb0dec32b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8919ff27-8ab1-4eb8-a220-8fccb0dec32b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c1eb9edf-c557-42b4-9f3d-4f569d604722' class='xr-var-data-in' type='checkbox'><label for='data-c1eb9edf-c557-42b4-9f3d-4f569d604722' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude in rotated pole grid</dd><dt><span>units :</span></dt><dd>degrees</dd><dt><span>axis :</span></dt><dd>X</dd><dt><span>standard_name :</span></dt><dd>grid_longitude</dd></dl></div><div class='xr-var-data'><pre>array([-24.639999, -24.200012, -23.76001 , -23.320023, -22.880005, -22.440002,
+      dtype=object)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rlon</span></div><div class='xr-var-dims'>(rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-24.64 -24.2 -23.76 ... 59.84 60.28</div><input id='attrs-ce6a4eae-d488-4452-bb7e-d65fe9895ef1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ce6a4eae-d488-4452-bb7e-d65fe9895ef1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e14c539a-9758-41e4-bd64-32141be402b2' class='xr-var-data-in' type='checkbox'><label for='data-e14c539a-9758-41e4-bd64-32141be402b2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude in rotated pole grid</dd><dt><span>units :</span></dt><dd>degrees</dd><dt><span>axis :</span></dt><dd>X</dd><dt><span>standard_name :</span></dt><dd>grid_longitude</dd></dl></div><div class='xr-var-data'><pre>array([-24.639999, -24.200012, -23.76001 , -23.320023, -22.880005, -22.440002,
        -22.      , -21.560013, -21.120026, -20.680008, -20.240021, -19.800003,
        -19.360016, -18.919998, -18.480011, -18.040024, -17.600006, -17.160019,
        -16.720001, -16.280014, -15.840012, -15.400009, -14.960007, -14.520004,
@@ -1180,8 +1223,8 @@ Attributes: (12/26)
         51.919968,  52.359985,  52.799988,  53.23999 ,  53.679977,  54.119995,
         54.559982,  54.999969,  55.439987,  55.879974,  56.319992,  56.759979,
         57.199997,  57.639984,  58.079971,  58.519989,  58.959976,  59.399994,
-        59.839981,  60.279984])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rlat</span></div><div class='xr-var-dims'>(rlat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-45.76 -45.32 -44.88 ... 41.8 42.24</div><input id='attrs-87ab282b-98ce-4f3f-a73a-57cf24cb89fb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-87ab282b-98ce-4f3f-a73a-57cf24cb89fb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f7820eb2-647f-4067-8f09-3f408447a27e' class='xr-var-data-in' type='checkbox'><label for='data-f7820eb2-647f-4067-8f09-3f408447a27e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude in rotated pole grid</dd><dt><span>units :</span></dt><dd>degrees</dd><dt><span>axis :</span></dt><dd>Y</dd><dt><span>standard_name :</span></dt><dd>grid_latitude</dd></dl></div><div class='xr-var-data'><pre>array([-45.759998, -45.32    , -44.879997, ...,  41.360001,  41.800003,
-        42.240002])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(201, 194), meta=np.ndarray&gt;</div><input id='attrs-1a3a260b-c0cf-46c5-b212-0bde972b7826' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1a3a260b-c0cf-46c5-b212-0bde972b7826' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-40859fb7-b6dd-4a22-8d12-6edbb7e2c2bc' class='xr-var-data-in' type='checkbox'><label for='data-40859fb7-b6dd-4a22-8d12-6edbb7e2c2bc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><table>
+        59.839981,  60.279984])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rlat</span></div><div class='xr-var-dims'>(rlat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-45.76 -45.32 -44.88 ... 41.8 42.24</div><input id='attrs-34c8b76e-278a-44de-bf8a-d5451ba3c6c8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-34c8b76e-278a-44de-bf8a-d5451ba3c6c8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ac7c0b45-8d3a-413c-baac-20e16f0cd78a' class='xr-var-data-in' type='checkbox'><label for='data-ac7c0b45-8d3a-413c-baac-20e16f0cd78a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude in rotated pole grid</dd><dt><span>units :</span></dt><dd>degrees</dd><dt><span>axis :</span></dt><dd>Y</dd><dt><span>standard_name :</span></dt><dd>grid_latitude</dd></dl></div><div class='xr-var-data'><pre>array([-45.759998, -45.32    , -44.879997, ...,  41.360001,  41.800003,
+        42.240002])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(201, 194), meta=np.ndarray&gt;</div><input id='attrs-cf6058bd-dab8-44c3-bdcf-04f16bd18d02' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cf6058bd-dab8-44c3-bdcf-04f16bd18d02' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-71f88b85-7b93-4c2b-895d-cbfdb8e86a37' class='xr-var-data-in' type='checkbox'><label for='data-71f88b85-7b93-4c2b-895d-cbfdb8e86a37' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1236,7 +1279,7 @@ Attributes: (12/26)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(201, 194), meta=np.ndarray&gt;</div><input id='attrs-b50e8786-7d7c-4220-bade-8a655bc62d6b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b50e8786-7d7c-4220-bade-8a655bc62d6b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-450d03a5-994f-4b57-827b-ae276daa2532' class='xr-var-data-in' type='checkbox'><label for='data-450d03a5-994f-4b57-827b-ae276daa2532' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(201, 194), meta=np.ndarray&gt;</div><input id='attrs-d3d9029a-e329-4356-953a-a297cc4831b8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d3d9029a-e329-4356-953a-a297cc4831b8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-00e6e2a0-f76f-427c-a3b9-f7f62aafed39' class='xr-var-data-in' type='checkbox'><label for='data-00e6e2a0-f76f-427c-a3b9-f7f62aafed39' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1291,7 +1334,7 @@ Attributes: (12/26)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>height</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>2.0</div><input id='attrs-7eb8941e-37f3-4546-9175-8cde306683f1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7eb8941e-37f3-4546-9175-8cde306683f1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0ea15379-945a-4966-b970-70b7b5f064b9' class='xr-var-data-in' type='checkbox'><label for='data-0ea15379-945a-4966-b970-70b7b5f064b9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>height</dd><dt><span>long_name :</span></dt><dd>height</dd><dt><span>positive :</span></dt><dd>up</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>axis :</span></dt><dd>Z</dd></dl></div><div class='xr-var-data'><pre>array(2.)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-8c03ac56-88d0-44c1-a78d-631cc7617215' class='xr-section-summary-in' type='checkbox'  checked><label for='section-8c03ac56-88d0-44c1-a78d-631cc7617215' class='xr-section-summary' >Data variables: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>rotated_pole</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>|S1</div><div class='xr-var-preview xr-preview'>b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; ... b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27;</div><input id='attrs-b5728322-8795-4193-8f20-b08550df889c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b5728322-8795-4193-8f20-b08550df889c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-06c9967d-213e-45e7-9d35-3619ccdb646b' class='xr-var-data-in' type='checkbox'><label for='data-06c9967d-213e-45e7-9d35-3619ccdb646b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>grid_mapping_name :</span></dt><dd>rotated_latitude_longitude</dd><dt><span>grid_north_pole_longitude :</span></dt><dd>180.0</dd><dt><span>grid_north_pole_latitude :</span></dt><dd>90.0</dd></dl></div><div class='xr-var-data'><pre>array([b&#x27;&#x27;, b&#x27;&#x27;, b&#x27;&#x27;, ..., b&#x27;&#x27;, b&#x27;&#x27;, b&#x27;&#x27;], dtype=&#x27;|S1&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>tas</span></div><div class='xr-var-dims'>(time, rlat, rlon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1825, 201, 194), meta=np.ndarray&gt;</div><input id='attrs-ada37894-e115-4f04-9a4c-98efc37e6f83' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ada37894-e115-4f04-9a4c-98efc37e6f83' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2e8a6697-a509-42d6-9390-4e35bce56f75' class='xr-var-data-in' type='checkbox'><label for='data-2e8a6697-a509-42d6-9390-4e35bce56f75' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Near-Surface Air Temperature</dd><dt><span>standard_name :</span></dt><dd>air_temperature</dd><dt><span>units :</span></dt><dd>K</dd><dt><span>grid_mapping :</span></dt><dd>rotated_pole</dd><dt><span>cell_methods :</span></dt><dd>time: mean</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>height</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>2.0</div><input id='attrs-92bf6a2f-f4e4-43e5-bea3-932cc3c9b0f3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-92bf6a2f-f4e4-43e5-bea3-932cc3c9b0f3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f4929576-858e-45ac-a944-801e4b8ececd' class='xr-var-data-in' type='checkbox'><label for='data-f4929576-858e-45ac-a944-801e4b8ececd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>height</dd><dt><span>long_name :</span></dt><dd>height</dd><dt><span>positive :</span></dt><dd>up</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>axis :</span></dt><dd>Z</dd></dl></div><div class='xr-var-data'><pre>array(2.)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-e7b4c9f3-c12c-4da5-a1e5-d2b7b0f058b5' class='xr-section-summary-in' type='checkbox'  checked><label for='section-e7b4c9f3-c12c-4da5-a1e5-d2b7b0f058b5' class='xr-section-summary' >Data variables: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>rotated_pole</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>|S1</div><div class='xr-var-preview xr-preview'>b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; ... b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27; b&#x27;&#x27;</div><input id='attrs-659723dc-9d5e-4fd7-90f5-0ef8ab39058a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-659723dc-9d5e-4fd7-90f5-0ef8ab39058a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1ff57ecb-932f-41f3-91dd-c5a73f932693' class='xr-var-data-in' type='checkbox'><label for='data-1ff57ecb-932f-41f3-91dd-c5a73f932693' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>grid_mapping_name :</span></dt><dd>rotated_latitude_longitude</dd><dt><span>grid_north_pole_longitude :</span></dt><dd>180.0</dd><dt><span>grid_north_pole_latitude :</span></dt><dd>90.0</dd></dl></div><div class='xr-var-data'><pre>array([b&#x27;&#x27;, b&#x27;&#x27;, b&#x27;&#x27;, ..., b&#x27;&#x27;, b&#x27;&#x27;, b&#x27;&#x27;], dtype=&#x27;|S1&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>tas</span></div><div class='xr-var-dims'>(time, rlat, rlon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 201, 194), meta=np.ndarray&gt;</div><input id='attrs-039bd140-6338-42c9-9c3c-bcd909f1798b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-039bd140-6338-42c9-9c3c-bcd909f1798b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a7884fb8-a37d-44ce-8ea1-bd26df6fedf1' class='xr-var-data-in' type='checkbox'><label for='data-a7884fb8-a37d-44ce-8ea1-bd26df6fedf1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Near-Surface Air Temperature</dd><dt><span>standard_name :</span></dt><dd>air_temperature</dd><dt><span>units :</span></dt><dd>K</dd><dt><span>grid_mapping :</span></dt><dd>rotated_pole</dd><dt><span>cell_methods :</span></dt><dd>time: mean</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1307,17 +1350,17 @@ Attributes: (12/26)
                     <tr>
                         <th> Bytes </th>
                         <td> 1.59 GiB </td>
-                        <td> 271.47 MiB </td>
+                        <td> 152.32 kiB </td>
                     </tr>
                     
                     <tr>
                         <th> Shape </th>
                         <td> (10950, 201, 194) </td>
-                        <td> (1825, 201, 194) </td>
+                        <td> (1, 201, 194) </td>
                     </tr>
                     <tr>
                         <th> Dask graph </th>
-                        <td colspan="2"> 6 chunks in 13 graph layers </td>
+                        <td colspan="2"> 10950 chunks in 13 graph layers </td>
                     </tr>
                     <tr>
                         <th> Data type </th>
@@ -1335,23 +1378,49 @@ Attributes: (12/26)
 
   <!-- Vertical lines -->
   <line x1="10" y1="0" x2="10" y2="28" style="stroke-width:2" />
-  <line x1="21" y1="11" x2="21" y2="40" />
-  <line x1="33" y1="23" x2="33" y2="52" />
-  <line x1="45" y1="35" x2="45" y2="63" />
-  <line x1="57" y1="47" x2="57" y2="75" />
-  <line x1="68" y1="58" x2="68" y2="87" />
+  <line x1="13" y1="3" x2="13" y2="32" />
+  <line x1="17" y1="7" x2="17" y2="35" />
+  <line x1="21" y1="11" x2="21" y2="39" />
+  <line x1="24" y1="14" x2="24" y2="43" />
+  <line x1="28" y1="18" x2="28" y2="47" />
+  <line x1="32" y1="22" x2="32" y2="50" />
+  <line x1="36" y1="26" x2="36" y2="54" />
+  <line x1="39" y1="29" x2="39" y2="58" />
+  <line x1="43" y1="33" x2="43" y2="61" />
+  <line x1="47" y1="37" x2="47" y2="65" />
+  <line x1="50" y1="40" x2="50" y2="69" />
+  <line x1="54" y1="44" x2="54" y2="73" />
+  <line x1="58" y1="48" x2="58" y2="76" />
+  <line x1="62" y1="52" x2="62" y2="80" />
+  <line x1="65" y1="55" x2="65" y2="84" />
+  <line x1="69" y1="59" x2="69" y2="87" />
+  <line x1="73" y1="63" x2="73" y2="91" />
+  <line x1="76" y1="66" x2="76" y2="95" />
   <line x1="80" y1="70" x2="80" y2="99" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 80.58823529411765,70.58823529411765 80.58823529411765,99.14019237232202 10.0,28.55195707820436" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="10.0,0.0 80.58823529411765,70.58823529411765 80.58823529411765,99.14019237232202 10.0,28.55195707820436" style="fill:#8B4903A0;stroke-width:0"/>
 
   <!-- Horizontal lines -->
   <line x1="10" y1="0" x2="38" y2="0" style="stroke-width:2" />
-  <line x1="21" y1="11" x2="50" y2="11" />
-  <line x1="33" y1="23" x2="61" y2="23" />
-  <line x1="45" y1="35" x2="73" y2="35" />
-  <line x1="57" y1="47" x2="85" y2="47" />
-  <line x1="68" y1="58" x2="97" y2="58" />
+  <line x1="13" y1="3" x2="42" y2="3" />
+  <line x1="17" y1="7" x2="45" y2="7" />
+  <line x1="21" y1="11" x2="49" y2="11" />
+  <line x1="24" y1="14" x2="53" y2="14" />
+  <line x1="28" y1="18" x2="56" y2="18" />
+  <line x1="32" y1="22" x2="60" y2="22" />
+  <line x1="36" y1="26" x2="64" y2="26" />
+  <line x1="39" y1="29" x2="68" y2="29" />
+  <line x1="43" y1="33" x2="71" y2="33" />
+  <line x1="47" y1="37" x2="75" y2="37" />
+  <line x1="50" y1="40" x2="79" y2="40" />
+  <line x1="54" y1="44" x2="82" y2="44" />
+  <line x1="58" y1="48" x2="86" y2="48" />
+  <line x1="62" y1="52" x2="90" y2="52" />
+  <line x1="65" y1="55" x2="94" y2="55" />
+  <line x1="69" y1="59" x2="97" y2="59" />
+  <line x1="73" y1="63" x2="101" y2="63" />
+  <line x1="76" y1="66" x2="105" y2="66" />
   <line x1="80" y1="70" x2="108" y2="70" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -1359,7 +1428,7 @@ Attributes: (12/26)
   <line x1="38" y1="0" x2="108" y2="70" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 38.35650722732014,0.0 108.94474252143779,70.58823529411765 80.58823529411765,70.58823529411765" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="10.0,0.0 38.35650722732014,0.0 108.94474252143779,70.58823529411765 80.58823529411765,70.58823529411765" style="fill:#8B4903A0;stroke-width:0"/>
 
   <!-- Horizontal lines -->
   <line x1="80" y1="70" x2="108" y2="70" style="stroke-width:2" />
@@ -1379,7 +1448,7 @@ Attributes: (12/26)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>time_bnds</span></div><div class='xr-var-dims'>(time, bnds)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1825, 2), meta=np.ndarray&gt;</div><input id='attrs-ce2c00ef-29ff-43e4-be81-6ad46522955d' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-ce2c00ef-29ff-43e4-be81-6ad46522955d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bce72253-1332-401c-a7c0-9bb9b5c9bdd2' class='xr-var-data-in' type='checkbox'><label for='data-bce72253-1332-401c-a7c0-9bb9b5c9bdd2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>time_bnds</span></div><div class='xr-var-dims'>(time, bnds)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 2), meta=np.ndarray&gt;</div><input id='attrs-c1cb8c0b-7f78-4ddf-89ba-b227a0fff814' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-c1cb8c0b-7f78-4ddf-89ba-b227a0fff814' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-63a47100-6998-4f6b-bf4f-93ee8a9d725e' class='xr-var-data-in' type='checkbox'><label for='data-63a47100-6998-4f6b-bf4f-93ee8a9d725e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1395,17 +1464,17 @@ Attributes: (12/26)
                     <tr>
                         <th> Bytes </th>
                         <td> 171.09 kiB </td>
-                        <td> 28.52 kiB </td>
+                        <td> 16 B </td>
                     </tr>
                     
                     <tr>
                         <th> Shape </th>
                         <td> (10950, 2) </td>
-                        <td> (1825, 2) </td>
+                        <td> (1, 2) </td>
                     </tr>
                     <tr>
                         <th> Dask graph </th>
-                        <td colspan="2"> 6 chunks in 13 graph layers </td>
+                        <td colspan="2"> 10950 chunks in 13 graph layers </td>
                     </tr>
                     <tr>
                         <th> Data type </th>
@@ -1419,11 +1488,24 @@ Attributes: (12/26)
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="20" x2="25" y2="20" />
-  <line x1="0" y1="40" x2="25" y2="40" />
-  <line x1="0" y1="60" x2="25" y2="60" />
-  <line x1="0" y1="80" x2="25" y2="80" />
-  <line x1="0" y1="100" x2="25" y2="100" />
+  <line x1="0" y1="6" x2="25" y2="6" />
+  <line x1="0" y1="12" x2="25" y2="12" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="25" x2="25" y2="25" />
+  <line x1="0" y1="31" x2="25" y2="31" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="44" x2="25" y2="44" />
+  <line x1="0" y1="50" x2="25" y2="50" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="63" x2="25" y2="63" />
+  <line x1="0" y1="69" x2="25" y2="69" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="82" x2="25" y2="82" />
+  <line x1="0" y1="88" x2="25" y2="88" />
+  <line x1="0" y1="94" x2="25" y2="94" />
+  <line x1="0" y1="101" x2="25" y2="101" />
+  <line x1="0" y1="107" x2="25" y2="107" />
+  <line x1="0" y1="113" x2="25" y2="113" />
   <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -1431,7 +1513,7 @@ Attributes: (12/26)
   <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
 
   <!-- Text -->
   <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >2</text>
@@ -1439,7 +1521,7 @@ Attributes: (12/26)
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-f2ef0595-1b99-4c74-b673-0aec20eb9aa7' class='xr-section-summary-in' type='checkbox'  ><label for='section-f2ef0595-1b99-4c74-b673-0aec20eb9aa7' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-b54471f1-f291-4c58-ac9b-2503e50f73f4' class='xr-index-data-in' type='checkbox'/><label for='index-b54471f1-f291-4c58-ac9b-2503e50f73f4' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(CFTimeIndex([1971-01-01 12:00:00, 1971-01-02 12:00:00, 1971-01-03 12:00:00,
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-9c8837da-ab87-47f4-886b-d62fe49a7314' class='xr-section-summary-in' type='checkbox'  ><label for='section-9c8837da-ab87-47f4-886b-d62fe49a7314' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-f7614e81-cf45-44ea-9f9c-742640eb5a39' class='xr-index-data-in' type='checkbox'/><label for='index-f7614e81-cf45-44ea-9f9c-742640eb5a39' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(CFTimeIndex([1971-01-01 12:00:00, 1971-01-02 12:00:00, 1971-01-03 12:00:00,
              1971-01-04 12:00:00, 1971-01-05 12:00:00, 1971-01-06 12:00:00,
              1971-01-07 12:00:00, 1971-01-08 12:00:00, 1971-01-09 12:00:00,
              1971-01-10 12:00:00,
@@ -1448,7 +1530,7 @@ Attributes: (12/26)
              2000-12-25 12:00:00, 2000-12-26 12:00:00, 2000-12-27 12:00:00,
              2000-12-28 12:00:00, 2000-12-29 12:00:00, 2000-12-30 12:00:00,
              2000-12-31 12:00:00],
-            dtype=&#x27;object&#x27;, length=10950, calendar=&#x27;noleap&#x27;, freq=&#x27;D&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>rlon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-e160556a-8e39-450c-a06b-fe067766ee43' class='xr-index-data-in' type='checkbox'/><label for='index-e160556a-8e39-450c-a06b-fe067766ee43' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-24.639999389648438,  -24.20001220703125,    -23.760009765625,
+            dtype=&#x27;object&#x27;, length=10950, calendar=&#x27;noleap&#x27;, freq=&#x27;D&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>rlon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-dbd4a606-9207-47a1-9dc9-c04e08049957' class='xr-index-data-in' type='checkbox'/><label for='index-dbd4a606-9207-47a1-9dc9-c04e08049957' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-24.639999389648438,  -24.20001220703125,    -23.760009765625,
        -23.320022583007812,   -22.8800048828125,  -22.44000244140625,
                      -22.0, -21.560012817382812, -21.120025634765625,
        -20.680007934570312,
@@ -1457,7 +1539,7 @@ Attributes: (12/26)
         57.639984130859375,   58.07997131347656,  58.519989013671875,
          58.95997619628906,  59.399993896484375,   59.83998107910156,
          60.27998352050781],
-      dtype=&#x27;float64&#x27;, name=&#x27;rlon&#x27;, length=194))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>rlat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-8d6d2a17-5951-4c97-8970-bd733fe42bf7' class='xr-index-data-in' type='checkbox'/><label for='index-8d6d2a17-5951-4c97-8970-bd733fe42bf7' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  -45.7599983215332,  -45.31999969482422,  -44.87999725341797,
+      dtype=&#x27;float64&#x27;, name=&#x27;rlon&#x27;, length=194))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>rlat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-cdb439f3-61eb-49ef-ae13-2fd7d27a4180' class='xr-index-data-in' type='checkbox'/><label for='index-cdb439f3-61eb-49ef-ae13-2fd7d27a4180' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  -45.7599983215332,  -45.31999969482422,  -44.87999725341797,
         -44.43999481201172,               -44.0,  -43.55999755859375,
        -43.119998931884766,  -42.68000030517578,  -42.23999786376953,
         -41.79999923706055,
@@ -1466,7 +1548,7 @@ Attributes: (12/26)
          39.60000228881836,   40.03999710083008,   40.47999954223633,
          40.92000198364258,   41.36000061035156,   41.80000305175781,
           42.2400016784668],
-      dtype=&#x27;float64&#x27;, name=&#x27;rlat&#x27;, length=201))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-50260381-d313-426d-a70c-b59261e73e23' class='xr-section-summary-in' type='checkbox'  ><label for='section-50260381-d313-426d-a70c-b59261e73e23' class='xr-section-summary' >Attributes: <span>(26)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>CanRCM4 model output prepared for CORDEX Project</dd><dt><span>institution :</span></dt><dd>CCCma (Canadian Centre for Climate Modelling and Analysis, Victoria, BC, Canada)</dd><dt><span>institute_id :</span></dt><dd>CCCma</dd><dt><span>contact :</span></dt><dd>cccma_info@ec.gc.ca</dd><dt><span>Conventions :</span></dt><dd>CF-1.4</dd><dt><span>experiment :</span></dt><dd>Historical run driven by CCCma-CanESM2</dd><dt><span>experiment_id :</span></dt><dd>historical</dd><dt><span>driving_experiment :</span></dt><dd>CCCma-CanESM2, historical, r1i1p1</dd><dt><span>driving_model_id :</span></dt><dd>CCCma-CanESM2</dd><dt><span>driving_experiment_name :</span></dt><dd>historical</dd><dt><span>driving_model_ensemble_member :</span></dt><dd>r1i1p1</dd><dt><span>forcing :</span></dt><dd>GHG,Oz,SA,BC,OC,LU,Vl (GHG includes CO2,CH4,N2O,CFC11,effective CFC12)</dd><dt><span>model_id :</span></dt><dd>CCCma-CanRCM4</dd><dt><span>rcm_version_id :</span></dt><dd>r2</dd><dt><span>project_id :</span></dt><dd>CORDEX</dd><dt><span>CORDEX_domain :</span></dt><dd>AFR-44</dd><dt><span>frequency :</span></dt><dd>day</dd><dt><span>product :</span></dt><dd>output</dd><dt><span>CCCma_runid :</span></dt><dd>afr019_igm44</dd><dt><span>references :</span></dt><dd>http://www.cccma.ec.gc.ca/models</dd><dt><span>history :</span></dt><dd>created: 2012-06-29 23:52:08 by rcm2nc</dd><dt><span>data_licence :</span></dt><dd>1) GRANT OF LICENCE - The Government of Canada (Environment Canada) is the 
+      dtype=&#x27;float64&#x27;, name=&#x27;rlat&#x27;, length=201))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-de04e907-6c7e-4401-8b9f-ef2b4d3c2b6a' class='xr-section-summary-in' type='checkbox'  ><label for='section-de04e907-6c7e-4401-8b9f-ef2b4d3c2b6a' class='xr-section-summary' >Attributes: <span>(26)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>CanRCM4 model output prepared for CORDEX Project</dd><dt><span>institution :</span></dt><dd>CCCma (Canadian Centre for Climate Modelling and Analysis, Victoria, BC, Canada)</dd><dt><span>institute_id :</span></dt><dd>CCCma</dd><dt><span>contact :</span></dt><dd>cccma_info@ec.gc.ca</dd><dt><span>Conventions :</span></dt><dd>CF-1.4</dd><dt><span>experiment :</span></dt><dd>Historical run driven by CCCma-CanESM2</dd><dt><span>experiment_id :</span></dt><dd>historical</dd><dt><span>driving_experiment :</span></dt><dd>CCCma-CanESM2, historical, r1i1p1</dd><dt><span>driving_model_id :</span></dt><dd>CCCma-CanESM2</dd><dt><span>driving_experiment_name :</span></dt><dd>historical</dd><dt><span>driving_model_ensemble_member :</span></dt><dd>r1i1p1</dd><dt><span>forcing :</span></dt><dd>GHG,Oz,SA,BC,OC,LU,Vl (GHG includes CO2,CH4,N2O,CFC11,effective CFC12)</dd><dt><span>model_id :</span></dt><dd>CCCma-CanRCM4</dd><dt><span>rcm_version_id :</span></dt><dd>r2</dd><dt><span>project_id :</span></dt><dd>CORDEX</dd><dt><span>CORDEX_domain :</span></dt><dd>AFR-44</dd><dt><span>frequency :</span></dt><dd>day</dd><dt><span>product :</span></dt><dd>output</dd><dt><span>CCCma_runid :</span></dt><dd>afr019_igm44</dd><dt><span>references :</span></dt><dd>http://www.cccma.ec.gc.ca/models</dd><dt><span>history :</span></dt><dd>created: 2012-06-29 23:52:08 by rcm2nc</dd><dt><span>data_licence :</span></dt><dd>1) GRANT OF LICENCE - The Government of Canada (Environment Canada) is the 
 owner of all intellectual property rights (including copyright) that may exist in this Data 
 product. You (as &quot;The Licensee&quot;) are hereby granted a non-exclusive, non-assignable, 
 non-transferable unrestricted licence to use this data product for any purpose including 
@@ -1851,21 +1933,21 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;tas&#x27; (time: 10950, rlat: 201, rlon: 194)&gt;
-dask.array&lt;concatenate, shape=(10950, 201, 194), dtype=float32, chunksize=(1825, 201, 194), chunktype=numpy.ndarray&gt;
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;tas&#x27; (time: 10950, rlat: 201, rlon: 194)&gt; Size: 2GB
+dask.array&lt;concatenate, shape=(10950, 201, 194), dtype=float32, chunksize=(1, 201, 194), chunktype=numpy.ndarray&gt;
 Coordinates:
-  * time     (time) object 1971-01-01 12:00:00 ... 2000-12-31 12:00:00
-  * rlon     (rlon) float64 -24.64 -24.2 -23.76 -23.32 ... 59.4 59.84 60.28
-  * rlat     (rlat) float64 -45.76 -45.32 -44.88 -44.44 ... 41.36 41.8 42.24
-    lon      (rlat, rlon) float64 dask.array&lt;chunksize=(201, 194), meta=np.ndarray&gt;
-    lat      (rlat, rlon) float64 dask.array&lt;chunksize=(201, 194), meta=np.ndarray&gt;
-    height   float64 2.0
+  * time     (time) object 88kB 1971-01-01 12:00:00 ... 2000-12-31 12:00:00
+  * rlon     (rlon) float64 2kB -24.64 -24.2 -23.76 -23.32 ... 59.4 59.84 60.28
+  * rlat     (rlat) float64 2kB -45.76 -45.32 -44.88 -44.44 ... 41.36 41.8 42.24
+    lon      (rlat, rlon) float64 312kB dask.array&lt;chunksize=(201, 194), meta=np.ndarray&gt;
+    lat      (rlat, rlon) float64 312kB dask.array&lt;chunksize=(201, 194), meta=np.ndarray&gt;
+    height   float64 8B 2.0
 Attributes:
     long_name:      Near-Surface Air Temperature
     standard_name:  air_temperature
     units:          K
     grid_mapping:   rotated_pole
-    cell_methods:   time: mean</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'tas'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 10950</li><li><span class='xr-has-index'>rlat</span>: 201</li><li><span class='xr-has-index'>rlon</span>: 194</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-3c004ed6-90c1-470e-a516-9f5ba31aeb05' class='xr-array-in' type='checkbox' checked><label for='section-3c004ed6-90c1-470e-a516-9f5ba31aeb05' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(1825, 201, 194), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
+    cell_methods:   time: mean</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'tas'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 10950</li><li><span class='xr-has-index'>rlat</span>: 201</li><li><span class='xr-has-index'>rlon</span>: 194</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-a3f2d8c0-cada-4f11-9214-1a00dbc6c899' class='xr-array-in' type='checkbox' checked><label for='section-a3f2d8c0-cada-4f11-9214-1a00dbc6c899' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(1, 201, 194), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1881,17 +1963,17 @@ Attributes:
                     <tr>
                         <th> Bytes </th>
                         <td> 1.59 GiB </td>
-                        <td> 271.47 MiB </td>
+                        <td> 152.32 kiB </td>
                     </tr>
                     
                     <tr>
                         <th> Shape </th>
                         <td> (10950, 201, 194) </td>
-                        <td> (1825, 201, 194) </td>
+                        <td> (1, 201, 194) </td>
                     </tr>
                     <tr>
                         <th> Dask graph </th>
-                        <td colspan="2"> 6 chunks in 13 graph layers </td>
+                        <td colspan="2"> 10950 chunks in 13 graph layers </td>
                     </tr>
                     <tr>
                         <th> Data type </th>
@@ -1909,23 +1991,49 @@ Attributes:
 
   <!-- Vertical lines -->
   <line x1="10" y1="0" x2="10" y2="28" style="stroke-width:2" />
-  <line x1="21" y1="11" x2="21" y2="40" />
-  <line x1="33" y1="23" x2="33" y2="52" />
-  <line x1="45" y1="35" x2="45" y2="63" />
-  <line x1="57" y1="47" x2="57" y2="75" />
-  <line x1="68" y1="58" x2="68" y2="87" />
+  <line x1="13" y1="3" x2="13" y2="32" />
+  <line x1="17" y1="7" x2="17" y2="35" />
+  <line x1="21" y1="11" x2="21" y2="39" />
+  <line x1="24" y1="14" x2="24" y2="43" />
+  <line x1="28" y1="18" x2="28" y2="47" />
+  <line x1="32" y1="22" x2="32" y2="50" />
+  <line x1="36" y1="26" x2="36" y2="54" />
+  <line x1="39" y1="29" x2="39" y2="58" />
+  <line x1="43" y1="33" x2="43" y2="61" />
+  <line x1="47" y1="37" x2="47" y2="65" />
+  <line x1="50" y1="40" x2="50" y2="69" />
+  <line x1="54" y1="44" x2="54" y2="73" />
+  <line x1="58" y1="48" x2="58" y2="76" />
+  <line x1="62" y1="52" x2="62" y2="80" />
+  <line x1="65" y1="55" x2="65" y2="84" />
+  <line x1="69" y1="59" x2="69" y2="87" />
+  <line x1="73" y1="63" x2="73" y2="91" />
+  <line x1="76" y1="66" x2="76" y2="95" />
   <line x1="80" y1="70" x2="80" y2="99" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 80.58823529411765,70.58823529411765 80.58823529411765,99.14019237232202 10.0,28.55195707820436" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="10.0,0.0 80.58823529411765,70.58823529411765 80.58823529411765,99.14019237232202 10.0,28.55195707820436" style="fill:#8B4903A0;stroke-width:0"/>
 
   <!-- Horizontal lines -->
   <line x1="10" y1="0" x2="38" y2="0" style="stroke-width:2" />
-  <line x1="21" y1="11" x2="50" y2="11" />
-  <line x1="33" y1="23" x2="61" y2="23" />
-  <line x1="45" y1="35" x2="73" y2="35" />
-  <line x1="57" y1="47" x2="85" y2="47" />
-  <line x1="68" y1="58" x2="97" y2="58" />
+  <line x1="13" y1="3" x2="42" y2="3" />
+  <line x1="17" y1="7" x2="45" y2="7" />
+  <line x1="21" y1="11" x2="49" y2="11" />
+  <line x1="24" y1="14" x2="53" y2="14" />
+  <line x1="28" y1="18" x2="56" y2="18" />
+  <line x1="32" y1="22" x2="60" y2="22" />
+  <line x1="36" y1="26" x2="64" y2="26" />
+  <line x1="39" y1="29" x2="68" y2="29" />
+  <line x1="43" y1="33" x2="71" y2="33" />
+  <line x1="47" y1="37" x2="75" y2="37" />
+  <line x1="50" y1="40" x2="79" y2="40" />
+  <line x1="54" y1="44" x2="82" y2="44" />
+  <line x1="58" y1="48" x2="86" y2="48" />
+  <line x1="62" y1="52" x2="90" y2="52" />
+  <line x1="65" y1="55" x2="94" y2="55" />
+  <line x1="69" y1="59" x2="97" y2="59" />
+  <line x1="73" y1="63" x2="101" y2="63" />
+  <line x1="76" y1="66" x2="105" y2="66" />
   <line x1="80" y1="70" x2="108" y2="70" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -1933,7 +2041,7 @@ Attributes:
   <line x1="38" y1="0" x2="108" y2="70" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 38.35650722732014,0.0 108.94474252143779,70.58823529411765 80.58823529411765,70.58823529411765" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="10.0,0.0 38.35650722732014,0.0 108.94474252143779,70.58823529411765 80.58823529411765,70.58823529411765" style="fill:#8B4903A0;stroke-width:0"/>
 
   <!-- Horizontal lines -->
   <line x1="80" y1="70" x2="108" y2="70" style="stroke-width:2" />
@@ -1953,13 +2061,13 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></div></li><li class='xr-section-item'><input id='section-1cad4cb1-8be2-4bb5-ba33-1cfc704f2050' class='xr-section-summary-in' type='checkbox'  checked><label for='section-1cad4cb1-8be2-4bb5-ba33-1cfc704f2050' class='xr-section-summary' >Coordinates: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>1971-01-01 12:00:00 ... 2000-12-...</div><input id='attrs-373b5415-aee5-4e75-8e10-b4fbbf04cd33' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-373b5415-aee5-4e75-8e10-b4fbbf04cd33' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e11b2fb8-119b-4bd7-b4ef-013d3fbf964a' class='xr-var-data-in' type='checkbox'><label for='data-e11b2fb8-119b-4bd7-b4ef-013d3fbf964a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>axis :</span></dt><dd>T</dd><dt><span>bounds :</span></dt><dd>time_bnds</dd></dl></div><div class='xr-var-data'><pre>array([cftime.DatetimeNoLeap(1971, 1, 1, 12, 0, 0, 0, has_year_zero=True),
+</table></div></div></li><li class='xr-section-item'><input id='section-027e768a-14fe-46a8-afb2-3c0ed83a3a4b' class='xr-section-summary-in' type='checkbox'  checked><label for='section-027e768a-14fe-46a8-afb2-3c0ed83a3a4b' class='xr-section-summary' >Coordinates: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>1971-01-01 12:00:00 ... 2000-12-...</div><input id='attrs-91c0d25b-92d8-4b20-8258-b5fafed56781' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-91c0d25b-92d8-4b20-8258-b5fafed56781' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dac8e147-03be-4d4f-927e-b032a29ae883' class='xr-var-data-in' type='checkbox'><label for='data-dac8e147-03be-4d4f-927e-b032a29ae883' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>axis :</span></dt><dd>T</dd><dt><span>bounds :</span></dt><dd>time_bnds</dd></dl></div><div class='xr-var-data'><pre>array([cftime.DatetimeNoLeap(1971, 1, 1, 12, 0, 0, 0, has_year_zero=True),
        cftime.DatetimeNoLeap(1971, 1, 2, 12, 0, 0, 0, has_year_zero=True),
        cftime.DatetimeNoLeap(1971, 1, 3, 12, 0, 0, 0, has_year_zero=True), ...,
        cftime.DatetimeNoLeap(2000, 12, 29, 12, 0, 0, 0, has_year_zero=True),
        cftime.DatetimeNoLeap(2000, 12, 30, 12, 0, 0, 0, has_year_zero=True),
        cftime.DatetimeNoLeap(2000, 12, 31, 12, 0, 0, 0, has_year_zero=True)],
-      dtype=object)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rlon</span></div><div class='xr-var-dims'>(rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-24.64 -24.2 -23.76 ... 59.84 60.28</div><input id='attrs-e03950d3-9fea-4d20-b626-78dcbb7c49e3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e03950d3-9fea-4d20-b626-78dcbb7c49e3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-80e5c230-e693-40cb-ad8a-02d54a93fb31' class='xr-var-data-in' type='checkbox'><label for='data-80e5c230-e693-40cb-ad8a-02d54a93fb31' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude in rotated pole grid</dd><dt><span>units :</span></dt><dd>degrees</dd><dt><span>axis :</span></dt><dd>X</dd><dt><span>standard_name :</span></dt><dd>grid_longitude</dd></dl></div><div class='xr-var-data'><pre>array([-24.639999, -24.200012, -23.76001 , -23.320023, -22.880005, -22.440002,
+      dtype=object)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rlon</span></div><div class='xr-var-dims'>(rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-24.64 -24.2 -23.76 ... 59.84 60.28</div><input id='attrs-f22eb2e8-8471-4737-97ad-f10e525261ef' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f22eb2e8-8471-4737-97ad-f10e525261ef' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0f8f5286-8d6d-48ea-8f4c-2c50a3cd8b7e' class='xr-var-data-in' type='checkbox'><label for='data-0f8f5286-8d6d-48ea-8f4c-2c50a3cd8b7e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude in rotated pole grid</dd><dt><span>units :</span></dt><dd>degrees</dd><dt><span>axis :</span></dt><dd>X</dd><dt><span>standard_name :</span></dt><dd>grid_longitude</dd></dl></div><div class='xr-var-data'><pre>array([-24.639999, -24.200012, -23.76001 , -23.320023, -22.880005, -22.440002,
        -22.      , -21.560013, -21.120026, -20.680008, -20.240021, -19.800003,
        -19.360016, -18.919998, -18.480011, -18.040024, -17.600006, -17.160019,
        -16.720001, -16.280014, -15.840012, -15.400009, -14.960007, -14.520004,
@@ -1991,8 +2099,8 @@ Attributes:
         51.919968,  52.359985,  52.799988,  53.23999 ,  53.679977,  54.119995,
         54.559982,  54.999969,  55.439987,  55.879974,  56.319992,  56.759979,
         57.199997,  57.639984,  58.079971,  58.519989,  58.959976,  59.399994,
-        59.839981,  60.279984])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rlat</span></div><div class='xr-var-dims'>(rlat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-45.76 -45.32 -44.88 ... 41.8 42.24</div><input id='attrs-0ae35e01-0649-465b-95ec-55a6cb3908e3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0ae35e01-0649-465b-95ec-55a6cb3908e3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-945a428e-1992-416f-bf2f-b13762d3ec20' class='xr-var-data-in' type='checkbox'><label for='data-945a428e-1992-416f-bf2f-b13762d3ec20' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude in rotated pole grid</dd><dt><span>units :</span></dt><dd>degrees</dd><dt><span>axis :</span></dt><dd>Y</dd><dt><span>standard_name :</span></dt><dd>grid_latitude</dd></dl></div><div class='xr-var-data'><pre>array([-45.759998, -45.32    , -44.879997, ...,  41.360001,  41.800003,
-        42.240002])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(201, 194), meta=np.ndarray&gt;</div><input id='attrs-8d7465a9-582d-47b0-b0dc-81124c7e54ae' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8d7465a9-582d-47b0-b0dc-81124c7e54ae' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-44d8a609-0a24-476d-8ff7-1d55efa645a8' class='xr-var-data-in' type='checkbox'><label for='data-44d8a609-0a24-476d-8ff7-1d55efa645a8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><table>
+        59.839981,  60.279984])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rlat</span></div><div class='xr-var-dims'>(rlat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-45.76 -45.32 -44.88 ... 41.8 42.24</div><input id='attrs-1e6fcf1f-51cf-482d-b0c9-125f1aef851d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1e6fcf1f-51cf-482d-b0c9-125f1aef851d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3bff95df-81b6-4146-bfcd-8338d0795ba1' class='xr-var-data-in' type='checkbox'><label for='data-3bff95df-81b6-4146-bfcd-8338d0795ba1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude in rotated pole grid</dd><dt><span>units :</span></dt><dd>degrees</dd><dt><span>axis :</span></dt><dd>Y</dd><dt><span>standard_name :</span></dt><dd>grid_latitude</dd></dl></div><div class='xr-var-data'><pre>array([-45.759998, -45.32    , -44.879997, ...,  41.360001,  41.800003,
+        42.240002])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(201, 194), meta=np.ndarray&gt;</div><input id='attrs-c47e37cd-00d7-48fc-a9d9-b415b6e13b06' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c47e37cd-00d7-48fc-a9d9-b415b6e13b06' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bb795727-2b9c-4297-b889-1b7f00ef71b2' class='xr-var-data-in' type='checkbox'><label for='data-bb795727-2b9c-4297-b889-1b7f00ef71b2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -2047,7 +2155,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(201, 194), meta=np.ndarray&gt;</div><input id='attrs-170a7cdd-7793-44cf-9d4e-b57b7968ab3d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-170a7cdd-7793-44cf-9d4e-b57b7968ab3d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-10543602-e7a6-4337-a8d8-4aa0de3cc4c3' class='xr-var-data-in' type='checkbox'><label for='data-10543602-e7a6-4337-a8d8-4aa0de3cc4c3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat</span></div><div class='xr-var-dims'>(rlat, rlon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(201, 194), meta=np.ndarray&gt;</div><input id='attrs-cfc2816a-08e3-4176-afd8-5c014d296923' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cfc2816a-08e3-4176-afd8-5c014d296923' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-948f4110-2340-4b96-9944-c4515b725ac9' class='xr-var-data-in' type='checkbox'><label for='data-948f4110-2340-4b96-9944-c4515b725ac9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -2102,7 +2210,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>height</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>2.0</div><input id='attrs-48ee8698-734b-4fbf-a6c3-3280cde17967' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-48ee8698-734b-4fbf-a6c3-3280cde17967' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d74fc59d-5793-481e-922c-139eca3f6f1a' class='xr-var-data-in' type='checkbox'><label for='data-d74fc59d-5793-481e-922c-139eca3f6f1a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>height</dd><dt><span>long_name :</span></dt><dd>height</dd><dt><span>positive :</span></dt><dd>up</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>axis :</span></dt><dd>Z</dd></dl></div><div class='xr-var-data'><pre>array(2.)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9d9cecea-5223-42e2-9106-41fa77c883d2' class='xr-section-summary-in' type='checkbox'  ><label for='section-9d9cecea-5223-42e2-9106-41fa77c883d2' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-a9bde290-5bfa-4c29-9215-96ab86f9b1eb' class='xr-index-data-in' type='checkbox'/><label for='index-a9bde290-5bfa-4c29-9215-96ab86f9b1eb' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(CFTimeIndex([1971-01-01 12:00:00, 1971-01-02 12:00:00, 1971-01-03 12:00:00,
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>height</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>2.0</div><input id='attrs-ab28bd5a-14e4-4418-9307-0ece77a18d49' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ab28bd5a-14e4-4418-9307-0ece77a18d49' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6401f75e-9d23-49c7-a32c-65f09abeb821' class='xr-var-data-in' type='checkbox'><label for='data-6401f75e-9d23-49c7-a32c-65f09abeb821' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>height</dd><dt><span>long_name :</span></dt><dd>height</dd><dt><span>positive :</span></dt><dd>up</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>axis :</span></dt><dd>Z</dd></dl></div><div class='xr-var-data'><pre>array(2.)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-7be95d73-04c2-48ce-b102-b0f672c0c5b0' class='xr-section-summary-in' type='checkbox'  ><label for='section-7be95d73-04c2-48ce-b102-b0f672c0c5b0' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-5bb4c33a-e098-4d67-b131-4caaa771affe' class='xr-index-data-in' type='checkbox'/><label for='index-5bb4c33a-e098-4d67-b131-4caaa771affe' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(CFTimeIndex([1971-01-01 12:00:00, 1971-01-02 12:00:00, 1971-01-03 12:00:00,
              1971-01-04 12:00:00, 1971-01-05 12:00:00, 1971-01-06 12:00:00,
              1971-01-07 12:00:00, 1971-01-08 12:00:00, 1971-01-09 12:00:00,
              1971-01-10 12:00:00,
@@ -2111,7 +2219,7 @@ Attributes:
              2000-12-25 12:00:00, 2000-12-26 12:00:00, 2000-12-27 12:00:00,
              2000-12-28 12:00:00, 2000-12-29 12:00:00, 2000-12-30 12:00:00,
              2000-12-31 12:00:00],
-            dtype=&#x27;object&#x27;, length=10950, calendar=&#x27;noleap&#x27;, freq=&#x27;D&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>rlon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-f0c7c6ce-eb0e-459e-b073-d2f32840e8b6' class='xr-index-data-in' type='checkbox'/><label for='index-f0c7c6ce-eb0e-459e-b073-d2f32840e8b6' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-24.639999389648438,  -24.20001220703125,    -23.760009765625,
+            dtype=&#x27;object&#x27;, length=10950, calendar=&#x27;noleap&#x27;, freq=&#x27;D&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>rlon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-3677c716-01c1-41ad-9c8a-8875101e169c' class='xr-index-data-in' type='checkbox'/><label for='index-3677c716-01c1-41ad-9c8a-8875101e169c' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-24.639999389648438,  -24.20001220703125,    -23.760009765625,
        -23.320022583007812,   -22.8800048828125,  -22.44000244140625,
                      -22.0, -21.560012817382812, -21.120025634765625,
        -20.680007934570312,
@@ -2120,7 +2228,7 @@ Attributes:
         57.639984130859375,   58.07997131347656,  58.519989013671875,
          58.95997619628906,  59.399993896484375,   59.83998107910156,
          60.27998352050781],
-      dtype=&#x27;float64&#x27;, name=&#x27;rlon&#x27;, length=194))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>rlat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-316345c7-c335-4dd8-a832-6e4fbb03d627' class='xr-index-data-in' type='checkbox'/><label for='index-316345c7-c335-4dd8-a832-6e4fbb03d627' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  -45.7599983215332,  -45.31999969482422,  -44.87999725341797,
+      dtype=&#x27;float64&#x27;, name=&#x27;rlon&#x27;, length=194))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>rlat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-842ed022-cc72-4e3f-a2cb-8fe0720bdf19' class='xr-index-data-in' type='checkbox'/><label for='index-842ed022-cc72-4e3f-a2cb-8fe0720bdf19' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  -45.7599983215332,  -45.31999969482422,  -44.87999725341797,
         -44.43999481201172,               -44.0,  -43.55999755859375,
        -43.119998931884766,  -42.68000030517578,  -42.23999786376953,
         -41.79999923706055,
@@ -2129,7 +2237,7 @@ Attributes:
          39.60000228881836,   40.03999710083008,   40.47999954223633,
          40.92000198364258,   41.36000061035156,   41.80000305175781,
           42.2400016784668],
-      dtype=&#x27;float64&#x27;, name=&#x27;rlat&#x27;, length=201))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-b6aae65c-3ebd-475a-9707-9124edb1de1f' class='xr-section-summary-in' type='checkbox'  checked><label for='section-b6aae65c-3ebd-475a-9707-9124edb1de1f' class='xr-section-summary' >Attributes: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Near-Surface Air Temperature</dd><dt><span>standard_name :</span></dt><dd>air_temperature</dd><dt><span>units :</span></dt><dd>K</dd><dt><span>grid_mapping :</span></dt><dd>rotated_pole</dd><dt><span>cell_methods :</span></dt><dd>time: mean</dd></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;float64&#x27;, name=&#x27;rlat&#x27;, length=201))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-13079175-fbcf-4eb6-8a45-5c49cfade3fe' class='xr-section-summary-in' type='checkbox'  checked><label for='section-13079175-fbcf-4eb6-8a45-5c49cfade3fe' class='xr-section-summary' >Attributes: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Near-Surface Air Temperature</dd><dt><span>standard_name :</span></dt><dd>air_temperature</dd><dt><span>units :</span></dt><dd>K</dd><dt><span>grid_mapping :</span></dt><dd>rotated_pole</dd><dt><span>cell_methods :</span></dt><dd>time: mean</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>We will now compute the monthly climatology for the reference period. The monthly climatology represents for each month, and each grid point, the average value over the reference period of 30 years, from 1971 to 2000. We can compute the climatology for each grid point with xarray in two steps: first, all the values for one specific month have to be grouped with the function <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> and second, we can create the average of each group with the function <code class="docutils literal notranslate"><span class="pre">mean()</span></code>.</p>
 <p>The result is a three-dimensional DataArray with the dimensions <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">rlat</span></code> and <code class="docutils literal notranslate"><span class="pre">rlon</span></code>. The operation has changed the name of the <code class="docutils literal notranslate"><span class="pre">time</span></code> dimension to <code class="docutils literal notranslate"><span class="pre">month</span></code>, which has the average near-surface air temperature for each month. Please note that this operation also drops all the attributes (metadata) from the DataArray.</p>
@@ -2148,9 +2256,9 @@ Attributes:
 </div>
 </div>
 </div>
-</section>
+<hr></section>
 <section id="compute-cordex-future-climatology-for-target-period-2071-2100-based-on-scenario-rcp4-5">
-<h2>Compute CORDEX future climatology for target period 2071-2100 based on scenario RCP4.5<a class="headerlink" href="#compute-cordex-future-climatology-for-target-period-2071-2100-based-on-scenario-rcp4-5" title="Link to this heading">#</a></h2>
+<h2>5. Compute CORDEX future climatology for target period 2071-2100 based on scenario RCP4.5<a class="headerlink" href="#compute-cordex-future-climatology-for-target-period-2071-2100-based-on-scenario-rcp4-5" title="Link to this heading">#</a></h2>
 <p>Let us now repeat the steps executed for the historical experiment data with the <code class="docutils literal notranslate"><span class="pre">scenario</span> <span class="pre">RCP4.5</span></code> data. With the projection data for the target period 2071 to 2100, we can compute the projected climatology according to this particular scenario, which can be compared with the historical climatology from the reference period.</p>
 <p>Again, we begin with the function <code class="docutils literal notranslate"><span class="pre">open_mfdataset()</span></code> to load the multiple <code class="docutils literal notranslate"><span class="pre">NetCDF</span></code> files. The scenario data is also organised into separate files for each 5-year period. These will be concatenated along the <code class="docutils literal notranslate"><span class="pre">time</span></code> dimension.</p>
 <div class="cell docutils container">
@@ -2187,9 +2295,9 @@ Attributes:
 </div>
 </div>
 </div>
-</section>
-<section id="compute-and-visualize-the-climate-change-signal-between-the-target-2071-2100-and-reference-1971-2000-period">
-<h2>Compute and visualize the climate change signal between the target (2071-2100) and reference (1971-2000) period<a class="headerlink" href="#compute-and-visualize-the-climate-change-signal-between-the-target-2071-2100-and-reference-1971-2000-period" title="Link to this heading">#</a></h2>
+<hr></section>
+<section id="compute-and-visualize-the-climate-change-signal">
+<h2>6. Compute and visualize the climate change signal<a class="headerlink" href="#compute-and-visualize-the-climate-change-signal" title="Link to this heading">#</a></h2>
 <p>Now, we can compute the difference between the two climatologies. Since both DataArrays have the same structure, we can simply subtract the historical climatology from the projected climatology. The resulting data array has the projected averaged temperature difference for each month.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2237,7 +2345,11 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c0d055f983f0d0fe511b177f8459d8db1356049ca9dc636bcfe5a8042bd2d5b4.png" src="../../_images/c0d055f983f0d0fe511b177f8459d8db1356049ca9dc636bcfe5a8042bd2d5b4.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/110m_physical/ne_110m_coastline.zip
+  warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
+</pre></div>
+</div>
+<img alt="../../_images/5f899d3db527914e0d4aedb16968e5203bf75b2f71eff69640b22fb7ab11fcf5.png" src="../../_images/5f899d3db527914e0d4aedb16968e5203bf75b2f71eff69640b22fb7ab11fcf5.png" />
 </div>
 </div>
 <p>As a last step, we repeat the visualization of climate change signal between the target (2071-2100) and reference (1971-2000) period. But this time, we create the average signal for the whole period, not only one month. For this, we have to compute the average over all months with the function <code class="docutils literal notranslate"><span class="pre">mean()</span></code>.</p>
@@ -2264,9 +2376,17 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ffccd9f38d3ca5168ceade50a8451a6dfedd968694c01f328e419c66cb41844d.png" src="../../_images/ffccd9f38d3ca5168ceade50a8451a6dfedd968694c01f328e419c66cb41844d.png" />
+<img alt="../../_images/bc903f7a187e154108da66d33197ac692cc831648ba50df6450a7d6d9e2b38b2.png" src="../../_images/bc903f7a187e154108da66d33197ac692cc831648ba50df6450a7d6d9e2b38b2.png" />
 </div>
 </div>
+<hr></section>
+<section id="key-messages-to-take-home">
+<h2>Key Messages to Take Home 📌<a class="headerlink" href="#key-messages-to-take-home" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Historical experiments cover the period where modern climate observations exist. They can be used as a reference period for comparison with scenario runs for the future.</p></li>
+<li><p>Scenario experiements are ensembles of climate projection experiments that provide different pathways of the future climate forcing.</p></li>
+<li><p>The “delta method” takes the difference between the future and past considering that the model biases are the same and can therefore be removed with the subtraction.</p></li>
+</ul>
 <hr><p></p>
 <span style='float:right'><p style=\"text-align:right;\">This project is licensed under <a href="./LICENSE">APACHE License 2.0</a>. | <a href=\"https://github.com/ecmwf-projects/copernicus-training">View on GitHub</a></span></section>
 </section>
@@ -2335,17 +2455,17 @@ Attributes:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api-via-pip">Install CDS API via pip</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-libraries">Load libraries</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#request-data-from-the-cds-programmatically-with-the-cds-api">Request data from the CDS programmatically with the CDS API</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unzip-the-downloaded-data-files">Unzip the downloaded data files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-cordex-historical-climatology-for-reference-period-1971-2000">Compute CORDEX historical climatology for reference period 1971-2000</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-cordex-future-climatology-for-target-period-2071-2100-based-on-scenario-rcp4-5">Compute CORDEX future climatology for target period 2071-2100 based on scenario RCP4.5</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-and-visualize-the-climate-change-signal-between-the-target-2071-2100-and-reference-1971-2000-period">Compute and visualize the climate change signal between the target (2071-2100) and reference (1971-2000) period</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives 🧠</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#target-audience">Target audience 🎯</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-assumed-knowledge">Prerequisites and assumed knowledge 🔍</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-the-necessary-libraries">1. Import the necessary libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-data-with-the-cds-api">2. Access data with the CDS API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unzip-the-downloaded-data-files">3. Unzip the downloaded data files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-cordex-historical-climatology-for-reference-period-1971-2000">4. Compute CORDEX historical climatology for reference period 1971-2000</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-cordex-future-climatology-for-target-period-2071-2100-based-on-scenario-rcp4-5">5. Compute CORDEX future climatology for target period 2071-2100 based on scenario RCP4.5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-and-visualize-the-climate-change-signal">6. Compute and visualize the climate change signal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-messages-to-take-home">Key Messages to Take Home 📌</a></li>
 </ul>
   </nav></div>
 
