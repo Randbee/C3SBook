@@ -498,18 +498,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-view-data">Search, download and view data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api">Install CDS API</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-your-cds-api-key">Enter your CDS API key</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-climate-data-to-calculate-wind-chill-index">Search for climate data to calculate wind chill index</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-data">Inspect Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives 🧠</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#target-audience">Target audience 🎯</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-assumed-knowledge">Prerequisites and assumed knowledge 🔍</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">1. Libraries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-install-the-necessary-libraries">1.A. Install the necessary libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-import-the-necessary-libraries">1.B. Import the necessary libraries</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-wind-chill-index">Calculate wind chill index</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-repeat-process-with-era5-data-and-compare-results">Exercise: Repeat process with ERA5 data and compare results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-data-with-the-cds-api">2. Access data with the CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-your-cds-api-key">Enter your CDS API key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-data">3. Inspect data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-wind-chill-index">4. Calculate wind chill index</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualise-average-wind-chill-over-europe">5. Visualise average wind chill over Europe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-repeat-process-with-era5-data-and-compare-results">6. Exercise: Repeat process with ERA5 data and compare results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-messages-to-take-home">Key Messages to Take Home 📌</a></li>
 </ul>
             </nav>
         </div>
@@ -524,36 +532,82 @@ document.write(`
   <p><img alt="logo" src="../../_images/LogoLine_horizon_C3S3.png" /></p>
 <br><section class="tex2jax_ignore mathjax_ignore" id="wind-chill-index-with-reanalysis-data">
 <h1>Wind Chill Index with Reanalysis Data<a class="headerlink" href="#wind-chill-index-with-reanalysis-data" title="Link to this heading">#</a></h1>
-<section id="about">
-<h2>About<a class="headerlink" href="#about" title="Link to this heading">#</a></h2>
-<p>This tutorial will demonstrate how to combine multiple variables of climate data to create an index. The example provided is of the wind speed index, but similar principles can be applied to many other types of single or multi-variable indices.</p>
-<p>The data is provided by Copernicus Climate Change Service (C3S) and includes regional climate reanalysis data (UERRA) of wind speed and temperature over Europe from 1961 to 2019.</p>
-<p>The tutorial will first show how to download the necessary data from the C3S Climate Data Store (CDS). It will then describe how to apply a commonly used Wind Chill Index formula to the data, and finally plot a map of the wind chill climatology for a particular day over Europe.</p>
-<p>The steps shown in this tutorial can be applied to other climate datasets, such as the 5th version of the ECMWF Reanalysis (ERA5), or other data.</p>
+<p>This tutorial will demonstrate how to combine multiple variables of climate data to create an index.
+The data is provided by <a class="reference external" href="https://climate.copernicus.eu/">Copernicus Climate Change Service (C3S)</a> and includes regional climate reanalysis data (UERRA) of wind speed and temperature over Europe from 1961 to 2019.</p>
+<p>The tutorial will first show how to download the necessary data from the <a class="reference external" href="https://cds.climate.copernicus.eu/">Climate Data Store (CDS)</a>. It will then describe how to apply a commonly used Wind Chill Index formula to the data, and finally plot a map of the wind chill climatology for a particular day over Europe.</p>
+<p>The steps shown in this tutorial can be applied to many other types of sigle or multi-variable indices and other climate datasets, such as the 5th version of the ECMWF Reanalysis (ERA5), or other data.</p>
 <p><img alt="logo" src="../../_images/climate_indices.png" /></p>
-<style>
-td, th {
-   border: 1px solid white;
-   border-collapse: collapse;
-}
-</style>
-<table align="left">
-  <tr>
-    <th>Run the tutorial via free cloud platforms: </th>
-    <th><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?labpath=ci-windchill.ipynb">
-        <img src = "https://mybinder.org/badge.svg" alt = "Binder"></th>
-    <th><a href="https://kaggle.com/kernels/welcome?src=https://github.com/ecmwf-projects/copernicus-training-c3s/blob/main/ci-windchill.ipynb">
-        <img src = "https://kaggle.com/static/images/open-in-kaggle.svg" alt = "Kaggle"></th>
-    <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/ci-windchill.ipynb">
-        <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
-  </tr>
-</table><br></section>
-<section id="search-download-and-view-data">
-<h2>Search, download and view data<a class="headerlink" href="#search-download-and-view-data" title="Link to this heading">#</a></h2>
-<p>Before we begin we must prepare our environment. This includes installing the Application Programming Interface (API) of the CDS, and importing the various python libraries that we will need.</p>
-<section id="install-cds-api">
-<h3>Install CDS API<a class="headerlink" href="#install-cds-api" title="Link to this heading">#</a></h3>
-<p>To install the CDS API, run the following command. We use an exclamation mark to pass the command to the shell (not to the Python interpreter).</p>
+<hr><section id="learning-objectives">
+<h2>Learning objectives 🧠<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Understanding how multiple variables can be combined to create a climate index.</p></li>
+<li><p>Learning to apply an index formula to climate data.</p></li>
+<li><p>Getting familiarized with how to visualize a climate index in a particular region and time frame.</p></li>
+</ol>
+<hr></section>
+<section id="target-audience">
+<h2>Target audience 🎯<a class="headerlink" href="#target-audience" title="Link to this heading">#</a></h2>
+<p><strong>Anyone</strong> interested in computing climate indexes from C3S data and in visualizing it.</p>
+<hr></section>
+<section id="prerequisites-and-assumed-knowledge">
+<h2>Prerequisites and assumed knowledge 🔍<a class="headerlink" href="#prerequisites-and-assumed-knowledge" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Basic Programming Skills</strong>: Familiarity with programming concepts, particularly in Python, as the tutorial involves using Python libraries like <a class="reference external" href="https://matplotlib.org/">xarray</a> for dealing with multidimensional arrays and <a class="reference external" href="https://matplotlib.org/">matplotlib</a> to make visualisations.</p></li>
+<li><p><strong>Familiarity with API Usage</strong>: Understanding of how to use Application Programming Interfaces (APIs) will be useful for accessing data through the CDS API.</p></li>
+<li><p><strong>Familiarity with multidimensional data structure</strong>: Comprehending what are data dimensions and how they are organized in an array will be helpful.</p></li>
+</ol>
+<hr><div class="tip admonition">
+<p class="admonition-title">Difficulty</p>
+<p>2/5</p>
+</div>
+<hr><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3" open="open">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Run the tutorial</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<h3 class="rubric" id="wekeo">WEKEO</h3>
+<p class="sd-card-text"><a class="reference external" href="https://www.wekeo.eu/">WEkEO</a> serves as the official platform of the European Centre for Medium-Range Weather Forecasts (ECMWF), offering access to an extensive array of climate data and tools for analysis and visualization. It provides a robust environment for conducting in-depth analysis and exploration of climate-related datasets. To learn more about WEkEO and its offerings, visit their <a class="reference external" href="https://www.wekeo.eu/">website</a>.</p>
+<p class="sd-card-text"><a class="reference external" href="https://www.wekeo.eu/">Run this notebook on WEKEO</a></p>
+<h3 class="rubric" id="possible-cloud-services">Possible Cloud Services</h3>
+<p class="sd-card-text">While Kaggle, Binder, and Colab are popular options for running notebooks in the cloud, it’s essential to note that these are just a few among many available choices. Each platform has its unique features and capabilities, catering to diverse user needs and preferences.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p class="sd-card-text"><strong>Kaggle</strong></p></th>
+<th class="head text-center"><p class="sd-card-text"><strong>Binder</strong></p></th>
+<th class="head text-center"><p class="sd-card-text"><strong>Colab</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p class="sd-card-text"><a class="reference external" href="https://kaggle.com/kernels/welcome?src=https://github.com/Randbee/ci-windchill/blob/master/ci-windchill.ipynb"><img alt="Kaggle" src="https://kaggle.com/static/images/open-in-kaggle.svg" /></a></p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference external" href="https://mybinder.org/v2/gh/Randbee/ci-windchill.git/master?labpath=ci-windchill.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a></p></td>
+<td class="text-center"><p class="sd-card-text"><a class="reference external" href="https://colab.research.google.com/github/Randbee/ci-windchill/blob/master/ci-windchill.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</details><hr></section>
+<section id="outline">
+<h2>Outline<a class="headerlink" href="#outline" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Libraries</p>
+<ol class="arabic simple">
+<li><p>Install the necessary libraries</p></li>
+<li><p>Import the necessary libraries</p></li>
+</ol>
+</li>
+<li><p>Access data with the CDS API</p></li>
+<li><p>Inspect data</p></li>
+<li><p>Calculate wind chill index</p></li>
+<li><p>Visualise average wind chill over Europe</p></li>
+<li><p>Exercise: Repeat process with ERA5 data and compare results</p></li>
+</ol>
+<hr></section>
+<section id="libraries">
+<h2>1. Libraries<a class="headerlink" href="#libraries" title="Link to this heading">#</a></h2>
+<section id="a-install-the-necessary-libraries">
+<h3>1.A. Install the necessary libraries<a class="headerlink" href="#a-install-the-necessary-libraries" title="Link to this heading">#</a></h3>
+<div class="alert alert-block alert-success">
+<b>NOTE</b>: <br>
+    Note the exclamation mark in the lines of code below. This means the code will run as a shell (as opposed to a notebook) command.</div><p>If you still haven’t done it, you will need to install the Application Programming Interface (API) of the <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Copernicus Climate Data Store (CDS)</a>. This will allow us to programmatically download data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>cdsapi
@@ -573,10 +627,28 @@ Requirement already satisfied: colorama in c:\users\cxcs\anaconda3\lib\site-pack
 </div>
 </div>
 </div>
-</section>
-<section id="import-libraries">
-<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
-<p>We will be working with data in NetCDF format. To best handle this data we will use libraries for working with multidimensional arrays, in particular Xarray. We will also need libraries for plotting and viewing data, in this case we will use Matplotlib and Cartopy.</p>
+<p>Check the libraries that will be imported in section 1.B. If you haven’t got any of them installed yet, do it adapting the code above. Some libraries depend on other packages to work. <a class="reference external" href="https://docs.xarray.dev/en/stable/">xarray</a>, for example, depends on <a class="reference external" href="https://numpy.org/">numpy</a> and <a class="reference external" href="https://pandas.pydata.org/">pandas</a>. As we are using xarray for reading netCDF files, we will need the <a class="reference external" href="https://github.com/Unidata/netcdf4-python">netCDF4</a> dependency:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>netCDF4
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: netCDF4 in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (1.6.5)
+Requirement already satisfied: cftime in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from netCDF4) (1.6.3)
+Requirement already satisfied: certifi in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from netCDF4) (2024.6.2)
+Requirement already satisfied: numpy in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from netCDF4) (1.26.3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+<b>NOTE</b>: <br>
+    For the netCDF4 installation to take effect, you must restart you Kernel (check the Kernel tab in your menu bar above).</div><hr></section>
+<section id="b-import-the-necessary-libraries">
+<h3>1.B. Import the necessary libraries<a class="headerlink" href="#b-import-the-necessary-libraries" title="Link to this heading">#</a></h3>
+<p>We will be working with data in NetCDF format. To best handle this data we will use libraries for working with multidimensional arrays, in particular <a class="reference internal" href="#(https://docs.xarray.dev/en/stable/)"><span class="xref myst">xarray</span></a>. We will also need libraries for plotting and viewing data, in this case we will use <a class="reference external" href="https://matplotlib.org/">matplotlib</a> and <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">cartopy</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CDS API</span>
@@ -599,10 +671,15 @@ Requirement already satisfied: colorama in c:\users\cxcs\anaconda3\lib\site-pack
 </div>
 </div>
 </div>
+<hr></section>
 </section>
+<section id="access-data-with-the-cds-api">
+<h2>2. Access data with the CDS API<a class="headerlink" href="#access-data-with-the-cds-api" title="Link to this heading">#</a></h2>
 <section id="enter-your-cds-api-key">
 <h3>Enter your CDS API key<a class="headerlink" href="#enter-your-cds-api-key" title="Link to this heading">#</a></h3>
-<p>We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> which build together your CDS API key. The string of characters that make up your KEY include your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="http://cds.climate.copernicus.eu">http://cds.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
+<p>To access data from the CDS, you will need first to <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">register</a> at the ADS registration page (if you haven’t already done so), <a class="reference external" href="https://cds.climate.copernicus.eu/user/login">log in</a>, and accept the Terms and Conditions at the end of the <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">data</span></code> tab.<br></p>
+<p>To obtain data programmatically from the CDS, you will need an API Key that can be found in the <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">api-how-to page</a>. Here your key will appear automatically in the black window, assuming you have already registered and logged into the ADS. Your API key is the entire string of characters that appears after <code class="docutils literal notranslate"><span class="pre">key:</span></code></p>
+<p>Now copy your API key into the code cell below, replacing <code class="docutils literal notranslate"><span class="pre">#######</span></code> with your key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
@@ -620,9 +697,9 @@ Requirement already satisfied: colorama in c:\users\cxcs\anaconda3\lib\site-pack
 </div>
 </div>
 </section>
-<section id="search-for-climate-data-to-calculate-wind-chill-index">
-<h3>Search for climate data to calculate wind chill index<a class="headerlink" href="#search-for-climate-data-to-calculate-wind-chill-index" title="Link to this heading">#</a></h3>
-<p>The wind chill index we will calculate takes two parameters as input, these are 2m near-surface air temperature, and 10m wind speed. Data for these parameters are available as part of the UERRA regional reanalysis dataset for Europe for the period 1961 to 2019. We will search for this data on the <a class="reference external" href="http://cds.climate.copernicus.eu">CDS website</a>. The specific dataset we will use is the <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-uerra-europe-single-levels?tab=overview">UERRA regional reanalysis for Europe on single levels from 1961 to 2019</a>.</p>
+<section id="search-for-data">
+<h3>Search for data<a class="headerlink" href="#search-for-data" title="Link to this heading">#</a></h3>
+<p>The wind chill index we will calculate takes two parameters as input, these are 2m near-surface air temperature, and 10m wind speed. Data for these parameters are available as part of the <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-uerra-europe-single-levels?tab=overview">UERRA regional reanalysis for Europe on single levels from 1961 to 2019</a>. You must search for this dataset on the <a class="reference external" href="http://cds.climate.copernicus.eu">CDS website</a>.</p>
 <p>Having selected the dataset, we now need to specify what product type, variables, temporal and geographic coverage we are interested in. These can all be selected in the <strong>“Download data”</strong> tab. In this tab a form appears in which we will select the following parameters to download:</p>
 <ul class="simple">
 <li><p>Origin: <code class="docutils literal notranslate"><span class="pre">UERRA-HARMONIE</span></code></p></li>
@@ -637,10 +714,10 @@ Requirement already satisfied: colorama in c:\users\cxcs\anaconda3\lib\site-pack
 </section>
 <section id="download-data">
 <h3>Download data<a class="headerlink" href="#download-data" title="Link to this heading">#</a></h3>
-<p>… having copied the API request into the cell below, running this will retrieve and download the data you requested into your local directory. However, before you run the cell below, the <strong>terms and conditions</strong> of this particular dataset need to have been accepted in the CDS. The option to view and accept these conditions is given at the end of the download form, just above the <strong>“Show API request”</strong> option.</p>
-<blockquote>
-<div><p><strong>Note:</strong> UERRA data are stored on tapes in MARS, the ECMWF Meteorological Archival and Retrieval System. Accessing data from tapes is generally slower than accessing data directly from disk. The data requests below may take some hours to complete. For a quicker response you can replace the UERRA data request with similar download parameters for lower resolution ERA5 global reanalysis datasets.</p>
-</div></blockquote>
+<p>Having copied the API request into the cell below, running this will retrieve and download the data you requested into your local directory. However, before you run the cell below, remember to accept the <strong>terms and conditions</strong> of this particular dataset at the end of the <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Form</span></code>, just above the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code> option.</p>
+<div class="alert alert-block alert-success">
+<b>NOTE</b>: <br>
+    UERRA data are stored on tapes in MARS, the ECMWF Meteorological Archival and Retrieval System. Accessing data from tapes is generally slower than accessing data directly from disk. The data requests below may take some hours to complete. For a quicker response you can replace the UERRA data request with similar download parameters for lower resolution ERA5 global reanalysis datasets.</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
@@ -671,16 +748,10 @@ Requirement already satisfied: colorama in c:\users\cxcs\anaconda3\lib\site-pack
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-04-10 10:41:22,443 INFO Welcome to the CDS
-2024-04-10 10:41:22,444 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/reanalysis-uerra-europe-single-levels
-2024-04-10 10:41:22,556 INFO Request is queued
-2024-04-10 10:41:31,000 INFO Request is running
-2024-04-10 10:41:43,783 INFO Request is completed
-2024-04-10 10:41:43,783 INFO Downloading https://download-0004-clone.copernicus-climate.eu/cache-compute-0004/cache/data5/adaptor.mars.external-1712738496.3339448-10796-17-af38c09f-9272-4e0c-8421-57debd1b5b4a.nc to ./UERRA_ws10m.nc (41.4M)
-2024-04-10 10:41:58,712 INFO Download rate 2.8M/s                               
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=43436669,content_type=application/x-netcdf,location=https://download-0004-clone.copernicus-climate.eu/cache-compute-0004/cache/data5/adaptor.mars.external-1712738496.3339448-10796-17-af38c09f-9272-4e0c-8421-57debd1b5b4a.nc)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-07-09 11:38:53,624 INFO Welcome to the CDS
+2024-07-09 11:38:53,626 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/reanalysis-uerra-europe-single-levels
+2024-07-09 11:38:53,736 INFO Request is queued
+2024-07-09 11:39:07,200 INFO Request is running
 </pre></div>
 </div>
 </div>
@@ -729,11 +800,15 @@ Requirement already satisfied: colorama in c:\users\cxcs\anaconda3\lib\site-pack
 </div>
 </div>
 </div>
+<hr></section>
 </section>
 <section id="inspect-data">
-<h3>Inspect Data<a class="headerlink" href="#inspect-data" title="Link to this heading">#</a></h3>
-<p>We have requested the data in NetCDF format. This is a commonly used format for array-oriented scientific data. To read and process this data we will make use of the Xarray library. Xarray is an open source project and Python package that makes working with labelled multi-dimensional arrays simple and efficient. We will read the data from our NetCDF file into <a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html">xarray.Dataset</a> objects.</p>
-<div class="cell docutils container">
+<h2>3. Inspect data<a class="headerlink" href="#inspect-data" title="Link to this heading">#</a></h2>
+<p>We have requested the data in <code class="docutils literal notranslate"><span class="pre">NetCDF</span></code> format. To read and process this data we will make use of the <a class="reference external" href="http://xarray.pydata.org/en/stable/">xarray</a> library. Xarray is an open source project and Python package that makes working with labelled multi-dimensional arrays simple and efficient. We will read the data from our NetCDF file into <a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html">xarray.Dataset</a> objects.</p>
+<div class="alert alert-block alert-success">
+<b>NOTE</b>: <br>
+    You can find more detailed information on multi-dimensional arrays in the tutorial on <a href="https://randbee.github.io/C3SBook/notebooks/reanalysis-climatology/reanalysis-climatology.html">climatology reanalysis</a>.
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fw</span> <span class="o">=</span> <span class="s1">&#39;UERRA_ws10m.nc&#39;</span>
 <span class="n">ft</span> <span class="o">=</span> <span class="s1">&#39;UERRA_t2m.nc&#39;</span>
@@ -1660,10 +1735,9 @@ Attributes: (12/33)
 </div>
 </div>
 </div>
-</section>
-</section>
+<hr></section>
 <section id="calculate-wind-chill-index">
-<h2>Calculate wind chill index<a class="headerlink" href="#calculate-wind-chill-index" title="Link to this heading">#</a></h2>
+<h2>4. Calculate wind chill index<a class="headerlink" href="#calculate-wind-chill-index" title="Link to this heading">#</a></h2>
 <p>The wind chill index is a metric in temperature-like units, e.g. Kelvin or °C, and represents the lowering of body temperature due to a combination of low temperature and wind.</p>
 <p>Since 2001, Canada, the United States and the United Kingdom have implemented the new wind chill index which is defined with the following formula:</p>
 <p><span class="math notranslate nohighlight">\(\textit{T}_{WC} = 13.12 + 0.6215\textit{T}_{a} - 11.37\upsilon^{0.16} + 0.3965\textit{T}_{a}\upsilon^{0.16}\)</span></p>
@@ -1719,6 +1793,9 @@ Attributes: (12/33)
 </div>
 </div>
 </div>
+<hr></section>
+<section id="visualise-average-wind-chill-over-europe">
+<h2>5. Visualise average wind chill over Europe<a class="headerlink" href="#visualise-average-wind-chill-over-europe" title="Link to this heading">#</a></h2>
 <p>Now let’s plot the average wind chill for this time over Europe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1750,10 +1827,17 @@ Attributes: (12/33)
 <p>Under which category of the wind chill index do the coldest areas in Europe generally lie at this time (see chart below)?</p>
 <p><img alt="logo" src="../../_images/Windchill_effect_en.svg" /></p>
 <p>RicHard-59, CC BY-SA 3.0 <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0">https://creativecommons.org/licenses/by-sa/3.0</a>, via Wikimedia Commons</p>
-</section>
+<hr></section>
 <section id="exercise-repeat-process-with-era5-data-and-compare-results">
-<h2>Exercise: Repeat process with ERA5 data and compare results<a class="headerlink" href="#exercise-repeat-process-with-era5-data-and-compare-results" title="Link to this heading">#</a></h2>
+<h2>6. Exercise: Repeat process with ERA5 data and compare results<a class="headerlink" href="#exercise-repeat-process-with-era5-data-and-compare-results" title="Link to this heading">#</a></h2>
 <p>So far you have plotted wind chill using the UERRA regional reanalysis dataset, but how accurate is this plot? One way to assess a dataset is to compare it with an alternative independent one to see what differences there may be. An alternative to UERRA is the ECMWF Reanalysis datasets, ERA5 (currently in it’s 5th version). Repeat the steps above with ERA5 data and compare your results with those obtained using UERRA.</p>
+<hr></section>
+<section id="key-messages-to-take-home">
+<h2>Key Messages to Take Home 📌<a class="headerlink" href="#key-messages-to-take-home" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Climate indexes are metrics defined by formulas that include climate variables. The wind chill index, for example, is calculated from a formula that includes the variables wind speed and air temperature.</p></li>
+<li><p>Climate indexes can be calculated and visualised over specific regions and averaged over time.</p></li>
+</ul>
 <hr></section>
 </section>
 
@@ -1821,18 +1905,26 @@ Attributes: (12/33)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-view-data">Search, download and view data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api">Install CDS API</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-your-cds-api-key">Enter your CDS API key</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-climate-data-to-calculate-wind-chill-index">Search for climate data to calculate wind chill index</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-data">Inspect Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives 🧠</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#target-audience">Target audience 🎯</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-assumed-knowledge">Prerequisites and assumed knowledge 🔍</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">1. Libraries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-install-the-necessary-libraries">1.A. Install the necessary libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-import-the-necessary-libraries">1.B. Import the necessary libraries</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-wind-chill-index">Calculate wind chill index</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-repeat-process-with-era5-data-and-compare-results">Exercise: Repeat process with ERA5 data and compare results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-data-with-the-cds-api">2. Access data with the CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-your-cds-api-key">Enter your CDS API key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-data">3. Inspect data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-wind-chill-index">4. Calculate wind chill index</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualise-average-wind-chill-over-europe">5. Visualise average wind chill over Europe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-repeat-process-with-era5-data-and-compare-results">6. Exercise: Repeat process with ERA5 data and compare results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-messages-to-take-home">Key Messages to Take Home 📌</a></li>
 </ul>
   </nav></div>
 
